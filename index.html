@@ -1,113 +1,72 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>毛岩鹏 教授 - 个人主页</title>
+    <title>Yanpeng Mao - Homepage</title>
     <style>
-        /* --- 全局样式 --- */
-        body { 
-            display: flex; 
-            margin: 0; 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
-            color: #333; 
-        }
+        body { display: flex; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #333; }
         
-        /* --- 左侧固定导航栏 --- */
-        .nav-bar { 
-            list-style-type: none; 
-            padding: 0; 
-            margin: 0; 
-            width: 220px; 
-            background-color: #f8f9fa; 
-            position: fixed; 
-            height: 100vh; 
-            overflow: auto; 
-            border-right: 1px solid #eaeaea; 
-        }
-        .nav-bar li a { 
-            display: block; 
-            padding: 15px 20px; 
-            font-size: 16px; 
-            text-decoration: none; 
-            color: #444; 
-            border-bottom: 1px solid #eaeaea; 
-            transition: background 0.3s; 
-        }
-        .nav-bar li a:hover, .nav-bar li a.active { 
-            background-color: #e2e6ea; 
-            font-weight: bold; 
-            color: #000; 
-        }
+        /* 左侧导航栏 */
+        .nav-bar { list-style-type: none; padding: 0; margin: 0; width: 220px; background-color: #f8f9fa; position: fixed; height: 100vh; overflow: auto; border-right: 1px solid #eaeaea; }
+        .nav-bar li a { display: block; padding: 15px 20px; font-size: 16px; text-decoration: none; color: #444; border-bottom: 1px solid #eaeaea; transition: background 0.3s; }
+        .nav-bar li a:hover, .nav-bar li a.active { background-color: #e2e6ea; font-weight: bold; color: #000; }
         
-        /* --- 右侧主内容区 --- */
-        .main-content { 
-            margin-left: 220px; 
-            padding: 40px; 
-            font-size: 16px; 
-            flex-grow: 1; 
-            max-width: 900px; 
-        }
-        
-        /* --- 首页文字和图片专属样式 --- */
+        /* 右侧内容区 */
+        .main-content { margin-left: 220px; padding: 40px; font-size: 16px; flex-grow: 1; max-width: 900px; }
         h1 { color: #222; margin-bottom: 20px; }
         p { line-height: 1.8; color: #444; text-align: justify; }
         
+        /* 👇 照片样式：已改成 3:4 的长方形 👇 */
         .profile-img { 
-            width: 180px; 
-            height: 180px; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            float: right; /* 让图片浮动到右侧 */
-            margin: 0 0 20px 30px; /* 给文字留出间距 */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+            width: 180px;           /* 宽度 */
+            height: 240px;          /* 高度（比宽度大，形成竖向长方形） */
+            object-fit: cover;      /* 保证照片填满长方形，不变形 */
+            float: right;           /* 靠右悬浮 */
+            margin: 0 0 20px 30px;  /* 文字环绕间距 */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* 一点点阴影增加立体感 */
+            border-radius: 4px;     /* 加一点点微小的圆角让边缘不那么锋利，想要纯直角可以删掉这行 */
         }
         
-        .link-btn { 
-            display: inline-block; 
-            margin-right: 15px; 
-            color: #0366d6; 
-            text-decoration: none; 
-            font-weight: bold; 
-        }
+        .link-btn { display: inline-block; margin-right: 15px; color: #0366d6; text-decoration: none; font-weight: bold; }
         .link-btn:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
-    <!-- 1. 左侧导航栏：8个选项全齐了 -->
+    <!-- 左侧导航栏 -->
     <ul class="nav-bar">
-        <!-- 注意：这一行带有 class="active"，所以它在主页会高亮 -->
-        <li><a href="./index.html" class="active">Home (主页)</a></li>
-        <li><a href="./publications.html">Publications (论文)</a></li>
-        <li><a href="./teaching.html">Teaching (教学)</a></li>
-        <li><a href="./projects.html">Projects (项目)</a></li>
-        <li><a href="./patents.html">Patents (专利)</a></li>
-        <li><a href="./services.html">Services (服务)</a></li>
-        <li><a href="./awards.html">Awards (获奖)</a></li>
-        <li><a href="./contact.html">Contact (联系)</a></li>
+        <li><a href="./index.html" class="active">Home</a></li>
+        <li><a href="./publications.html">Publications</a></li>
+        <li><a href="./teaching.html">Teaching</a></li>
+        <li><a href="./projects.html">Projects</a></li>
+        <li><a href="./patents.html">Patents</a></li>
+        <li><a href="./services.html">Services</a></li>
+        <li><a href="./awards.html">Awards</a></li>
+        <li><a href="./contact.html">Contact</a></li>
     </ul>
 
-    <!-- 2. 右侧主内容区 -->
+    <!-- 右侧主内容区 -->
     <div class="main-content">
-        <h1>毛岩鹏 教授</h1>
+        <h1>Yanpeng Mao</h1>
         
-        <!-- ⚠️ 重要提示：确保 mao.jpg 是你仓库里真实存在的图片文件名 -->
-        <img src="mao.jpg" alt="毛岩鹏教授照片" class="profile-img">
+        <img src="mao.jpg" alt="Yanpeng Mao" class="profile-img">
         
         <p>
-            毛岩鹏，山东大学核科学与能源动力学院教授、博士生导师，泉城重点产业紧缺人才，现任山东大学新泰工业研究院副院长。曾先后在加拿大英属哥伦比亚大学访学，并挂职山东济南平阴县科技副县长、山东大学后勤保障部副部长。
+            Professor and Ph.D. Supervisor at the School of Nuclear Science and Energy Power Engineering, Shandong University. 
+            I am a key industry talent in Jinan and currently serve as the Vice Dean of the Xintai Institute of Industrial Research, Shandong University.
         </p>
         
         <p>
-            主要从事<strong>能源、环境与材料交叉领域</strong>的研究，聚焦<strong>微波能应用</strong>与<strong>低零碳技术</strong>两大方向。在微波能应用方面，研究涵盖微波与物质的交互机制、微波多相催化过程，以及微波光热制氢与有机固废解耦制氢等新能源技术。在低零碳技术方面，致力于源头低碳技术、零碳原料替代及二氧化碳高效转化等负碳技术的开发。
+            My research primarily focuses on the intersection of <strong>Energy, Environment, and Materials</strong>, specifically in two main directions: <strong>Microwave Energy Applications</strong> and <strong>Low-Zero Carbon Technologies</strong>. 
+            In microwave energy applications, my work covers the interaction mechanisms between microwaves and matter, microwave multiphase catalysis, and new energy technologies such as microwave photothermal hydrogen production and organic solid waste decoupled hydrogen production.
         </p>
         
         <p>
-            先后主持和参与国家自然科学基金、国家重点研发计划、国家863计划等项目19项，发表SCI/EI论文100余篇，申请/授权国家专利56项，获山东省自然科学奖二等奖等奖励。
+            I have led and participated in 19 national projects, including the National Natural Science Foundation of China, the National Key R&D Program, and the National 863 Program. I have published over 100 SCI/EI papers, applied for/granted 56 national patents, and received the Second Prize of the Shandong Provincial Natural Science Award.
         </p>
         
-        <h3>学术链接</h3>
+        <h3>Academic Links</h3>
         <p>
             <a href="https://scholar.google.com/" target="_blank" class="link-btn">Google Scholar</a>
             <a href="https://www.scopus.com/" target="_blank" class="link-btn">Scopus</a>

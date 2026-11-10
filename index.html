@@ -1,29 +1,231 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <title>我的个人主页</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>毛岩鹏 教授 - 个人主页</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; line-height: 1.6; text-align: center; }
-        h1 { color: #333; }
-        /* 这是导航栏的样式 */
-        nav { text-align: center; margin-bottom: 30px; padding-bottom: 10px; border-bottom: 1px solid #ccc; }
-        nav a { margin: 0 15px; text-decoration: none; color: #0366d6; font-weight: bold; }
-        nav a:hover { text-decoration: underline; }
+        /* 页面整体布局：左侧固定导航，右侧自适应内容 */
+        body {
+            display: flex;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #333;
+        }
+        
+        /* 左侧固定导航栏样式 */
+        .nav-bar {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 220px;
+            background-color: #f8f9fa;
+            position: fixed;
+            height: 100vh;
+            overflow: auto;
+            border-right: 1px solid #eaeaea;
+        }
+        .nav-bar li a {
+            display: block;
+            padding: 15px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            color: #444;
+            border-bottom: 1px solid #eaeaea;
+            transition: background 0.3s;
+        }
+        .nav-bar li a:hover, .nav-bar li a.active {
+            background-color: #e2e6ea;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        /* 右侧主内容区域 */
+        .main-content {
+            margin-left: 220px; /* 给左侧导航留出空间 */
+            padding: 40px;
+            font-size: 16px;
+            flex-grow: 1;
+            max-width: 900px;
+        }
+        
+        /* 核心：所有页面区块默认隐藏 */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.4s;
+        }
+        /* 核心：被激活的区块才显示 */
+        .active {
+            display: block;
+        }
+        
+        /* 淡入动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 首页文字和图片样式 */
+        h1 { color: #222; margin-bottom: 20px; }
+        h2 { color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 30px;}
+        p { line-height: 1.8; color: #444; }
+        ul { line-height: 1.8; color: #444; }
+        
+        .profile-img {
+            width: 180px; 
+            height: 180px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            float: right; 
+            margin: 0 0 20px 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .link-btn {
+            display: inline-block;
+            margin-right: 15px;
+            color: #0366d6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .link-btn:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
-    <!-- 新增的导航栏 -->
-    <nav>
-        <a href="./index.html">首页 (Home)</a>
-        <a href="./publications.html">论文发表 (Publications)</a>
-    </nav>
+    <!-- 1. 左侧导航栏 -->
+    <ul class="nav-bar">
+        <li><a href="javascript:void(0);" data-target="home" class="active">Home (主页)</a></li>
+        <li><a href="javascript:void(0);" data-target="publications">Publications (论文)</a></li>
+        <li><a href="javascript:void(0);" data-target="teaching">Teaching (教学)</a></li>
+        <li><a href="javascript:void(0);" data-target="projects">Projects (项目)</a></li>
+        <li><a href="javascript:void(0);" data-target="patents">Patents (专利)</a></li>
+        <li><a href="javascript:void(0);" data-target="services">Services (服务)</a></li>
+        <li><a href="javascript:void(0);" data-target="awards">Awards (获奖)</a></li>
+        <li><a href="javascript:void(0);" data-target="contact">Contact (联系)</a></li>
+    </ul>
 
-    <!-- 你的首页内容 -->
-    <h1>你好，我是 YP-Mao</h1>
-    <p>欢迎来到我的个人主页！</p>
-    <p>我是一名研究者/学生，对 XXX 领域感兴趣。</p>
+    <!-- 2. 右侧主内容区 -->
+    <div class="main-content">
+        
+        <!-- ================= Home (首页) 区块 ================= -->
+        <section id="home" class="page-section active">
+            <h1>毛岩鹏 教授</h1>
+            
+            <!-- 请将 src 里的地址替换为你上传到仓库的照片链接 -->
+            <img src="https://www.baidu.com/img/flexible/logo/pc/result.png" alt="毛岩鹏教授照片" class="profile-img">
+            
+            <p align="justify">
+                毛岩鹏，山东大学核科学与能源动力学院教授、博士生导师，泉城重点产业紧缺人才，现任山东大学新泰工业研究院副院长。曾先后在加拿大英属哥伦比亚大学访学，并挂职山东济南平阴县科技副县长、山东大学后勤保障部副部长。
+            </p>
+            
+            <p align="justify">
+                主要从事<strong>能源、环境与材料交叉领域</strong>的研究，聚焦<strong>微波能应用</strong>与<strong>低零碳技术</strong>两大方向。在微波能应用方面，研究涵盖微波与物质的交互机制、微波多相催化过程，以及微波光热制氢与有机固废解耦制氢等新能源技术。在低零碳技术方面，致力于源头低碳技术、零碳原料替代及二氧化碳高效转化等负碳技术的开发。
+            </p>
+            
+            <p align="justify">
+                先后主持和参与国家自然科学基金、国家重点研发计划、国家863计划等项目19项，发表SCI/EI论文100余篇，申请/授权国家专利56项，获山东省自然科学奖二等奖等奖励。
+            </p>
+            
+            <h3>学术链接</h3>
+            <p>
+                <a href="https://scholar.google.com/" target="_blank" class="link-btn">Google Scholar</a>
+                <a href="https://www.scopus.com/" target="_blank" class="link-btn">Scopus</a>
+            </p>
+        </section>
 
+        <!-- ================= Publications (论文) 区块 ================= -->
+        <section id="publications" class="page-section">
+            <h2>Publications (论文发表)</h2>
+            <ul>
+                <li>
+                    <strong>在此处填写论文题目 (Paper Title)</strong><br>
+                    作者1, <strong>毛岩鹏</strong>, 作者3<br>
+                    <em>期刊或会议名称 (Journal/Conference)</em>, 2023. 
+                    <a href="#" class="link-btn">[PDF]</a>
+                </li>
+                <!-- 复制 <li>...</li> 来添加更多论文 -->
+            </ul>
+        </section>
+
+        <!-- ================= Teaching (教学) 区块 ================= -->
+        <section id="teaching" class="page-section">
+            <h2>Teaching (教学)</h2>
+            <p>在此处填写主讲课程等信息。</p>
+        </section>
+
+        <!-- ================= Projects (项目) 区块 ================= -->
+        <section id="projects" class="page-section">
+            <h2>Projects (科研项目)</h2>
+            <ul>
+                <li><strong>项目名称：</strong>国家自然科学基金面上项目，起止年月...</li>
+            </ul>
+        </section>
+
+        <!-- ================= Patents (专利) 区块 ================= -->
+        <section id="patents" class="page-section">
+            <h2>Patents (专利)</h2>
+            <ul>
+                <li>
+                    <strong>一种基于微波能应用的有机固废解耦制氢方法及系统</strong><br>
+                    毛岩鹏, 张三, 李四.<br>
+                    专利号: CN123456789A (已授权)
+                </li>
+                <li>
+                    <strong>一种用于二氧化碳高效转化的低零碳催化反应装置</strong><br>
+                    毛岩鹏, 王五.<br>
+                    专利号: CN987654321A (申请中)
+                </li>
+            </ul>
+        </section>
+
+        <!-- ================= Services (服务) 区块 ================= -->
+        <section id="services" class="page-section">
+            <h2>Services (学术服务)</h2>
+            <p>在此处填写期刊审稿人、会议委员等信息。</p>
+        </section>
+
+        <!-- ================= Awards (获奖) 区块 ================= -->
+        <section id="awards" class="page-section">
+            <h2>Awards (获奖荣誉)</h2>
+            <ul>
+                <li>山东省自然科学奖二等奖</li>
+            </ul>
+        </section>
+
+        <!-- ================= Contact (联系) 区块 ================= -->
+        <section id="contact" class="page-section">
+            <h2>Contact (联系方式)</h2>
+            <p><strong>Email:</strong> 在此处填写邮箱</p>
+            <p><strong>Address:</strong> 山东大学核科学与能源动力学院</p>
+        </section>
+
+    </div>
+
+    <!-- 3. 导航切换逻辑 (JavaScript) -->
+    <script>
+        document.querySelectorAll('.nav-bar a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 1. 移除所有导航项的高亮
+                document.querySelectorAll('.nav-bar a').forEach(a => a.classList.remove('active'));
+                
+                // 2. 隐藏所有页面区块
+                document.querySelectorAll('.page-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // 3. 获取目标区块的ID
+                const targetId = this.dataset.target;
+                
+                // 4. 显示目标区块
+                document.getElementById(targetId).classList.add('active');
+                
+                // 5. 高亮当前导航项
+                this.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>

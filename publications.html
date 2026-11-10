@@ -1,39 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>论文发表 - 我的主页</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Yanpeng Mao</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; line-height: 1.6; }
-        /* 这是导航栏的简单样式 */
-        nav { text-align: center; margin-bottom: 30px; padding-bottom: 10px; border-bottom: 1px solid #ccc; }
-        nav a { margin: 0 15px; text-decoration: none; color: #0366d6; font-weight: bold; }
-        nav a:hover { text-decoration: underline; }
+        /* 样式与主页完全一样 */
+        body { display: flex; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #333; }
+        .nav-bar { list-style-type: none; padding: 0; margin: 0; width: 220px; background-color: #f8f9fa; position: fixed; height: 100vh; overflow: auto; border-right: 1px solid #eaeaea; }
+        .nav-bar li a { display: block; padding: 15px 20px; font-size: 16px; text-decoration: none; color: #444; border-bottom: 1px solid #eaeaea; transition: background 0.3s; }
+        .nav-bar li a:hover, .nav-bar li a.active { background-color: #e2e6ea; font-weight: bold; color: #000; }
+        .main-content { margin-left: 220px; padding: 40px; font-size: 16px; flex-grow: 1; max-width: 900px; }
+        
+        h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        ul { line-height: 1.8; color: #444; }
+        .pdf-link { color: #d73a49; font-weight: bold; text-decoration: none; }
+        .pdf-link:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
-    <!-- 导航栏 -->
-    <nav>
-        <a href="./index.html">首页 (Home)</a>
-        <a href="./publications.html">论文发表 (Publications)</a>
-    </nav>
-
-    <!-- 页面具体内容 -->
-    <h1>论文发表</h1>
-    <ul>
-        <li>
-            <strong>Paper Title 1</strong><br>
-            Author A, <strong>Author B</strong> (Me)<br>
-            <em>Journal Name</em>, 2023. 
-            <a href="这里换成论文链接">[PDF]</a>
-        </li>
-        <li>
-            <strong>Paper Title 2</strong><br>
-            Author A, <strong>Author B</strong> (Me)<br>
-            <em>Conference Name</em>, 2022.
-        </li>
+    <!-- 左侧导航栏（注意 Publications 这里变成了 active） -->
+    <ul class="nav-bar">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./publications.html" class="active">Publications</a></li>
+        <li><a href="./teaching.html">Teaching</a></li>
+        <li><a href="./projects.html">Projects</a></li>
+        <li><a href="./patents.html">Patents</a></li>
+        <li><a href="./services.html">Services</a></li>
+        <li><a href="./awards.html">Awards</a></li>
+        <li><a href="./contact.html">Contact</a></li>
     </ul>
+
+    <!-- 右侧论文内容区 -->
+    <div class="main-content">
+        <h1>Publications</h1>
+        
+        <ul>
+            <li>
+                <strong>Your Paper Title 1 Goes Here</strong><br>
+                Author A, <strong>Yanpeng Mao</strong>, Author C<br>
+                <em>Journal Name or Conference Name</em>, 2023. 
+                <a href="https://scholar.google.com/" target="_blank" class="pdf-link">[PDF]</a>
+            </li>
+            <li>
+                <strong>Your Paper Title 2 Goes Here</strong><br>
+                <strong>Yanpeng Mao</strong>, Author B<br>
+                <em>Journal Name or Conference Name</em>, 2022. 
+                <a href="https://scholar.google.com/" target="_blank" class="pdf-link">[Code]</a>
+            </li>
+        </ul>
+    </div>
 
 </body>
 </html>

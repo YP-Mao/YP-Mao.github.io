@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Yanpeng Mao</title>
+    <style>
+        /* ===== 全局和导航栏样式，与 index.html/publications.html 完全统一 ===== */
+        body { display: flex; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #333; }
+        .nav-bar { list-style-type: none; padding: 0; margin: 0; width: 220px; background-color: #f8f9fa; position: fixed; height: 100vh; overflow: auto; border-right: 1px solid #eaeaea; }
+        .nav-bar li a { display: block; padding: 15px 20px; font-size: 16px; text-decoration: none; color: #444; border-bottom: 1px solid #eaeaea; transition: background 0.3s; }
+        .nav-bar li a:hover, .nav-bar li a.active { background-color: #e2e6ea; font-weight: bold; color: #000; }
+        
+        .main-content { margin-left: 220px; padding: 40px; font-size: 16px; flex-grow: 1; max-width: 900px; }
+        h1 { color: #222; margin-bottom: 20px; }
+        p { line-height: 1.8; color: #444; text-align: justify; }
+        
+        /* ===== 联系方式专属样式 ===== */
+        .contact-intro { margin-bottom: 30px; font-size: 16px; }
+        .contact-card {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0366d6;
+            padding: 20px 25px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .contact-item {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+        .contact-label {
+            font-weight: bold;
+            color: #222;
+            display: inline-block;
+            width: 110px; /* 对齐标签 */
+        }
+        .contact-value {
+            color: #444;
+        }
+        .contact-value a {
+            color: #0366d6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-value a:hover {
+            text-decoration: underline;
+        }
+        .team-info {
+            margin-top: 10px;
+            padding-left: 110px; /* 和上面的内容对齐 */
+            color: #666;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
 
+    <!-- 左侧导航栏 -->
+    <ul class="nav-bar">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./publications.html">Publications</a></li>
+        <li><a href="./teaching.html">Teaching</a></li>
+        <li><a href="./projects.html">Projects</a></li>
+        <li><a href="./patents.html">Patents</a></li>
+        <li><a href="./services.html">Services</a></li>
+        <li><a href="./awards.html">Awards</a></li>
+        <li><a href="./contact.html" class="active">Contact</a></li>
+    </ul>
+
+    <!-- 右侧主内容区 -->
+    <div class="main-content">
+        <h1>Contact</h1>
+        
+        <p class="contact-intro">
+            欢迎对微波能应用、低零碳技术等研究领域感兴趣的同学、同行与我们联系。无论是学术合作、项目交流，还是报考研究生，都欢迎随时沟通！
+        </p>
+
+        <div class="contact-card">
+            <div class="contact-item">
+                <span class="contact-label">个人邮箱：</span>
+                <span class="contact-value"><a href="mailto:maoyanpeng@sdu.edu.cn">maoyanpeng@sdu.edu.cn</a> (Prof. Yanpeng Mao)</span>
+            </div>
+            
+            <div class="contact-item">
+                <span class="contact-label">项目组：</span>
+                <span class="contact-value">山东大学 能源与动力工程学院 毛岩鹏教授团队</span>
+                <div class="team-info">
+                    课题组常年招收硕士、博士研究生及博士后，同时也非常欢迎本科生参与科研项目，期待与您的交流与合作！
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <span class="contact-label">团队邮箱：</span>
+                <span class="contact-value"><a href="mailto:gewuzhizhi0827@163.com">gewuzhizhi0827@163.com</a></span>
+            </div>
+            
+            <div class="contact-item">
+                <span class="contact-label">办公地址：</span>
+                <span class="contact-value">山东省济南市山东大学千佛山校区</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

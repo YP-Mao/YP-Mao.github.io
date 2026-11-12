@@ -5,7 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awards - Yanpeng Mao</title>
     <style>
-        /* 样式与 teaching.html 完全相同，请将 teaching.html 的 <style> 部分完整粘贴到这里。 */
+        body { display: flex; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #333; }
+        .nav-bar { list-style-type: none; padding: 0; margin: 0; width: 220px; background-color: #f8f9fa; position: fixed; height: 100vh; overflow: auto; border-right: 1px solid #eaeaea; }
+        .nav-bar li a { display: block; padding: 15px 20px; font-size: 16px; text-decoration: none; color: #444; border-bottom: 1px solid #eaeaea; transition: background 0.3s; }
+        .nav-bar li a:hover, .nav-bar li a.active { background-color: #e2e6ea; font-weight: bold; color: #000; }
+        .main-content { margin-left: 220px; padding: 40px; font-size: 15px; flex-grow: 1; max-width: 1000px; }
+        
+        h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #0366d6; margin-top: 40px; border-bottom: 1px dashed #ccc; padding-bottom: 5px; font-size: 20px;}
+        
+        .pub-list { list-style-type: none; padding: 0; counter-reset: pub-counter; }
+        .pub-item { margin-bottom: 25px; display: flex; flex-direction: column; gap: 6px; counter-increment: pub-counter; position: relative; padding-left: 35px; }
+        .pub-item::before { content: counter(pub-counter) "."; position: absolute; left: 0; top: 0; font-weight: bold; color: #0366d6; font-size: 16px; }
+        
+        .pub-title { font-weight: bold; color: #222; font-size: 16px; line-height: 1.4; }
+        .pub-authors { color: #555; line-height: 1.5; }
+        .pub-journal { color: #777; font-style: italic; }
+        .pub-journal span { font-style: normal; font-weight: bold; color: #333; }
     </style>
 </head>
 <body>
@@ -19,26 +35,29 @@
         <li><a href="./awards.html" class="active">Awards</a></li>
         <li><a href="./contact.html">Contact</a></li>
     </ul>
+
     <div class="main-content">
         <h1>Awards & Honors</h1>
+
         <h2>Research Awards</h2>
         <ul class="pub-list">
             <li class="pub-item">
                 <div class="pub-title">Shandong Provincial Natural Science Award, Second Prize (山东省自然科学二等奖)</div>
                 <div class="pub-authors">“Microwave-induced targeted energy utilization mechanism based on multi-effect coupling of thermal, optical, electrical and plasma”</div>
-                <div class="pub-journal">Shandong Provincial People's Government, 2020</div>
+                <div class="pub-journal">Shandong Provincial People's Government, <span>2020</span></div>
             </li>
             <li class="pub-item">
                 <div class="pub-title">Shandong Provincial University Science and Technology Award, First Prize (山东省高校科学技术一等奖)</div>
                 <div class="pub-authors">“Synergistic two-stage leap preparation of high-value green civil engineering materials from bulk industrial and urban solid waste”</div>
-                <div class="pub-journal">Shandong Provincial Department of Education, 2019</div>
+                <div class="pub-journal">Shandong Provincial Department of Education, <span>2019</span></div>
             </li>
             <li class="pub-item">
                 <div class="pub-title">Shandong Provincial University Science and Technology Award, Third Prize (山东省高校科学技术三等奖)</div>
                 <div class="pub-authors">“Mechanism analysis and application value research of microwave-induced thermal-plasma-photocatalysis multi-effect coupling”</div>
-                <div class="pub-journal">Shandong Provincial Department of Education, 2019</div>
+                <div class="pub-journal">Shandong Provincial Department of Education, <span>2019</span></div>
             </li>
         </ul>
+
         <h2>Teaching & Talent Honors</h2>
         <ul class="pub-list">
             <li class="pub-item">
@@ -48,7 +67,7 @@
             <li class="pub-item">
                 <div class="pub-title">Quancheng Key Industry Urgently Needed Talent (泉城重点产业紧缺人才)</div>
                 <div class="pub-authors">Jinan Municipal Government</div>
-                <div class="pub-journal">2018</div>
+                <div class="pub-journal"><span>2018</span></div>
             </li>
             <li class="pub-item">
                 <div class="pub-title">Shandong University Young Teaching Expert (山东大学青年教学能手)</div>
@@ -57,20 +76,21 @@
             <li class="pub-item">
                 <div class="pub-title">Second Prize, Shandong University Young Teachers Teaching Competition</div>
                 <div class="pub-authors">Shandong University</div>
-                <div class="pub-journal">2018</div>
+                <div class="pub-journal"><span>2018</span></div>
             </li>
         </ul>
+
         <h2>Supervision Awards</h2>
         <ul class="pub-list">
             <li class="pub-item">
                 <div class="pub-title">Shandong Provincial Excellent Master's Thesis Supervision Award</div>
                 <div class="pub-authors">Shandong Province</div>
-                <div class="pub-journal">2020, 2022 (2 times)</div>
+                <div class="pub-journal"><span>2020, 2022</span> (2 times)</div>
             </li>
             <li class="pub-item">
                 <div class="pub-title">Shandong Provincial Graduate Outstanding Achievement Award, Third Prize</div>
                 <div class="pub-authors">Shandong Province</div>
-                <div class="pub-journal">2020</div>
+                <div class="pub-journal"><span>2020</span></div>
             </li>
         </ul>
     </div>

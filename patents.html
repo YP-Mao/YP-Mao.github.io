@@ -1,857 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Patents | Yanpeng Mao</title>
-<style>
-  /* ===== 请用你现有网站的全局样式替换这一段 ===== */
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: "Segoe UI", Arial, "Microsoft YaHei", sans-serif;
-    color: #222;
-    background: #fff;
-    line-height: 1.6;
-  }
-  .sidebar {
-    position: fixed;
-    top: 0; left: 0;
-    width: 190px;
-    height: 100vh;
-    background: #1f3a5f;
-    padding-top: 30px;
-  }
-  .sidebar a {
-    display: block;
-    color: #dbe6f3;
-    text-decoration: none;
-    padding: 12px 24px;
-    font-size: 15px;
-    letter-spacing: .3px;
-  }
-  .sidebar a:hover { background: #2c4f7c; color: #fff; }
-  .sidebar a.active { background: #fff; color: #1f3a5f; font-weight: 600; }
-  .content {
-    margin-left: 190px;
-    padding: 40px 50px 80px;
-    max-width: 1100px;
-  }
-  h1 { font-size: 30px; margin: 0 0 8px; color: #1f3a5f; }
-  .page-intro { color: #666; margin-bottom: 32px; font-size: 15px; }
-  h2.year-heading {
-    font-size: 22px;
-    color: #1f3a5f;
-    border-bottom: 2px solid #1f3a5f;
-    padding-bottom: 6px;
-    margin: 38px 0 18px;
-  }
-  /* ===== 专利列表专用样式 ===== */
-  .patent-list {
-    counter-reset: patent;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .patent-item {
-    counter-increment: patent;
-    position: relative;
-    padding-left: 34px;
-    margin-bottom: 22px;
-    display: flex;
-    flex-direction: column;
-  }
-  .patent-item::before {
-    content: counter(patent) ".";
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: 700;
-    color: #1f3a5f;
-  }
-  .patent-title {
-    font-weight: 700;
-    font-size: 15.5px;
-    margin-bottom: 2px;
-  }
-  .patent-authors {
-    font-size: 14.5px;
-    color: #333;
-    margin-bottom: 2px;
-  }
-  .patent-authors strong { color: #000; }
-  .patent-meta {
-    font-size: 13.5px;
-    color: #555;
-    font-style: italic;
-  }
-  .patent-meta em { font-style: normal; color: #1f3a5f; font-weight: 600; }
-  @media (max-width: 760px) {
-    .sidebar { position: static; width: 100%; height: auto; padding: 10px 0; }
-    .sidebar a { display: inline-block; padding: 8px 14px; }
-    .content { margin-left: 0; padding: 24px 18px 60px; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patents - Yanpeng Mao</title>
+    <style>
+        /* ===== 全局和导航栏样式，与 index.html/publications.html 完全统一 ===== */
+        body { display: flex; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #333; }
+        .nav-bar { list-style-type: none; padding: 0; margin: 0; width: 220px; background-color: #f8f9fa; position: fixed; height: 100vh; overflow: auto; border-right: 1px solid #eaeaea; }
+        .nav-bar li a { display: block; padding: 15px 20px; font-size: 16px; text-decoration: none; color: #444; border-bottom: 1px solid #eaeaea; transition: background 0.3s; }
+        .nav-bar li a:hover, .nav-bar li a.active { background-color: #e2e6ea; font-weight: bold; color: #000; }
+        
+        .main-content { margin-left: 220px; padding: 40px; font-size: 16px; flex-grow: 1; max-width: 900px; }
+        h1 { color: #222; margin-bottom: 20px; }
+        
+        /* ===== 以下为列表专属样式，与 publications.html 保持一致 ===== */
+        h2 { color: #0366d6; margin-top: 40px; border-bottom: 1px dashed #ccc; padding-bottom: 5px; font-size: 22px; }
+        
+        .pub-list { list-style-type: none; padding: 0; counter-reset: pub-counter; }
+        .pub-item { 
+            margin-bottom: 28px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 6px; 
+            counter-increment: pub-counter;
+            position: relative;
+            padding-left: 35px; /* 给数字留出空间 */
+        }
+        /* 自动生成数字标号 */
+        .pub-item::before {
+            content: counter(pub-counter) ".";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+            color: #0366d6;
+            font-size: 16px;
+        }
+        
+        /* 三行内容样式 */
+        .pub-title { font-weight: bold; color: #222; font-size: 16px; line-height: 1.5; }
+        .pub-authors { color: #555; line-height: 1.6; font-size: 15px; }
+        .pub-journal { color: #777; font-style: italic; font-size: 15px; }
+        .pub-journal span { font-style: normal; font-weight: bold; color: #333; }
+    </style>
 </head>
 <body>
 
-<nav class="sidebar">
-  <a href="index.html">Home</a>
-  <a href="publications.html">Publications</a>
-  <a href="teaching.html">Teaching</a>
-  <a href="projects.html">Projects</a>
-  <a href="patents.html" class="active">Patents</a>
-  <a href="services.html">Services</a>
-  <a href="awards.html">Awards</a>
-  <a href="contact.html">Contact</a>
-</nav>
-
-<main class="content">
-  <h1>Patents</h1>
-  <p class="page-intro">Inventor: <strong>Mao, Yanpeng (毛岩鹏)</strong>. Patents are grouped by filing year in descending order.</p>
-
-  <!-- ================= 2026 ================= -->
-  <h2 class="year-heading">2026</h2>
-  <div class="patent-list">
-
-    <div class="patent-item">
-      <div class="patent-title">用于火电调峰与新能源消纳的微波加热熔盐储能协同系统</div>
-      <div class="patent-authors">宋占龙; 黄浩; 逄颖平; 赵希强; 孙静; <strong>毛岩鹏</strong>; 王子良; 王文龙; 崔琳; 董勇</div>
-      <div class="patent-meta"><em>App. No.</em> CN202611053039.9 · <em>Filed</em> 2026.07.15 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">基于引矿激发改性的粉煤灰基吸附材料及其制备方法与应用</div>
-      <div class="patent-authors">李敬伟; 王清; 王文龙; 刘延慧; 王旭江; 胡芝娟; 张爽; 李玉忠; <strong>毛岩鹏</strong>; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202610867169.X · <em>Filed</em> 2026.06.16 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2026.08.28 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种重金属高效吸附脱除材料及其制备方法与应用</div>
-      <div class="patent-authors">李敬伟; 王清; 王文龙; 刘延慧; 王旭江; 胡芝娟; 张爽; 李玉忠; <strong>毛岩鹏</strong>; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202610828693.6 · <em>Filed</em> 2026.06.09 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种海工修复材料及其制备方法与应用</div>
-      <div class="patent-authors">李敬伟; 石文彬; 侯祥山; 王文龙; 王旭江; 张爽; 李玉忠; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202610779668.3 · <em>Filed</em> 2026.06.02 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2026.08.11 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">全固态微波等离子体炬煤粉锅炉点火装备、锅炉及方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 沈仲臣; 卢佳林; 王政; 国德训; 王子良; 王文龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202610754065.8 · <em>Filed</em> 2026.05.28 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种微波等离子体改性玻璃纤维的装置及方法</div>
-      <div class="patent-authors">王爱华; 国德训; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202610021573.5 · <em>Filed</em> 2026.01.08 · <em>Type</em> Invention Application · <em>Patentee</em> 烟台北方微波技术有限公司; 山东坤明工业科技有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种光催化 CO₂ 还原-海水淡化一体化装置、系统及方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 卢佳林; 谭龙; 王政; 张嘉政; 杨道魁</div>
-      <div class="patent-meta"><em>App. No.</em> 202610022835X · <em>Filed</em> 2026.01.08 · <em>Type</em> Invention · <em>Patentee</em> 山东大学</div>
-    </div>
-
-  </div>
-
-  <!-- ================= 2025 ================= -->
-  <h2 class="year-heading">2025</h2>
-  <div class="patent-list">
-
-    <div class="patent-item">
-      <div class="patent-title">一种基于微波诱导缺陷氧化锌放电效应自驱动的等离子体烧结材料、制备方法及装置</div>
-      <div class="patent-authors">宋占龙; 宋传林; 逄颖平; 孙静; 赵希强; 王子良; <strong>毛岩鹏</strong>; 王文龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202511522876.7 · <em>Filed</em> 2025.10.23 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种利用微波放电强化废旧锌锰电池回收亚微米锌粉与转化制备锰酸锂正极材料的方法及应用</div>
-      <div class="patent-authors">宋占龙; 宋传林; 逄颖平; 孙静; 赵希强; 王子良; <strong>毛岩鹏</strong>; 王文龙; 赵成</div>
-      <div class="patent-meta"><em>App. No.</em> CN202511522880.3 · <em>Filed</em> 2025.10.23 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学; 潍柴动力股份有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种微波辅助生物质气化制甲醇的系统及方法</div>
-      <div class="patent-authors">王子良; 王陈龙; 吕金易; 万凯; 宋占龙; 孙静; 张新雁; 逄颖平; 赵希强; <strong>毛岩鹏</strong>; 王文龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202510710032.9 · <em>Filed</em> 2025.05.29 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种生物质制高热值低碳燃料的装置与方法</div>
-      <div class="patent-authors">王子良; 万凯; 王陈龙; 宋占龙; 孙静; 赵希强; <strong>毛岩鹏</strong>; 王涛; 王文龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202510643204.5 · <em>Filed</em> 2025.05.19 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种微波辅助节能的废弃石粉微泡矿化再生制备球霰石的方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 张嘉政; 赵瑞强; 杨道魁; 冯克举; 贺诗俸; 王光营</div>
-      <div class="patent-meta"><em>App. No.</em> CN202510418362.0 · <em>Filed</em> 2025.04.03 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学; 山东中岩重科新材料科技有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">废石粉废盐酸电石渣三废协同制备球霰石的方法与系统</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 赵瑞强; 张嘉政; 杨道魁; 冯克举; 贺诗俸; 王光营</div>
-      <div class="patent-meta"><em>App. No.</em> CN202510418928.X · <em>Filed</em> 2025.04.03 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学; 山东中岩重科新材料科技有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种光热协同降解废弃聚烯烃塑料制备低碳烯烃的复合催化剂及其制备方法应用</div>
-      <div class="patent-authors">王子良; 徐超; 吕金易; 宋占龙; 孙静; 赵希强; <strong>毛岩鹏</strong>; 王文龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202510374652.X · <em>Filed</em> 2025.03.27 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种绿电微波放电等离子体甲烷裂解氢碳联产系统与方法</div>
-      <div class="patent-authors">王子良; 王文硕; 林园园; 史甲昌; 王晓龙; 宋占龙; 王文龙; 孙静; 赵希强; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202510330625.2 · <em>Filed</em> 2025.03.20 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2025.07.22 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种甲烷裂解防积碳循环系统及其工作方法</div>
-      <div class="patent-authors">王子良; 王文硕; 林园园; 史甲昌; 王晓龙; 宋占龙; 王文龙; 孙静; 赵希强; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202510269969.7 · <em>Filed</em> 2025.03.07 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种太阳能多级潜热回收型污泥干化系统及方法</div>
-      <div class="patent-authors">王子良; 徐超; 吕金易; 孙静; 宋占龙; 王文龙; 赵希强; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202510261633.6 · <em>Filed</em> 2025.03.06 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种混凝土结构修补材料及修补砂浆的制备方法</div>
-      <div class="patent-authors">李敬伟; 侯祥山; 王文龙; 王旭江; 石文彬; 刘延慧; 胡芝娟; <strong>毛岩鹏</strong>; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202510219331.2 · <em>Filed</em> 2025.02.26 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种甲烷裂解制备氢气和碳纳米管的三相装置及方法</div>
-      <div class="patent-authors">王子良; 史甲昌; 林园园; 王文硕; 王晓龙; 宋占龙; 王文龙; 孙静; 赵希强; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202510165781.8 · <em>Filed</em> 2025.02.14 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-  </div>
-
-  <!-- ================= 2024 ================= -->
-  <h2 class="year-heading">2024</h2>
-  <div class="patent-list">
-
-    <div class="patent-item">
-      <div class="patent-title">基于双温一像测温的环形聚焦单模微波光热反应系统</div>
-      <div class="patent-authors">王琳玮; 谭龙; 侯宁宁; 邹晓鹏; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202423285311.5 · <em>Filed</em> 2024.12.30 · <em>Type</em> Utility Model · <em>Granted</em> 2025.12.23 · <em>Patentee</em> 烟台北方微波技术有限公司; 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种石油焦的资源化利用方法和系统</div>
-      <div class="patent-authors">周萍; 赵希强; 宋占龙; 王文龙; 孙静; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202411927753.7 · <em>Filed</em> 2024.12.25 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2025.10.31 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种用于砂质土的高抗渗固化剂及其制备方法</div>
-      <div class="patent-authors">李敬伟; 张爽; 王文龙; 王旭江; 侯祥山; 李玉忠; <strong>毛岩鹏</strong>; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202411602096.9 · <em>Filed</em> 2024.11.11 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2025.12.26 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">退役风电叶片高效热解回收及资源循环利用的方法及系统</div>
-      <div class="patent-authors">王文龙; 杨世钊; 王旭江; 李敬伟; <strong>毛岩鹏</strong>; 赵希强; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202411512377.5 · <em>Filed</em> 2024.10.28 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种 CO₂ 捕集-矿化一体化材料及其制备方法与应用</div>
-      <div class="patent-authors">李敬伟; 刘延慧; 王文龙; 王旭江; 文传琦; 侯祥山; 李玉忠; <strong>毛岩鹏</strong>; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202411194025.X · <em>Filed</em> 2024.08.28 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2025.09.12 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种用于研究粉体成型的颗粒反应动力学模拟方法及系统</div>
-      <div class="patent-authors">王旭江; 张平洋; 王文龙; 李嘉豪; 林翔; 李敬伟; <strong>毛岩鹏</strong>; 胡芝娟; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202410507163.2 · <em>Filed</em> 2024.04.25 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种用于研究粉体成型的水化热和水化分析模拟方法及系统</div>
-      <div class="patent-authors">王旭江; 张平洋; 王文龙; 宋家琳; 李敬伟; <strong>毛岩鹏</strong>; 胡芝娟; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202410507362.3 · <em>Filed</em> 2024.04.25 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种可应用于微波场中非接触式测温的荧光体及其制备方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 周萌; 王爱华; 王文龙; 宋占龙; 赵希强; 孙静</div>
-      <div class="patent-meta"><em>App. No.</em> CN202410428509.X · <em>Filed</em> 2024.04.10 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学; 烟台北方微波技术有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种生成微波等离子体的液相反应装置与反应方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 国德训; 王爱华; 王文龙; 宋占龙; 赵希强; 孙静</div>
-      <div class="patent-meta"><em>App. No.</em> CN202410428829.5 · <em>Filed</em> 2024.04.10 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学; 烟台北方微波技术有限公司</div>
-    </div>
-
-  </div>
-
-  <!-- ================= 2023 ================= -->
-  <h2 class="year-heading">2023</h2>
-  <div class="patent-list">
-
-    <div class="patent-item">
-      <div class="patent-title">一种基于光纤传感器的水泥生料实时监测系统</div>
-      <div class="patent-authors">车昕格; <strong>毛岩鹏</strong>; 逄栋杰; 张嘉政; 魏光朔</div>
-      <div class="patent-meta"><em>App. No.</em> CN202323512298.8 · <em>Filed</em> 2023.12.21 · <em>Type</em> Utility Model · <em>Granted</em> 2024.10.18 · <em>Patentee</em> 山东省生态环境监测中心; 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">硫化氢电场强化分解用催化剂制备方法、分解方法及装置</div>
-      <div class="patent-authors">宋占龙; 张健恒; 逄颖平; 赵希强; <strong>毛岩鹏</strong>; 孙静; 王文龙; 王子良</div>
-      <div class="patent-meta"><em>App. No.</em> CN202311620421.X · <em>Filed</em> 2023.11.29 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2025.10.24 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种建筑垃圾梯级利用制备低碳仿石砖的方法</div>
-      <div class="patent-authors">王旭江; 马之耀; 刘继文; 王文龙; 李敬伟; 胡芝娟; <strong>毛岩鹏</strong>; 王子良; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202311061491.6 · <em>Filed</em> 2023.08.22 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2025.08.08 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种负载石墨烯改性的铜锰复合催化剂的催化剂布袋及其制备方法与应用</div>
-      <div class="patent-authors">孙静; 申亚芳; 王子良; 王文龙; 宋占龙; 赵希强; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202310993731.X · <em>Filed</em> 2023.08.08 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2026.02.10 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种采用富铁市政污泥制备铁碳材料的系统和方法</div>
-      <div class="patent-authors">董婧祎; 张德群; 徐剑; <strong>毛岩鹏</strong>; 逄栋杰</div>
-      <div class="patent-meta"><em>App. No.</em> CN202310974168.1 · <em>Filed</em> 2023.08.03 · <em>Patentee</em> 北京中投润天环保科技有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">硫铝铁系胶凝材料的性能调控方法及系统</div>
-      <div class="patent-authors">王旭江; 李嘉豪; 林翔; 王文龙; 李敬伟; 张洪智; <strong>毛岩鹏</strong>; 王子良; 宋占龙; 胡芝娟</div>
-      <div class="patent-meta"><em>App. No.</em> CN202310960808.3 · <em>Filed</em> 2023.08.01 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种微波/过硫酸盐同步氧化及活化惰性尾矿的方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 魏光朔; 张嘉政; 逄栋杰; 王文龙; 王旭江; 李敬伟</div>
-      <div class="patent-meta"><em>App. No.</em> CN202310854888.4 · <em>Filed</em> 2023.07.12 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种利用工业固废制备用于冬季施工的路面修补材料</div>
-      <div class="patent-authors">王旭江; 王文龙; 孙德强; 李敬伟; <strong>毛岩鹏</strong>; 王子良; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN2023102582W · <em>Filed</em> 2023.06.27 · <em>Region</em> WIPO (China) · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种高精度、轻量化石膏砌块及其制备方法</div>
-      <div class="patent-authors">王文龙; 杨世钊; 王旭江; 李敬伟; <strong>毛岩鹏</strong>; 肖心; 王明波; 李海港</div>
-      <div class="patent-meta"><em>App. No.</em> CN202310518833.6 · <em>Filed</em> 2023.05.06 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2024.06.21 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种微波场中基于荧光成像及比率的测温系统及方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 周萌; 王文龙; 宋占龙; 赵希强; 孙静</div>
-      <div class="patent-meta"><em>App. No.</em> CN202310425929.8 · <em>Filed</em> 2023.04.17 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">基于水泥窑循环流化热载体协同制备生物质炭材料的系统及方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 逄栋杰; 王文龙; 王旭江; 李敬伟; 张嘉政; 魏光朔</div>
-      <div class="patent-meta"><em>App. No.</em> CN202310081464.9 · <em>Filed</em> 2023.01.31 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种芬顿污泥磁性铁基催化剂及其制备方法与应用</div>
-      <div class="patent-authors">王文龙; 刘帅; 张新雁; 刘姗姗; <strong>毛岩鹏</strong>; 宋占龙; 赵希强; 孙静</div>
-      <div class="patent-meta"><em>App. No.</em> CN202310074611.X · <em>Filed</em> 2023.01.20 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2024.06.18 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-  </div>
-
-  <!-- ================= 2022 ================= -->
-  <h2 class="year-heading">2022</h2>
-  <div class="patent-list">
-
-    <div class="patent-item">
-      <div class="patent-title">一种固废基硫铝酸盐胶凝材料制备快速修补砂浆的方法</div>
-      <div class="patent-authors">李敬伟; 侯祥山; 王文龙; 王旭江; 贾爱光; 肖心; <strong>毛岩鹏</strong>; 刘全勋</div>
-      <div class="patent-meta"><em>App. No.</em> CN202211501422.8 · <em>Filed</em> 2022.11.28 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2024.03.22 · <em>Patentee</em> 山东大学; 新泰市工业技术研究院有限公司; 山东卓联环保科技有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">固废基硫铝酸盐水泥改性建筑石膏基自流平砂浆</div>
-      <div class="patent-authors">李敬伟; 肖心; 王文龙; 王旭江; 贾爱光; 侯祥山; <strong>毛岩鹏</strong>; 刘全勋</div>
-      <div class="patent-meta"><em>App. No.</em> CN202211489777.X · <em>Filed</em> 2022.11.25 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学; 新泰市工业技术研究院有限公司; 山东卓联环保科技有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种粉状活性焦一体化反应装置及污水处理系统</div>
-      <div class="patent-authors">曹荣莉; 马春元; <strong>毛岩鹏</strong>; 金杨; 宋德升; 张鑫; 陈双双; 孙鹏; 李伟明; 单巧</div>
-      <div class="patent-meta"><em>App. No.</em> CN202211447454.4 · <em>Filed</em> 2022.11.18 · <em>Type</em> Invention Application · <em>Patentee</em> 山东祥桓环境科技有限公司; 济南祥丰能源技术有限公司; 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种利用工业固废制备用于冬季施工的路面修补材料</div>
-      <div class="patent-authors">王旭江; 孙德强; 王文龙; 李敬伟; <strong>毛岩鹏</strong>; 宋占龙; 马岩</div>
-      <div class="patent-meta"><em>App. No.</em> CN202211199528.7 · <em>Filed</em> 2022.09.29 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2023.04.11 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种采用富铁市政污泥制备铁碳材料的系统和方法</div>
-      <div class="patent-authors">曹荣莉; 马春元; <strong>毛岩鹏</strong>; 金杨</div>
-      <div class="patent-meta"><em>App. No.</em> CN202210998693.2 · <em>Filed</em> 2022.08.19 · <em>Type</em> Invention Application · <em>Patentee</em> 山东祥桓环境科技有限公司; 济南祥丰能源技术有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种微波场中样品体相温度测量装置和方法</div>
-      <div class="patent-authors">宋占龙; 张宝旭; 张晓嵘; 赵希强; 王文龙; <strong>毛岩鹏</strong>; 孙静</div>
-      <div class="patent-meta"><em>App. No.</em> CN202210955820.0 · <em>Filed</em> 2022.08.10 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2024.07.23 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种负极退役石墨再利用的方法、及其改性氧化锰的方法</div>
-      <div class="patent-authors">孙静; 董一霖; 申亚芳; 王文龙; 宋占龙; 张志超; 赵希强; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202210877766.2 · <em>Filed</em> 2022.07.25 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2023.12.05 · <em>Patentee</em> 山东大学; 山东环沃环保科技有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">含硫烟气气化污泥调节气氛还原硫硝并固化重金属的方法</div>
-      <div class="patent-authors">赵希强; 田叶顺; 王文龙; 宋占龙; 孙静; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202210852591.X · <em>Filed</em> 2022.07.20 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2025.02.11 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种 N、S、B 掺杂的中草药药渣碳点、荧光探针及应用</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 张淑娟; 王文龙; 宋占龙; 赵希强</div>
-      <div class="patent-meta"><em>App. No.</em> CN202210789255.5 · <em>Filed</em> 2022.07.06 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2023.05.09 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种利用有机酸处置飞灰的处理方法及系统</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 张嘉政; 逄栋杰; 王文龙; 王旭江; 李敬伟</div>
-      <div class="patent-meta"><em>App. No.</em> CN202210609990.3 · <em>Filed</em> 2022.05.31 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种垃圾焚烧飞灰水洗反应装置、处理系统及方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 张嘉政; 逄栋杰; 王文龙; 王旭江; 李敬伟</div>
-      <div class="patent-meta"><em>App. No.</em> CN202210509371.7 · <em>Filed</em> 2022.05.11 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2023.12.19 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种利用铝灰和电石渣制备新矿物体系高温水泥的方法</div>
-      <div class="patent-authors">王旭江; 陈扬昊; 王文龙; 李敬伟; <strong>毛岩鹏</strong>; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202210421725.2 · <em>Filed</em> 2022.04.21 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.11.29 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">吸附催化氧化双功能材料及其制备方法与应用</div>
-      <div class="patent-authors">孙静; 王维; 申亚芳; 张志超; 王文龙; 宋占龙; 赵希强; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202210242977.9 · <em>Filed</em> 2022.03.11 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2024.02.23 · <em>Patentee</em> 山东大学; 山东环沃环保科技有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种利用微波强化含油废水雾化效果的系统及方法</div>
-      <div class="patent-authors">宋占龙; 卫新欣; 李建波; 张志超; 邢建南; 孙波; 孙静; 赵希强; <strong>毛岩鹏</strong>; 王旭江; 王文龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202210211983.8 · <em>Filed</em> 2022.03.04 · <em>Type</em> Invention Application · <em>Patentee</em> 山东环沃环保科技有限公司; 上海丛麟环保科技股份有限公司; 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">利用钢渣微粉复配胶凝材料的仿石砖及制备方法和应用</div>
-      <div class="patent-authors">王旭江; 于目深; 李敬伟; 王文龙; <strong>毛岩鹏</strong>; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202210196829.8 · <em>Filed</em> 2022.03.01 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2023.03.14 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">废磷酸铁锂缺陷修复并构筑三维多孔碳网的方法和应用</div>
-      <div class="patent-authors">孙静; 江镇宇; 王文龙; 贾平山; 宋占龙; <strong>毛岩鹏</strong>; 赵希强</div>
-      <div class="patent-meta"><em>App. No.</em> CN202210158761.4 · <em>Filed</em> 2022.02.21 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2023.04.07 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-  </div>
-
-  <!-- ================= 2021 ================= -->
-  <h2 class="year-heading">2021</h2>
-  <div class="patent-list">
-
-    <div class="patent-item">
-      <div class="patent-title">两段式水泥窑多源固废耦合热解气化方法及其装置和应用</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 张嘉政; 王文龙; 宋占龙; 王旭江; 李敬伟</div>
-      <div class="patent-meta"><em>App. No.</em> CN202111290034.5 · <em>Filed</em> 2021.11.02 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.07.08 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种微波热化学甲烷制合成气的方法与应用</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 张苗苗; 高一博; 王文龙; 宋占龙; 赵希强; 孙静</div>
-      <div class="patent-meta"><em>App. No.</em> CN202111183229.X · <em>Filed</em> 2021.10.11 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2023.06.13 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种 CTAB 调控制备多孔碳包覆过渡金属氧化物材料的方法及应用</div>
-      <div class="patent-authors">孙静; 贾平山; 王文龙; 江镇宇; 宋占龙; <strong>毛岩鹏</strong>; 赵希强</div>
-      <div class="patent-meta"><em>App. No.</em> CN202111139470.2 · <em>Filed</em> 2021.09.26 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2023.06.27 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">固废基高铁硫铝酸盐海工胶凝材料及其制备方法与应用</div>
-      <div class="patent-authors">王文龙; 姚永刚; 于目深; 张子良; 孙德强; 蒋稳; 李敬伟; 王旭江; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202111094354.3 · <em>Filed</em> 2021.09.17 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.09.23 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种太阳能储热干化污泥制备硫铝酸盐水泥的系统和方法</div>
-      <div class="patent-authors">王文龙; 张嘉政; <strong>毛岩鹏</strong>; 黄彦敏</div>
-      <div class="patent-meta"><em>App. No.</em> CN2021117505W · <em>Filed</em> 2021.09.09 · <em>Region</em> WIPO (China) · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种太阳能储热干化污泥制备硫铝酸盐水泥的系统和方法</div>
-      <div class="patent-authors">王文龙; 张嘉政; <strong>毛岩鹏</strong>; 黄彦敏</div>
-      <div class="patent-meta"><em>App. No.</em> CN202111045078.1 · <em>Filed</em> 2021.09.07 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.08.16 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种固废基白色硫铝酸盐水泥及其制备方法与应用</div>
-      <div class="patent-authors">王文龙; 姚永刚; 吴长亮; 姚星亮; 武双; 蒋稳; 王旭江; 李敬伟; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN2021115074W · <em>Filed</em> 2021.08.27 · <em>Region</em> WIPO (China) · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种固废基白色硫铝酸盐水泥及其制备方法与应用</div>
-      <div class="patent-authors">王文龙; 姚永刚; 吴长亮; 姚星亮; 武双; 蒋稳; 王旭江; 李敬伟; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202110913089.0 · <em>Filed</em> 2021.08.10 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.08.16 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">脱硫石膏缓凝剂及制备方法与其在硫铝酸盐水泥中的应用</div>
-      <div class="patent-authors">王文龙; 姚永刚; 武双; 姚星亮; 杨世钊; 王旭江; 李敬伟; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202110829748.2 · <em>Filed</em> 2021.07.22 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.09.23 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种脱硫石膏协同电厂高盐废水制备 α 型半水石膏的方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 黄彦敏; 王文龙; 王旭江; 李敬伟; 张嘉政</div>
-      <div class="patent-meta"><em>App. No.</em> CN202110790917.6 · <em>Filed</em> 2021.07.13 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2023.08.08 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种基于微波诱导定向加热技术的高温测量装置及方法</div>
-      <div class="patent-authors">王文龙; 王超前; 张新雁; 刘姗姗; 孙静; <strong>毛岩鹏</strong>; 赵希强; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202110648519.0 · <em>Filed</em> 2021.06.10 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.08.16 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种脱硫石膏基泡沫混凝土及制备方法和应用</div>
-      <div class="patent-authors">王文龙; 杨世钊; 姚星亮; 王旭江; 李敬伟; <strong>毛岩鹏</strong>; 姚永刚; 武双</div>
-      <div class="patent-meta"><em>App. No.</em> CN2021098459W · <em>Filed</em> 2021.06.04 · <em>Region</em> WIPO (China) · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种高铁硫铝酸盐熟料矿物组成的调控方法</div>
-      <div class="patent-authors">王文龙; 姚星亮; 武双; 姚永刚; 杨世钊; 王旭江; 李敬伟; 蒋稳; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN2021098462W · <em>Filed</em> 2021.06.04 · <em>Region</em> WIPO (China) · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种硫铝铁系水泥、其制备方法、系统和其在海洋工程材料中的应用</div>
-      <div class="patent-authors">王旭江; 张子良; 王文龙; 李敬伟; 蒋稳; <strong>毛岩鹏</strong>; 宋占龙; 孙静; 赵希强</div>
-      <div class="patent-meta"><em>App. No.</em> CN2021098460W · <em>Filed</em> 2021.06.04 · <em>Region</em> WIPO (China) · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">微波多效应耦合诱导酸洗污泥还原提质协同废塑料制氢的工艺及系统</div>
-      <div class="patent-authors">姚连升; 宋占龙; 王文龙; 赵希强; <strong>毛岩鹏</strong>; 孙静; 王涛</div>
-      <div class="patent-meta"><em>App. No.</em> CN202110484170.1 · <em>Filed</em> 2021.04.30 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学; 山东正高环保科技有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种溶胀改性强化废轮胎热解制油及炭黑的方法</div>
-      <div class="patent-authors">宋占龙; 韩元凯; 王文龙; 赵希强; 孙静; <strong>毛岩鹏</strong>; 王旭江</div>
-      <div class="patent-meta"><em>App. No.</em> CN202110437720.4 · <em>Filed</em> 2021.04.22 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.05.03 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种电催化甲烷-二氧化碳制合成气的装置与方法</div>
-      <div class="patent-authors">宋占龙; 陈科臻; 王文龙; 赵希强; <strong>毛岩鹏</strong>; 孙静</div>
-      <div class="patent-meta"><em>App. No.</em> CN202110430512.1 · <em>Filed</em> 2021.04.21 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.12.20 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种垃圾焚烧飞灰固化剂及制备方法与处理方法</div>
-      <div class="patent-authors">李敬伟; 贾爱光; 王文龙; 王旭江; <strong>毛岩鹏</strong>; 蒋稳; 张超; 吴长亮; 孙静; 赵希强; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202110424022.0 · <em>Filed</em> 2021.04.20 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2023.01.10 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">疏水型双配体金属有机骨架材料及制备方法和在 VOCs 吸附中的应用</div>
-      <div class="patent-authors">孙静; 李文翔; 王文龙; 马晓玲; 宋占龙; <strong>毛岩鹏</strong>; 赵希强</div>
-      <div class="patent-meta"><em>App. No.</em> CN202110402063.X · <em>Filed</em> 2021.04.14 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种废磷酸铁锂补锂修复方法和应用</div>
-      <div class="patent-authors">孙静; 江镇宇; 王文龙; 贾平山; 于冠群; 宋占龙; <strong>毛岩鹏</strong>; 赵希强</div>
-      <div class="patent-meta"><em>App. No.</em> CN202110332731.6 · <em>Filed</em> 2021.03.29 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.06.28 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种处置含炭固/危废协同还原 SO₂ 的系统及方法</div>
-      <div class="patent-authors">赵希强; 田叶顺; 马春元; 王文龙; 宋占龙; <strong>毛岩鹏</strong>; 孙静</div>
-      <div class="patent-meta"><em>App. No.</em> CN202110254771.3 · <em>Filed</em> 2021.03.09 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.09.13 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种微波强化水分及蒸汽联合杀菌灭活装置及垃圾处理装置</div>
-      <div class="patent-authors">宋占龙; 姚连升; 王文龙; <strong>毛岩鹏</strong>; 赵希强; 孙静; 王涛</div>
-      <div class="patent-meta"><em>App. No.</em> CN202120463387.X · <em>Filed</em> 2021.03.03 · <em>Type</em> Utility Model · <em>Granted</em> 2022.06.07 · <em>Patentee</em> 山东大学; 山东正高环保科技有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种基于微波诱导耦合增湿强化病毒灭活装置、方法和系统</div>
-      <div class="patent-authors">王文龙; 姚连升; 宋占龙; <strong>毛岩鹏</strong>; 赵希强; 孙静; 王涛</div>
-      <div class="patent-meta"><em>App. No.</em> CN202110234727.6 · <em>Filed</em> 2021.03.03 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学; 山东正高环保科技有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种生物质基重金属吸附材料及其制备方法与应用</div>
-      <div class="patent-authors">赵希强; 孙爽; 田叶顺; 宋占龙; 王文龙; <strong>毛岩鹏</strong>; 孙静</div>
-      <div class="patent-meta"><em>App. No.</em> CN202110187580.X · <em>Filed</em> 2021.02.18 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.05.03 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种固废基轻质保温混凝土 3D 打印材料及制备方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 黄彦敏; 王文龙; 王旭江; 李敬伟; 张嘉政</div>
-      <div class="patent-meta"><em>App. No.</em> CN202110033010.5 · <em>Filed</em> 2021.01.11 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.04.29 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种风力辅助加热的太阳能热水器</div>
-      <div class="patent-authors">逄栋杰; 闫雨薇; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202120057512.7 · <em>Filed</em> 2021.01.11 · <em>Type</em> Utility Model · <em>Granted</em> 2021.09.28 · <em>Patentee</em> 河北工程大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种环保型路用透水混凝土及其制备方法和应用</div>
-      <div class="patent-authors">王文龙; 吴长亮; 李敬伟; 王旭江; 张超; 蒋稳; <strong>毛岩鹏</strong>; 孙静; 赵希强; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202110018929.7 · <em>Filed</em> 2021.01.07 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.12.09 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-  </div>
-
-  <!-- ================= 2020 ================= -->
-  <h2 class="year-heading">2020</h2>
-  <div class="patent-list">
-
-    <div class="patent-item">
-      <div class="patent-title">一种固废基低碱度多孔生态透水混凝土及其制备方法</div>
-      <div class="patent-authors">吴长亮; 王文龙; 张超; 蒋稳; 王旭江; 李敬伟; <strong>毛岩鹏</strong>; 孙静; 赵希强; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202011641701.5 · <em>Filed</em> 2020.12.31 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.11.11 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种铁尾矿砂基节能保温轻质混凝土及其制备方法、应用</div>
-      <div class="patent-authors">王文龙; 杨世钊; 李敬伟; 王旭江; <strong>毛岩鹏</strong>; 姚星亮; 武双; 姚永刚</div>
-      <div class="patent-meta"><em>App. No.</em> CN202011644712.9 · <em>Filed</em> 2020.12.31 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.09.27 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种全固废冻土地区路基用隔热保温轻质材料及其制备方法</div>
-      <div class="patent-authors">王文龙; 武双; 姚星亮; 杨世钊; 姚永刚; <strong>毛岩鹏</strong>; 王旭江; 李敬伟</div>
-      <div class="patent-meta"><em>App. No.</em> CN202011636068.0 · <em>Filed</em> 2020.12.31 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.08.16 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种脱硫石膏基泡沫混凝土及制备方法和应用</div>
-      <div class="patent-authors">王文龙; 杨世钊; 姚星亮; 王旭江; 李敬伟; <strong>毛岩鹏</strong>; 姚永刚; 武双</div>
-      <div class="patent-meta"><em>App. No.</em> CN202011639043.6 · <em>Filed</em> 2020.12.31 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.06.03 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种免蒸养静压成型路面砖及其制备方法</div>
-      <div class="patent-authors">王文龙; 吴长亮; 蒋稳; 张超; 王旭江; 李敬伟; <strong>毛岩鹏</strong>; 孙静; 赵希强; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202011638142.2 · <em>Filed</em> 2020.12.31 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.03.22 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">基于固废基硫铝酸盐胶凝材料的纤维水泥板及制备方法</div>
-      <div class="patent-authors">王文龙; 姚永刚; 武双; 姚星亮; 杨世钊; 王旭江; 李敬伟; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202011633018.7 · <em>Filed</em> 2020.12.31 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种高铁硫铝酸盐熟料矿物组成的调控方法</div>
-      <div class="patent-authors">王文龙; 姚星亮; 武双; 姚永刚; 杨世钊; 王旭江; 李敬伟; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202011638958.5 · <em>Filed</em> 2020.12.31 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种污泥增钙干化预处理后作为水泥生产的主原料和燃料的方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 张嘉政; 王文龙; 黄彦敏; 王旭江; 李敬伟</div>
-      <div class="patent-meta"><em>App. No.</em> CN202011620371.1 · <em>Filed</em> 2020.12.30 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.08.16 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种硫铝铁系水泥、其制备方法、系统和其在海洋工程材料中的应用</div>
-      <div class="patent-authors">王旭江; 张子良; 王文龙; 李敬伟; <strong>毛岩鹏</strong>; 宋占龙; 孙静; 赵希强</div>
-      <div class="patent-meta"><em>App. No.</em> CN202011620345.9 · <em>Filed</em> 2020.12.30 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.06.07 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种以污泥和垃圾飞灰为主的全固废配置硅酸盐水泥生料的方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 张嘉政; 王文龙; 黄彦敏; 王旭江; 李敬伟</div>
-      <div class="patent-meta"><em>App. No.</em> CN202011620633.4 · <em>Filed</em> 2020.12.30 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">利用高钙铁尾矿的生料、水泥熟料、负温工程材料及方法</div>
-      <div class="patent-authors">王旭江; 孙德强; 王文龙; 李敬伟; <strong>毛岩鹏</strong>; 宋占龙; 孙静; 赵希强</div>
-      <div class="patent-meta"><em>App. No.</em> CN202011620505.X · <em>Filed</em> 2020.12.30 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种用于垃圾焚烧飞灰的水洗器及水洗方法</div>
-      <div class="patent-authors">李敬伟; 贾爱光; 王文龙; 王旭江; <strong>毛岩鹏</strong>; 蒋稳; 张超; 吴长亮; 孙静; 赵希强; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202011602111.1 · <em>Filed</em> 2020.12.29 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.06.07 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种基于微波加热的热化学制氢系统及其制氢方法与应用</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 高一博; 张苗苗; 王文龙; 宋占龙; 赵希强; 孙静</div>
-      <div class="patent-meta"><em>App. No.</em> CN2020140667W · <em>Filed</em> 2020.12.29 · <em>Region</em> WIPO (China) · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">垃圾飞灰热处理的全固废制备硫铝酸盐水泥的系统及方法</div>
-      <div class="patent-authors">王文龙; 李敬伟; 王旭江; 贾爱光; 蒋稳; 张超; 吴长亮; <strong>毛岩鹏</strong>; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202011583113.0 · <em>Filed</em> 2020.12.28 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.04.29 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">中低放射性核废料的固废基硫铝酸盐水泥固化基材及其制备方法</div>
-      <div class="patent-authors">王文龙; 李敬伟; 王旭江; 贾爱光; 蒋稳; 张超; 吴长亮; <strong>毛岩鹏</strong>; 宋占龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202011582146.3 · <em>Filed</em> 2020.12.28 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.02.15 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">赤泥基高铁酸盐混合物土壤修复剂及其制备方法与应用</div>
-      <div class="patent-authors">赵希强; 周兴; 王文龙; 宋占龙; 孙静; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202011329747.3 · <em>Filed</em> 2020.11.24 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.02.01 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种循环散热式高效微波水处理装置</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 曹荣莉; 左鹏; 马春元</div>
-      <div class="patent-meta"><em>App. No.</em> CN202022735085.1 · <em>Filed</em> 2020.11.23 · <em>Type</em> Utility Model · <em>Granted</em> 2021.08.03 · <em>Patentee</em> 山东祥桓环境科技有限公司; 山东大学; 济南祥丰能源技术有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种复合金属水处理微波高级氧化催化剂的制备和应用</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 左鹏; 曹荣莉; 陈桂芳; 宋德升; 陈志华; 马春元</div>
-      <div class="patent-meta"><em>App. No.</em> CN202011133584.1 · <em>Filed</em> 2020.10.21 · <em>Type</em> Invention Application · <em>Patentee</em> 山东祥桓环境科技有限公司; 山东大学; 济南祥丰能源技术有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种集成套筒式 MBR 一体化设备</div>
-      <div class="patent-authors">曹荣莉; <strong>毛岩鹏</strong>; 左鹏; 刘伏娟; 朱振坤; 张彪</div>
-      <div class="patent-meta"><em>App. No.</em> CN202022180421.0 · <em>Filed</em> 2020.09.28 · <em>Type</em> Utility Model · <em>Granted</em> 2021.06.18 · <em>Patentee</em> 山东祥桓环境科技有限公司; 济南祥丰能源技术有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种改性硅基吸附材料及有机污染物的低温原位降解方法</div>
-      <div class="patent-authors">孙静; 李法齐; 王文龙; 于冠群; 马晓玲; 宋占龙; 赵希强; <strong>毛岩鹏</strong>; 王旭江</div>
-      <div class="patent-meta"><em>App. No.</em> CN202010922448.4 · <em>Filed</em> 2020.09.04 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.06.14 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种快速再生的硅基吸附材料及微波原位降解有机污染物的方法</div>
-      <div class="patent-authors">孙静; 李法齐; 王文龙; 于冠群; 马晓玲; 宋占龙; 赵希强; <strong>毛岩鹏</strong>; 王旭江</div>
-      <div class="patent-meta"><em>App. No.</em> CN202010922450.1 · <em>Filed</em> 2020.09.04 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种 MBR 一体化设备智能信息化控制系统</div>
-      <div class="patent-authors">曹荣莉; <strong>毛岩鹏</strong>; 左鹏; 贺文腾</div>
-      <div class="patent-meta"><em>App. No.</em> CN202021834773.7 · <em>Filed</em> 2020.08.27 · <em>Type</em> Utility Model · <em>Granted</em> 2021.02.02 · <em>Patentee</em> 山东祥桓环境科技有限公司; 济南祥丰能源技术有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种连续运行的过硫酸盐高级氧化废水处理装置</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 左鹏; 陈桂芳; 宋德升; 曹荣莉; 陈志华; 张彪; 李正强; 李海舸; 马春元</div>
-      <div class="patent-meta"><em>App. No.</em> CN202021248169.6 · <em>Filed</em> 2020.06.30 · <em>Type</em> Utility Model · <em>Granted</em> 2021.04.30 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种三元催化剂微波辅助再生的方法与系统</div>
-      <div class="patent-authors">宋占龙; 吴振豪; 孙伟婷; 赵希强; 孙静; <strong>毛岩鹏</strong>; 王文龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN202010420017.8 · <em>Filed</em> 2020.05.18 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2021.06.22 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">利用钢渣生产低碱度、新矿物体系硫铝酸盐水泥的方法及系统</div>
-      <div class="patent-authors">王旭江; 王文龙; 李敬伟; <strong>毛岩鹏</strong>; 张超; 吴长亮</div>
-      <div class="patent-meta"><em>App. No.</em> CN2020077135W · <em>Filed</em> 2020.02.28 · <em>Region</em> WIPO (China) · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种基于余热回收及除盐的逆流式 PRMD-PRO 系统及方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 曹涵</div>
-      <div class="patent-meta"><em>App. No.</em> CN202010112104.7 · <em>Filed</em> 2020.02.24 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2021.02.02 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种基于微波加热的热化学制氢系统及其制氢方法与应用</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 高一博; 王文龙; 宋占龙; 赵希强; 孙静</div>
-      <div class="patent-meta"><em>App. No.</em> CN202010092828.X · <em>Filed</em> 2020.02.14 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2021.10.15 · <em>Patentee</em> 河北国基氢能科技有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种批量、可控制备石墨碳包覆金属/金属氧化物纳米颗粒的方法、装置及其应用</div>
-      <div class="patent-authors">孙静; 于冠群; 江镇宇; 王文龙; 宋占龙; 赵希强; <strong>毛岩鹏</strong></div>
-      <div class="patent-meta"><em>App. No.</em> CN202010086591.4 · <em>Filed</em> 2020.02.11 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.02.11 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-  </div>
-
-  <!-- ================= 2019 ================= -->
-  <h2 class="year-heading">2019</h2>
-  <div class="patent-list">
-
-    <div class="patent-item">
-      <div class="patent-title">有机废水与工业固体废物协同处理系统和方法</div>
-      <div class="patent-authors">王文龙; 王超前; 任常在; 李国麟; <strong>毛岩鹏</strong>; 孙静; 宋占龙; 赵希强</div>
-      <div class="patent-meta"><em>App. No.</em> ZA201906734A · <em>Filed</em> 2019.10.11 · <em>Region</em> South Africa · <em>Type</em> Invention (Granted) · <em>Granted</em> 2020.09.30 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">生物质气化气相脱焦方法、液相脱焦方法及联合脱焦方法</div>
-      <div class="patent-authors">宋占龙; 吴振豪; 孙静; 赵希强; <strong>毛岩鹏</strong>; 王文龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN201910877459.2 · <em>Filed</em> 2019.09.17 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2020.10.23 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种适用于 3D 打印混凝土剪切力墙的材料及其制备方法</div>
-      <div class="patent-authors">曹虎; <strong>毛岩鹏</strong>; 单立福; 仲从春; 李海燕; 陈梦龙; 杨振华; 王文龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN201910874356.0 · <em>Filed</em> 2019.09.17 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2022.04.19 · <em>Patentee</em> 山东中岩建材科技有限公司</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种含油污泥超声波破乳的强化方法与系统及工艺</div>
-      <div class="patent-authors">宋占龙; 王思宇; 吴振豪; 赵希强; 孙静; <strong>毛岩鹏</strong>; 王文龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN201910876715.6 · <em>Filed</em> 2019.09.17 · <em>Type</em> Invention (Granted) · <em>Granted</em> 2020.10.13 · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">基于灰水源、冷凝潜热和空气源的多功能热泵系统及方法</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 孙晓菲; 王文龙</div>
-      <div class="patent-meta"><em>App. No.</em> CN201910876209.7 · <em>Filed</em> 2019.09.17 · <em>Type</em> Invention Application · <em>Patentee</em> 山东大学</div>
-    </div>
-
-    <div class="patent-item">
-      <div class="patent-title">一种微波加热消白装置及挂壁式燃气锅炉</div>
-      <div class="patent-authors"><strong>毛岩鹏</strong>; 高一博; 王文龙; 宋占龙;
+    <!-- 左侧导航栏 -->
+    <ul class="nav-bar">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./publications.html">Publications</a></li>
+        <li><a href="./teaching.html">Teaching</a></li>
+        <li><a href="./projects.html">Projects</a></li>
+        <li><a href="./patents.html" class="active">Patents</a></li>
+        <li><a href="./services.html">Services</a></li>
+        <li><a href="./awards.html">Awards</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+    </ul>
+
+    <!-- 右侧主内容区 -->
+    <div class="main-content">
+        <h1>Patents</h1>
+
+        <!-- ================= 2026 ================= -->
+        <h2>2026</h2>
+        <ul class="pub-list">
+            <li class="pub-item">
+                <div class="pub-title">用于火电调峰与新能源消纳的微波加热熔盐储能协同系统</div>
+                <div class="pub-authors">宋占龙, 黄浩, 逄颖平, 赵希强, 孙静, 毛岩鹏, 王子良, 王文龙, 崔琳, 董勇</div>
+                <div class="pub-journal"><span>CN202611053039.9</span>, 2026.07.15, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">基于引矿激发改性的粉煤灰基吸附材料及其制备方法与应用</div>
+                <div class="pub-authors">李敬伟, 王清, 王文龙, 刘延慧, 王旭江, 胡芝娟, 张爽, 李玉忠, 毛岩鹏, 宋占龙</div>
+                <div class="pub-journal"><span>CN202610867169.X</span>, 2026.06.16, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种重金属高效吸附脱除材料及其制备方法与应用</div>
+                <div class="pub-authors">李敬伟, 王清, 王文龙, 刘延慧, 王旭江, 胡芝娟, 张爽, 李玉忠, 毛岩鹏, 宋占龙</div>
+                <div class="pub-journal"><span>CN202610828693.6</span>, 2026.06.09, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种海工修复材料及其制备方法与应用</div>
+                <div class="pub-authors">李敬伟, 石文彬, 侯祥山, 王文龙, 王旭江, 张爽, 李玉忠, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202610779668.3</span>, 2026.06.02, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">全固态微波等离子体炬煤粉锅炉点火装备、锅炉及方法</div>
+                <div class="pub-authors">毛岩鹏, 沈仲臣, 卢佳林, 王政, 国德训, 王子良, 王文龙</div>
+                <div class="pub-journal"><span>CN202610754065.8</span>, 2026.05.28, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种微波等离子体改性玻璃纤维的装置及方法</div>
+                <div class="pub-authors">王爱华, 国德训, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202610021573.5</span>, 2026.01.08, Invention Application, Yantai Northern Microwave Tech Co., Ltd.; Shandong Kunming Industrial Tech Co., Ltd.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种光催化CO2还原-海水淡化一体化装置、系统及方法</div>
+                <div class="pub-authors">毛岩鹏, 卢佳林, 谭龙, 王政, 张嘉政, 杨道魁</div>
+                <div class="pub-journal"><span>202610022835X</span>, 2026.01.08, Invention, Shandong University.</div>
+            </li>
+        </ul>
+
+        <!-- ================= 2025 ================= -->
+        <h2>2025</h2>
+        <ul class="pub-list">
+            <li class="pub-item">
+                <div class="pub-title">一种基于微波诱导缺陷氧化锌放电效应自驱动的等离子体烧结材料、制备方法及装置</div>
+                <div class="pub-authors">宋占龙, 宋传林, 逄颖平, 孙静, 赵希强, 王子良, 毛岩鹏, 王文龙</div>
+                <div class="pub-journal"><span>CN202511522876.7</span>, 2025.10.23, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种利用微波放电强化废旧锌锰电池回收亚微米锌粉与转化制备锰酸锂正极材料的方法及应用</div>
+                <div class="pub-authors">宋占龙, 宋传林, 逄颖平, 孙静, 赵希强, 王子良, 毛岩鹏, 王文龙, 赵成</div>
+                <div class="pub-journal"><span>CN202511522880.3</span>, 2025.10.23, Invention Application, Shandong University; Weichai Power Co., Ltd.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种微波辅助生物质气化制甲醇的系统及方法</div>
+                <div class="pub-authors">王子良, 王陈龙, 吕金易, 万凯, 宋占龙, 孙静, 张新雁, 逄颖平, 赵希强, 毛岩鹏, 王文龙</div>
+                <div class="pub-journal"><span>CN202510710032.9</span>, 2025.05.29, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种生物质制高热值低碳燃料的装置与方法</div>
+                <div class="pub-authors">王子良, 万凯, 王陈龙, 宋占龙, 孙静, 赵希强, 毛岩鹏, 王涛, 王文龙</div>
+                <div class="pub-journal"><span>CN202510643204.5</span>, 2025.05.19, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种微波辅助节能的废弃石粉微泡矿化再生制备球霰石的方法</div>
+                <div class="pub-authors">毛岩鹏, 张嘉政, 赵瑞强, 杨道魁, 冯克举, 贺诗俸, 王光营</div>
+                <div class="pub-journal"><span>CN202510418362.0</span>, 2025.04.03, Invention Application, Shandong University; Shandong Zhongyan Heavy Technology New Material Co., Ltd.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">废石粉废盐酸电石渣三废协同制备球霰石的方法与系统</div>
+                <div class="pub-authors">毛岩鹏, 赵瑞强, 张嘉政, 杨道魁, 冯克举, 贺诗俸, 王光营</div>
+                <div class="pub-journal"><span>CN202510418928.X</span>, 2025.04.03, Invention Application, Shandong University; Shandong Zhongyan Heavy Technology New Material Co., Ltd.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种光热协同降解废弃聚烯烃塑料制备低碳烯烃的复合催化剂及其制备方法应用</div>
+                <div class="pub-authors">王子良, 徐超, 吕金易, 宋占龙, 孙静, 赵希强, 毛岩鹏, 王文龙</div>
+                <div class="pub-journal"><span>CN202510374652.X</span>, 2025.03.27, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种绿电微波放电等离子体甲烷裂解氢碳联产系统与方法</div>
+                <div class="pub-authors">王子良, 王文硕, 林园园, 史甲昌, 王晓龙, 宋占龙, 王文龙, 孙静, 赵希强, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202510330625.2</span>, 2025.03.20, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种甲烷裂解防积碳循环系统及其工作方法</div>
+                <div class="pub-authors">王子良, 王文硕, 林园园, 史甲昌, 王晓龙, 宋占龙, 王文龙, 孙静, 赵希强, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202510269969.7</span>, 2025.03.07, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种太阳能多级潜热回收型污泥干化系统及方法</div>
+                <div class="pub-authors">王子良, 徐超, 吕金易, 孙静, 宋占龙, 王文龙, 赵希强, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202510261633.6</span>, 2025.03.06, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种混凝土结构修补材料及修补砂浆的制备方法</div>
+                <div class="pub-authors">李敬伟, 侯祥山, 王文龙, 王旭江, 石文彬, 刘延慧, 胡芝娟, 毛岩鹏, 宋占龙</div>
+                <div class="pub-journal"><span>CN202510219331.2</span>, 2025.02.26, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种甲烷裂解制备氢气和碳纳米管的三相装置及方法</div>
+                <div class="pub-authors">王子良, 史甲昌, 林园园, 王文硕, 王晓龙, 宋占龙, 王文龙, 孙静, 赵希强, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202510165781.8</span>, 2025.02.14, Invention Application, Shandong University.</div>
+            </li>
+        </ul>
+
+        <!-- ================= 2024 ================= -->
+        <h2>2024</h2>
+        <ul class="pub-list">
+            <li class="pub-item">
+                <div class="pub-title">基于双温一像测温的环形聚焦单模微波光热反应系统</div>
+                <div class="pub-authors">王琳玮, 谭龙, 侯宁宁, 邹晓鹏, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202423285311.5</span>, 2024.12.30, Utility Model (Granted), Yantai Northern Microwave Tech Co., Ltd.; Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种石油焦的资源化利用方法和系统</div>
+                <div class="pub-authors">周萍, 赵希强, 宋占龙, 王文龙, 孙静, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202411927753.7</span>, 2024.12.25, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种用于砂质土的高抗渗固化剂及其制备方法</div>
+                <div class="pub-authors">李敬伟, 张爽, 王文龙, 王旭江, 侯祥山, 李玉忠, 毛岩鹏, 宋占龙</div>
+                <div class="pub-journal"><span>CN202411602096.9</span>, 2024.11.11, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">退役风电叶片高效热解回收及资源循环利用的方法及系统</div>
+                <div class="pub-authors">王文龙, 杨世钊, 王旭江, 李敬伟, 毛岩鹏, 赵希强, 宋占龙</div>
+                <div class="pub-journal"><span>CN202411512377.5</span>, 2024.10.28, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种CO2捕集-矿化一体化材料及其制备方法与应用</div>
+                <div class="pub-authors">李敬伟, 刘延慧, 王文龙, 王旭江, 文传琦, 侯祥山, 李玉忠, 毛岩鹏, 宋占龙</div>
+                <div class="pub-journal"><span>CN202411194025.X</span>, 2024.08.28, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种用于研究粉体成型的颗粒反应动力学模拟方法及系统</div>
+                <div class="pub-authors">王旭江, 张平洋, 王文龙, 李嘉豪, 林翔, 李敬伟, 毛岩鹏, 胡芝娟, 宋占龙</div>
+                <div class="pub-journal"><span>CN202410507163.2</span>, 2024.04.25, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种用于研究粉体成型的水化热和水化分析模拟方法及系统</div>
+                <div class="pub-authors">王旭江, 张平洋, 王文龙, 宋家琳, 李敬伟, 毛岩鹏, 胡芝娟, 宋占龙</div>
+                <div class="pub-journal"><span>CN202410507362.3</span>, 2024.04.25, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种可应用于微波场中非接触式测温的荧光体及其制备方法</div>
+                <div class="pub-authors">毛岩鹏, 周萌, 王爱华, 王文龙, 宋占龙, 赵希强, 孙静</div>
+                <div class="pub-journal"><span>CN202410428509.X</span>, 2024.04.10, Invention Application, Shandong University; Yantai Northern Microwave Tech Co., Ltd.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种生成微波等离子体的液相反应装置与反应方法</div>
+                <div class="pub-authors">毛岩鹏, 国德训, 王爱华, 王文龙, 宋占龙, 赵希强, 孙静</div>
+                <div class="pub-journal"><span>CN202410428829.5</span>, 2024.04.10, Invention Application, Shandong University; Yantai Northern Microwave Tech Co., Ltd.</div>
+            </li>
+        </ul>
+
+        <!-- ================= 2023 ================= -->
+        <h2>2023</h2>
+        <ul class="pub-list">
+            <li class="pub-item">
+                <div class="pub-title">一种基于光纤传感器的水泥生料实时监测系统</div>
+                <div class="pub-authors">车昕格, 毛岩鹏, 逄栋杰, 张嘉政, 魏光朔</div>
+                <div class="pub-journal"><span>CN202323512298.8</span>, 2023.12.21, Utility Model (Granted), Shandong Provincial Eco-Environmental Monitoring Center; Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">硫化氢电场强化分解用催化剂制备方法、分解方法及装置</div>
+                <div class="pub-authors">宋占龙, 张健恒, 逄颖平, 赵希强, 毛岩鹏, 孙静, 王文龙, 王子良</div>
+                <div class="pub-journal"><span>CN202311620421.X</span>, 2023.11.29, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种建筑垃圾梯级利用制备低碳仿石砖的方法</div>
+                <div class="pub-authors">王旭江, 马之耀, 刘继文, 王文龙, 李敬伟, 胡芝娟, 毛岩鹏, 王子良, 宋占龙</div>
+                <div class="pub-journal"><span>CN202311061491.6</span>, 2023.08.22, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种负载石墨烯改性的铜锰复合催化剂的催化剂布袋及其制备方法与应用</div>
+                <div class="pub-authors">孙静, 申亚芳, 王子良, 王文龙, 宋占龙, 赵希强, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202310993731.X</span>, 2023.08.08, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种采用富铁市政污泥制备铁碳材料的系统和方法</div>
+                <div class="pub-authors">董婧祎, 张德群, 徐剑, 毛岩鹏, 逄栋杰</div>
+                <div class="pub-journal"><span>CN202310974168.1</span>, 2023.08.03, Application, Beijing Zhongtou Runtian Environmental Tech Co., Ltd.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">硫铝铁系胶凝材料的性能调控方法及系统</div>
+                <div class="pub-authors">王旭江, 李嘉豪, 林翔, 王文龙, 李敬伟, 张洪智, 毛岩鹏, 王子良, 宋占龙, 胡芝娟</div>
+                <div class="pub-journal"><span>CN202310960808.3</span>, 2023.08.01, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种微波/过硫酸盐同步氧化及活化惰性尾矿的方法</div>
+                <div class="pub-authors">毛岩鹏, 魏光朔, 张嘉政, 逄栋杰, 王文龙, 王旭江, 李敬伟</div>
+                <div class="pub-journal"><span>CN202310854888.4</span>, 2023.07.12, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种利用工业固废制备用于冬季施工的路面修补材料</div>
+                <div class="pub-authors">王旭江, 王文龙, 孙德强, 李敬伟, 毛岩鹏, 王子良, 宋占龙</div>
+                <div class="pub-journal"><span>CN2023102582W</span>, 2023.06.27, WIPO (China), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种高精度、轻量化石膏砌块及其制备方法</div>
+                <div class="pub-authors">王文龙, 杨世钊, 王旭江, 李敬伟, 毛岩鹏, 肖心, 王明波, 李海港</div>
+                <div class="pub-journal"><span>CN202310518833.6</span>, 2023.05.06, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种微波场中基于荧光成像及比率的测温系统及方法</div>
+                <div class="pub-authors">毛岩鹏, 周萌, 王文龙, 宋占龙, 赵希强, 孙静</div>
+                <div class="pub-journal"><span>CN202310425929.8</span>, 2023.04.17, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">基于水泥窑循环流化热载体协同制备生物质炭材料的系统及方法</div>
+                <div class="pub-authors">毛岩鹏, 逄栋杰, 王文龙, 王旭江, 李敬伟, 张嘉政, 魏光朔</div>
+                <div class="pub-journal"><span>CN202310081464.9</span>, 2023.01.31, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种芬顿污泥磁性铁基催化剂及其制备方法与应用</div>
+                <div class="pub-authors">王文龙, 刘帅, 张新雁, 刘姗姗, 毛岩鹏, 宋占龙, 赵希强, 孙静</div>
+                <div class="pub-journal"><span>CN202310074611.X</span>, 2023.01.20, Invention (Granted), Shandong University.</div>
+            </li>
+        </ul>
+
+        <!-- ================= 2022 ================= -->
+        <h2>2022</h2>
+        <ul class="pub-list">
+            <li class="pub-item">
+                <div class="pub-title">一种固废基硫铝酸盐胶凝材料制备快速修补砂浆的方法</div>
+                <div class="pub-authors">李敬伟, 侯祥山, 王文龙, 王旭江, 贾爱光, 肖心, 毛岩鹏, 刘全勋</div>
+                <div class="pub-journal"><span>CN202211501422.8</span>, 2022.11.28, Invention (Granted), Shandong University; Xintai Institute of Industrial Research Co., Ltd.; Shandong Zhuolian Environmental Tech Co., Ltd.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">固废基硫铝酸盐水泥改性建筑石膏基自流平砂浆</div>
+                <div class="pub-authors">李敬伟, 肖心, 王文龙, 王旭江, 贾爱光, 侯祥山, 毛岩鹏, 刘全勋</div>
+                <div class="pub-journal"><span>CN202211489777.X</span>, 2022.11.25, Invention Application, Shandong University; Xintai Institute of Industrial Research Co., Ltd.; Shandong Zhuolian Environmental Tech Co., Ltd.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种粉状活性焦一体化反应装置及污水处理系统</div>
+                <div class="pub-authors">曹荣莉, 马春元, 毛岩鹏, 金杨, 宋德升, 张鑫, 陈双双, 孙鹏, 李伟明, 单巧</div>
+                <div class="pub-journal"><span>CN202211447454.4</span>, 2022.11.18, Invention Application, Shandong Xianghuan Environmental Tech Co., Ltd.; Jinan Xiangfeng Energy Tech Co., Ltd.; Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种利用工业固废制备用于冬季施工的路面修补材料</div>
+                <div class="pub-authors">王旭江, 孙德强, 王文龙, 李敬伟, 毛岩鹏, 宋占龙, 马岩</div>
+                <div class="pub-journal"><span>CN202211199528.7</span>, 2022.09.29, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种采用富铁市政污泥制备铁碳材料的系统和方法</div>
+                <div class="pub-authors">曹荣莉, 马春元, 毛岩鹏, 金杨</div>
+                <div class="pub-journal"><span>CN202210998693.2</span>, 2022.08.19, Invention Application, Shandong Xianghuan Environmental Tech Co., Ltd.; Jinan Xiangfeng Energy Tech Co., Ltd.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种微波场中样品体相温度测量装置和方法</div>
+                <div class="pub-authors">宋占龙, 张宝旭, 张晓嵘, 赵希强, 王文龙, 毛岩鹏, 孙静</div>
+                <div class="pub-journal"><span>CN202210955820.0</span>, 2022.08.10, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种负极退役石墨再利用的方法、及其改性氧化锰的方法</div>
+                <div class="pub-authors">孙静, 董一霖, 申亚芳, 王文龙, 宋占龙, 张志超, 赵希强, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202210877766.2</span>, 2022.07.25, Invention (Granted), Shandong University; Shandong Huanwo Environmental Tech Co., Ltd.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">含硫烟气气化污泥调节气氛还原硫硝并固化重金属的方法</div>
+                <div class="pub-authors">赵希强, 田叶顺, 王文龙, 宋占龙, 孙静, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202210852591.X</span>, 2022.07.20, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种N、S、B掺杂的中草药药渣碳点、荧光探针及应用</div>
+                <div class="pub-authors">毛岩鹏, 张淑娟, 王文龙, 宋占龙, 赵希强</div>
+                <div class="pub-journal"><span>CN202210789255.5</span>, 2022.07.06, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种利用有机酸处置飞灰的处理方法及系统</div>
+                <div class="pub-authors">毛岩鹏, 张嘉政, 逄栋杰, 王文龙, 王旭江, 李敬伟</div>
+                <div class="pub-journal"><span>CN202210609990.3</span>, 2022.05.31, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种垃圾焚烧飞灰水洗反应装置、处理系统及方法</div>
+                <div class="pub-authors">毛岩鹏, 张嘉政, 逄栋杰, 王文龙, 王旭江, 李敬伟</div>
+                <div class="pub-journal"><span>CN202210509371.7</span>, 2022.05.11, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种利用铝灰和电石渣制备新矿物体系高温水泥的方法</div>
+                <div class="pub-authors">王旭江, 陈扬昊, 王文龙, 李敬伟, 毛岩鹏, 宋占龙</div>
+                <div class="pub-journal"><span>CN202210421725.2</span>, 2022.04.21, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">吸附催化氧化双功能材料及其制备方法与应用</div>
+                <div class="pub-authors">孙静, 王维, 申亚芳, 张志超, 王文龙, 宋占龙, 赵希强, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202210242977.9</span>, 2022.03.11, Invention (Granted), Shandong University; Shandong Huanwo Environmental Tech Co., Ltd.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种利用微波强化含油废水雾化效果的系统及方法</div>
+                <div class="pub-authors">宋占龙, 卫新欣, 李建波, 张志超, 邢建南, 孙波, 孙静, 赵希强, 毛岩鹏, 王旭江, 王文龙</div>
+                <div class="pub-journal"><span>CN202210211983.8</span>, 2022.03.04, Invention Application, Shandong Huanwo Environmental Tech Co., Ltd.; Shanghai Conglin Environmental Tech Co., Ltd.; Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">利用钢渣微粉复配胶凝材料的仿石砖及制备方法和应用</div>
+                <div class="pub-authors">王旭江, 于目深, 李敬伟, 王文龙, 毛岩鹏, 宋占龙</div>
+                <div class="pub-journal"><span>CN202210196829.8</span>, 2022.03.01, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">废磷酸铁锂缺陷修复并构筑三维多孔碳网的方法和应用</div>
+                <div class="pub-authors">孙静, 江镇宇, 王文龙, 贾平山, 宋占龙, 毛岩鹏, 赵希强</div>
+                <div class="pub-journal"><span>CN202210158761.4</span>, 2022.02.21, Invention (Granted), Shandong University.</div>
+            </li>
+        </ul>
+
+        <!-- ================= 2021 ================= -->
+        <h2>2021</h2>
+        <ul class="pub-list">
+            <li class="pub-item">
+                <div class="pub-title">两段式水泥窑多源固废耦合热解气化方法及其装置和应用</div>
+                <div class="pub-authors">毛岩鹏, 张嘉政, 王文龙, 宋占龙, 王旭江, 李敬伟</div>
+                <div class="pub-journal"><span>CN202111290034.5</span>, 2021.11.02, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种微波热化学甲烷制合成气的方法与应用</div>
+                <div class="pub-authors">毛岩鹏, 张苗苗, 高一博, 王文龙, 宋占龙, 赵希强, 孙静</div>
+                <div class="pub-journal"><span>CN202111183229.X</span>, 2021.10.11, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种CTAB调控制备多孔碳包覆过渡金属氧化物材料的方法及应用</div>
+                <div class="pub-authors">孙静, 贾平山, 王文龙, 江镇宇, 宋占龙, 毛岩鹏, 赵希强</div>
+                <div class="pub-journal"><span>CN202111139470.2</span>, 2021.09.26, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">固废基高铁硫铝酸盐海工胶凝材料及其制备方法与应用</div>
+                <div class="pub-authors">王文龙, 姚永刚, 于目深, 张子良, 孙德强, 蒋稳, 李敬伟, 王旭江, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202111094354.3</span>, 2021.09.17, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种太阳能储热干化污泥制备硫铝酸盐水泥的系统和方法</div>
+                <div class="pub-authors">王文龙, 张嘉政, 毛岩鹏, 黄彦敏</div>
+                <div class="pub-journal"><span>CN202111045078.1</span>, 2021.09.07, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种固废基白色硫铝酸盐水泥及其制备方法与应用</div>
+                <div class="pub-authors">王文龙, 姚永刚, 吴长亮, 姚星亮, 武双, 蒋稳, 王旭江, 李敬伟, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202110913089.0</span>, 2021.08.10, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">脱硫石膏缓凝剂及制备方法与其在硫铝酸盐水泥中的应用</div>
+                <div class="pub-authors">王文龙, 姚永刚, 武双, 姚星亮, 杨世钊, 王旭江, 李敬伟, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202110829748.2</span>, 2021.07.22, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种脱硫石膏协同电厂高盐废水制备α型半水石膏的方法</div>
+                <div class="pub-authors">毛岩鹏, 黄彦敏, 王文龙, 王旭江, 李敬伟, 张嘉政</div>
+                <div class="pub-journal"><span>CN202110790917.6</span>, 2021.07.13, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种基于微波诱导定向加热技术的高温测量装置及方法</div>
+                <div class="pub-authors">王文龙, 王超前, 张新雁, 刘姗姗, 孙静, 毛岩鹏, 赵希强, 宋占龙</div>
+                <div class="pub-journal"><span>CN202110648519.0</span>, 2021.06.10, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">微波多效应耦合诱导酸洗污泥还原提质协同废塑料制氢的工艺及系统</div>
+                <div class="pub-authors">姚连升, 宋占龙, 王文龙, 赵希强, 毛岩鹏, 孙静, 王涛</div>
+                <div class="pub-journal"><span>CN202110484170.1</span>, 2021.04.30, Invention Application, Shandong University; Shandong Zhenggao Environmental Tech Co., Ltd.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种溶胀改性强化废轮胎热解制油及炭黑的方法</div>
+                <div class="pub-authors">宋占龙, 韩元凯, 王文龙, 赵希强, 孙静, 毛岩鹏, 王旭江</div>
+                <div class="pub-journal"><span>CN202110437720.4</span>, 2021.04.22, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种电催化甲烷-二氧化碳制合成气的装置与方法</div>
+                <div class="pub-authors">宋占龙, 陈科臻, 王文龙, 赵希强, 毛岩鹏, 孙静</div>
+                <div class="pub-journal"><span>CN202110430512.1</span>, 2021.04.21, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种垃圾焚烧飞灰固化剂及制备方法与处理方法</div>
+                <div class="pub-authors">李敬伟, 贾爱光, 王文龙, 王旭江, 毛岩鹏, 蒋稳, 张超, 吴长亮, 孙静, 赵希强, 宋占龙</div>
+                <div class="pub-journal"><span>CN202110424022.0</span>, 2021.04.20, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">疏水型双配体金属有机骨架材料及制备方法和在VOCs吸附中的应用</div>
+                <div class="pub-authors">孙静, 李文翔, 王文龙, 马晓玲, 宋占龙, 毛岩鹏, 赵希强</div>
+                <div class="pub-journal"><span>CN202110402063.X</span>, 2021.04.14, Invention Application, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种废磷酸铁锂补锂修复方法和应用</div>
+                <div class="pub-authors">孙静, 江镇宇, 王文龙, 贾平山, 于冠群, 宋占龙, 毛岩鹏, 赵希强</div>
+                <div class="pub-journal"><span>CN202110332731.6</span>, 2021.03.29, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种处置含炭固/危废协同还原SO2的系统及方法</div>
+                <div class="pub-authors">赵希强, 田叶顺, 马春元, 王文龙, 宋占龙, 毛岩鹏, 孙静</div>
+                <div class="pub-journal"><span>CN202110254771.3</span>, 2021.03.09, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种微波强化水分及蒸汽联合杀菌灭活装置及垃圾处理装置</div>
+                <div class="pub-authors">宋占龙, 姚连升, 王文龙, 毛岩鹏, 赵希强, 孙静, 王涛</div>
+                <div class="pub-journal"><span>CN202120463387.X</span>, 2021.03.03, Utility Model (Granted), Shandong University; Shandong Zhenggao Environmental Tech Co., Ltd.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种生物质基重金属吸附材料及其制备方法与应用</div>
+                <div class="pub-authors">赵希强, 孙爽, 田叶顺, 宋占龙, 王文龙, 毛岩鹏, 孙静</div>
+                <div class="pub-journal"><span>CN202110187580.X</span>, 2021.02.18, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种固废基轻质保温混凝土3D打印材料及制备方法</div>
+                <div class="pub-authors">毛岩鹏, 黄彦敏, 王文龙, 王旭江, 李敬伟, 张嘉政</div>
+                <div class="pub-journal"><span>CN202110033010.5</span>, 2021.01.11, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种风力辅助加热的太阳能热水器</div>
+                <div class="pub-authors">逄栋杰, 闫雨薇, 毛岩鹏</div>
+                <div class="pub-journal"><span>CN202120057512.7</span>, 2021.01.11, Utility Model (Granted), Hebei University of Engineering.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种环保型路用透水混凝土及其制备方法和应用</div>
+                <div class="pub-authors">王文龙, 吴长亮, 李敬伟, 王旭江, 张超, 蒋稳, 毛岩鹏, 孙静, 赵希强, 宋占龙</div>
+                <div class="pub-journal"><span>CN202110018929.7</span>, 2021.01.07, Invention (Granted), Shandong University.</div>
+            </li>
+        </ul>
+
+        <!-- ================= 2020 & Before ================= -->
+        <h2>2020 & Before</h2>
+        <ul class="pub-list">
+            <li class="pub-item">
+                <div class="pub-title">一种污泥增钙干化预处理后作为水泥生产的主原料和燃料的方法</div>
+                <div class="pub-authors">毛岩鹏, 张嘉政, 王文龙, 黄彦敏, 王旭江, 李敬伟</div>
+                <div class="pub-journal"><span>CN202011620371.1</span>, 2020.12.30, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">中低放射性核废料的固废基硫铝酸盐水泥固化基材及其制备方法</div>
+                <div class="pub-authors">王文龙, 李敬伟, 王旭江, 贾爱光, 蒋稳, 张超, 吴长亮, 毛岩鹏, 宋占龙</div>
+                <div class="pub-journal"><span>CN202011582146.3</span>, 2020.12.28, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种连续运行的过硫酸盐高级氧化废水处理装置</div>
+                <div class="pub-authors">毛岩鹏, 左鹏, 陈桂芳, 宋德升, 曹荣莉, 陈志华, 张彪, 李正强, 李海舸, 马春元</div>
+                <div class="pub-journal"><span>CN202021248169.6</span>, 2020.06.30, Utility Model (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种基于余热回收及除盐的逆流式PRMD-PRO系统及方法</div>
+                <div class="pub-authors">毛岩鹏, 曹涵</div>
+                <div class="pub-journal"><span>CN202010112104.7</span>, 2020.02.24, Invention (Granted), Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">Pretreatment of municipal solid waste incineration fly ash and preparation of solid waste source sulphoaluminate cementitious material</div>
+                <div class="pub-authors">Mao, Yanpeng, Wu, Han, Wang, Wenlong, Jia, Muhai, Che, Xinchun</div>
+                <div class="pub-journal"><span>CN2019...</span>, 2020, Invention, Shandong University.</div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">一种微波照辐下分解液态化学武器的装置及方法</div>
+                <div class="pub-authors">毛岩鹏, 高一博, 董伟, 薛超, 吴含, 王文龙, 宋占龙, 赵希强</div>
+                <div class="pub-journal"><span>CN201910030961.X</span>, 2019.01.14, Invention (Granted), Shandong University.</div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

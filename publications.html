@@ -14,15 +14,31 @@
         h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
         h2 { color: #0366d6; margin-top: 40px; border-bottom: 1px dashed #ccc; padding-bottom: 5px; font-size: 20px;}
         
-        /* 核心布局：每条论文占三行 */
-        .pub-list { list-style-type: none; padding: 0; }
-        .pub-item { margin-bottom: 25px; display: flex; flex-direction: column; gap: 6px; }
+        /* 核心布局：加入自动序号 */
+        .pub-list { list-style-type: none; padding: 0; counter-reset: pub-counter; }
+        .pub-item { 
+            margin-bottom: 25px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 6px; 
+            counter-increment: pub-counter;
+            position: relative;
+            padding-left: 35px; /* 给数字留出空间 */
+        }
+        /* 自动生成数字标号 */
+        .pub-item::before {
+            content: counter(pub-counter) ".";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+            color: #0366d6;
+            font-size: 16px;
+        }
         
-        /* 第一行：题目 */
-        .pub-title { font-weight: bold; color: #222; font-size: 16px; }
-        /* 第二行：作者 */
+        /* 三行内容样式 */
+        .pub-title { font-weight: bold; color: #222; font-size: 16px; line-height: 1.4; }
         .pub-authors { color: #555; line-height: 1.5; }
-        /* 第三行：期刊信息 */
         .pub-journal { color: #777; font-style: italic; }
         .pub-journal span { font-style: normal; font-weight: bold; color: #333; }
     </style>

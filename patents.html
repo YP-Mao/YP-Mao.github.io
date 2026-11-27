@@ -11,13 +11,14 @@
         .nav-bar li a { display: block; padding: 15px 20px; font-size: 16px; text-decoration: none; color: #444; border-bottom: 1px solid #eaeaea; transition: background 0.3s; }
         .nav-bar li a:hover, .nav-bar li a.active { background-color: #e2e6ea; font-weight: bold; color: #000; }
         
-        .main-content { margin-left: 220px; padding: 40px; font-size: 16px; flex-grow: 1; max-width: 900px; }
+        /* 计数器放在内容区，全页只初始化一次，编号跨年份连续 */
+        .main-content { margin-left: 220px; padding: 40px; font-size: 16px; flex-grow: 1; max-width: 900px; counter-reset: pub-counter; }
         h1 { color: #222; margin-bottom: 20px; }
         
         /* ===== 以下为列表专属样式，与 publications.html 保持一致 ===== */
         h2 { color: #0366d6; margin-top: 40px; border-bottom: 1px dashed #ccc; padding-bottom: 5px; font-size: 22px; }
         
-        .pub-list { list-style-type: none; padding: 0; counter-reset: pub-counter; }
+        .pub-list { list-style-type: none; padding: 0; }
         .pub-item { 
             margin-bottom: 28px; 
             display: flex; 
@@ -52,9 +53,7 @@
         <li><a href="./index.html">Home</a></li>
         <li><a href="./publications.html">Publications</a></li>
         <li><a href="./teaching.html">Teaching</a></li>
-        <li><a href="./projects.html">Projects</a></li>
         <li><a href="./patents.html" class="active">Patents</a></li>
-        <li><a href="./services.html">Services</a></li>
         <li><a href="./awards.html">Awards</a></li>
         <li><a href="./contact.html">Contact</a></li>
     </ul>

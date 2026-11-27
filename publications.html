@@ -9,36 +9,12 @@
         .nav-bar { list-style-type: none; padding: 0; margin: 0; width: 220px; background-color: #f8f9fa; position: fixed; height: 100vh; overflow: auto; border-right: 1px solid #eaeaea; }
         .nav-bar li a { display: block; padding: 15px 20px; font-size: 16px; text-decoration: none; color: #444; border-bottom: 1px solid #eaeaea; transition: background 0.3s; }
         .nav-bar li a:hover, .nav-bar li a.active { background-color: #e2e6ea; font-weight: bold; color: #000; }
-        
-        /* 计数器放在内容区，全页只初始化一次，编号跨年份连续 */
         .main-content { margin-left: 220px; padding: 40px; font-size: 15px; flex-grow: 1; max-width: 1000px; counter-reset: pub-counter; }
-        
         h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        h2 { color: #0366d6; margin-top: 40px; border-bottom: 1px dashed #ccc; padding-bottom: 5px; font-size: 20px;}
-        
-        /* 核心布局：加入自动序号 */
+        h2 { color: #0366d6; margin-top: 40px; border-bottom: 1px dashed #ccc; padding-bottom: 5px; font-size: 20px; }
         .pub-list { list-style-type: none; padding: 0; }
-        .pub-item { 
-            margin-bottom: 25px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 6px; 
-            counter-increment: pub-counter;
-            position: relative;
-            padding-left: 35px; /* 给数字留出空间 */
-        }
-        /* 自动生成数字标号 */
-        .pub-item::before {
-            content: counter(pub-counter) ".";
-            position: absolute;
-            left: 0;
-            top: 0;
-            font-weight: bold;
-            color: #0366d6;
-            font-size: 16px;
-        }
-        
-        /* 三行内容样式 */
+        .pub-item { margin-bottom: 25px; display: flex; flex-direction: column; gap: 6px; counter-increment: pub-counter; position: relative; padding-left: 35px; }
+        .pub-item::before { content: counter(pub-counter) "."; position: absolute; left: 0; top: 0; font-weight: bold; color: #0366d6; font-size: 16px; }
         .pub-title { font-weight: bold; color: #222; font-size: 16px; line-height: 1.4; }
         .pub-authors { color: #555; line-height: 1.5; }
         .pub-journal { color: #777; font-style: italic; }
@@ -46,7 +22,6 @@
     </style>
 </head>
 <body>
-
     <ul class="nav-bar">
         <li><a href="./index.html">Home</a></li>
         <li><a href="./publications.html" class="active">Publications</a></li>
@@ -59,536 +34,246 @@
     <div class="main-content">
         <h1>Publications</h1>
 
-        <!-- ================= 2026 ================= -->
         <h2>2026</h2>
         <ul class="pub-list">
-            <li class="pub-item">
-                <div class="pub-title">Carbon-based materials coupled with metal oxide semiconductors for hydrogen sensors: linking mechanisms and dimensions</div>
-                <div class="pub-authors">Zhu, Yongqi; Sun, Jing; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Ziliang; Zhao, Xiqiang</div>
-                <div class="pub-journal"><span>Coordination Chemistry Reviews</span>, 2026, 570(2).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Advances in microwave-assisted catalytic and plasma conversion of methane: A comprehensive review</div>
-                <div class="pub-authors">Wang, Wenshuo; Wang, Zitian; Lv, Jinyi; Sun, Jing; Zhang, Xinyan; Pang, Yingping; Wang, Liang; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Wenlong; Bi, Xiaotao; Wang, Ziliang</div>
-                <div class="pub-journal"><span>Applied Energy</span>, 2026, 427.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Synergistic upcycling of spent LiFePO4 cathodes and graphite anodes into high-energy-density LiMn0.5Fe0.5PO4/C-rGO cathode composites</div>
-                <div class="pub-authors">Lu, Shuo; Sun, Jing; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Ziliang; Zhao, Xiqiang; Li, Yongliang</div>
-                <div class="pub-journal"><span>Chemical Engineering Journal</span>, 2026, 548.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Green valorization of municipal solid waste incineration fly ash into NaP1 zeolite via ultrasonic pretreatment: Low-carbon synthesis and robust oxytetracycline removal</div>
-                <div class="pub-authors">Yang, Daokui; Xu, Mengxia; Zhang, Jiazheng; Zhao, Ruiqiang; Kow, Kien-Woh; Zhang, Guanlin; Meredith, Will; Li, Jingwei; Wang, Xujiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Environmental Research</span>, 2026, 307.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Microwave-assisted CO2 reforming of tar at low temperatures: Application of high-entropy oxide catalysts</div>
-                <div class="pub-authors">Tan, Long; Wang, Zheng; Lu, Jialin; Song, Zhanlong; Wang, Wenlong; Sun, Jing; Wang, Ziliang; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Journal of Environmental Chemical Engineering</span>, 2026, 14(4).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Multiscale bubble dynamics, heat and mass transfer in high-temperature molten salts: A comprehensive review</div>
-                <div class="pub-authors">Lin, Yuanyuan; Liu, Zhoulin; Wang, Xiaolong; Sun, Jing; Wang, Tao; Zhang, Xinyan; Pang, Yingping; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Wenlong; Zhang, Yinghe; Wang, Ziliang</div>
-                <div class="pub-journal"><span>Powder Technology</span>, 2026, 480.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Integrated valorization of calcium-rich waste stone powder and industrial waste hydrochloric acid toward purified Ca-rich leachate and vaterite production</div>
-                <div class="pub-authors">Zhao, Ruiqiang; Zhang, Jiazheng; Yang, Daokui; Ji, Shanlei; Feng, Keju; Wang, Guangying; Zhou, Xiaoming; Wang, Xujiang; Li, Jingwei; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Journal of Environmental Chemical Engineering</span>, 2026, 14(5).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Investigation of carbon sequestration through coupled basalt mineralization and CO2 hydrate formation in low-temperature marine settings</div>
-                <div class="pub-authors">Zhang, Jiazheng; Yang, Daokui; Wang, Yunfei; Sun, Deqiang; Lu, Jialin; Wang, Xujiang; Li, Jingwei; Zhou, Ping; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Energy</span>, 2026, 354.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">A Review of the Value-Added Conversion of Biomass Catalyzed by High-Entropy Alloys</div>
-                <div class="pub-authors">Lv, Jinyi; Wang, Yidong; Zhao, Hongyu; Li, Qingrong; Sun, Jing; Pang, Yingping; Zhang, Xinyan; Wang, Tao; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Safaraliev, Murodbek; Cheng, Xingxing; Wang, Ziliang</div>
-                <div class="pub-journal"><span>Catalysts</span>, 2026, 16(6).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">MXene-Based Electrodes for Flexible Supercapacitors: From Material Synthesis to Device Integration</div>
-                <div class="pub-authors">Luo, Wenlong; Zhao, Hongyu; Li, Qingrong; Liang, Cai; Sun, Jing; Zhang, Xinyan; Pang, Yingping; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Ziliang</div>
-                <div class="pub-journal"><span>Materials</span>, 2026, 19(12).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Waste engine oil as a swelling agent turns waste tires into treasure BTEX</div>
-                <div class="pub-authors">Huang, Hao; Hu, Yuting; Song, Zhanlong; Pang, Yingping; Ren, Fei; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang; Sun, Jing; Wang, Ziliang; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Process Safety and Environmental Protection</span>, 2026, 214.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Microwave enhances swollen waste tire thermocatalysis to value-added limonene production</div>
-                <div class="pub-authors">Huang, Hao; Hu, Yuting; Song, Zhanlong; Pang, Yingping; Ren, Fei; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang; Sun, Jing; Wang, Ziliang; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Journal of Analytical and Applied Pyrolysis</span>, 2026, 197.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Carbonation behavior and ecological synergistic effects of steel slag-bentonite materials in seafloor environments</div>
-                <div class="pub-authors">Zhang, Jiazheng; Yang, Daokui; Wang, Yunfei; Sun, Deqiang; Lu, Jialin; Zhao, Ruiqiang; Wang, Xujiang; Li, Jingwei; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Chemical Engineering Journal</span>, 2026, 535.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Microwave plasma torch enhances direct conversion of solid waste gasification tars for high-selectivity hydrogen production</div>
-                <div class="pub-authors">Guo, Dexun; Zhang, Miaomiao; Zhang, Baoxu; Tan, Long; Wang, Aihua; Song, Zhanlong; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Process Safety and Environmental Protection</span>, 2026, 207.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Alkaline hydrothermal valorization of gold tailings into hydrophobic silica aerogels and FAU zeolite</div>
-                <div class="pub-authors">Yang, Daokui; Wei, Guangshuo; Zhang, Jiazheng; Zhao, Ruiqiang; Wang, Yunfei; Li, Jingwei; Wang, Xujiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Waste Management</span>, 2026, 213.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Synergistic modification of g-C3N4-based photocatalysts with MnCo2O4 and carbon dots for optimizing multiple processes in photocatalytic H2 production</div>
-                <div class="pub-authors">Lu, Jialin; Zhang, Jiazheng; Yang, Daokui; Song, Zhanlong; Wang, Wenlong; Gao, Yibo; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Applied Surface Science</span>, 2026, 729.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Plasma-chemical mechanism and multi-objective optimization of microwave discharge plasma-driven methane pyrolysis enabling scalable carbon-negative hydrogen and high-quality graphene co-production</div>
-                <div class="pub-authors">Wang, Wenshuo; Liu, Zhoulin; Zhang, Baoxu; Lin, Yuanyuan; Wang, Xiaolong; Wang, Liang; Sun, Jing; Wang, Tao; Zhang, Xinyan; Pang, Yingping; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Wenlong; Zhang, Yinghe; Wang, Ziliang</div>
-                <div class="pub-journal"><span>Journal of Analytical and Applied Pyrolysis</span>, 2026, 193.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Interaction Effects and Engineering Applications of Multi-Source Organic Liquid Waste Co-Incineration in Cement Kilns</div>
-                <div class="pub-authors">Song, Zhanlong; Yang, Zhongyuan; Wei, Xinxin; Zhang, Fusen; Pang, Yingping; Wang, Xujiang; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Energies</span>, 2026, 19(3).</div>
-            </li>
+            <li class="pub-item"><div class="pub-title">Carbon-based materials coupled with metal oxide semiconductors for hydrogen sensors: linking mechanisms and dimensions</div><div class="pub-authors">Zhu, Yongqi; Sun, Jing; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Ziliang; Zhao, Xiqiang</div><div class="pub-journal"><span>Coordination Chemistry Reviews</span>, 2026, 570(2).</div></li>
+            <li class="pub-item"><div class="pub-title">Advances in microwave-assisted catalytic and plasma conversion of methane: A comprehensive review</div><div class="pub-authors">Wang, Wenshuo; Wang, Zitian; Lv, Jinyi; Sun, Jing; Zhang, Xinyan; Pang, Yingping; Wang, Liang; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Wenlong; Bi, Xiaotao; Wang, Ziliang</div><div class="pub-journal"><span>Applied Energy</span>, 2026, 427.</div></li>
+            <li class="pub-item"><div class="pub-title">Synergistic upcycling of spent LiFePO4 cathodes and graphite anodes into high-energy-density LiMn0.5Fe0.5PO4/C-rGO cathode composites</div><div class="pub-authors">Lu, Shuo; Sun, Jing; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Ziliang; Zhao, Xiqiang; Li, Yongliang</div><div class="pub-journal"><span>Chemical Engineering Journal</span>, 2026, 548.</div></li>
+            <li class="pub-item"><div class="pub-title">Green valorization of municipal solid waste incineration fly ash into NaP1 zeolite via ultrasonic pretreatment: Low-carbon synthesis and robust oxytetracycline removal</div><div class="pub-authors">Yang, Daokui; Xu, Mengxia; Zhang, Jiazheng; Zhao, Ruiqiang; Kow, Kien-Woh; Zhang, Guanlin; Meredith, Will; Li, Jingwei; Wang, Xujiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Environmental Research</span>, 2026, 307.</div></li>
+            <li class="pub-item"><div class="pub-title">Microwave-assisted CO2 reforming of tar at low temperatures: Application of high-entropy oxide catalysts</div><div class="pub-authors">Tan, Long; Wang, Zheng; Lu, Jialin; Song, Zhanlong; Wang, Wenlong; Sun, Jing; Wang, Ziliang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Journal of Environmental Chemical Engineering</span>, 2026, 14(4).</div></li>
+            <li class="pub-item"><div class="pub-title">Multiscale bubble dynamics, heat and mass transfer in high-temperature molten salts: A comprehensive review</div><div class="pub-authors">Lin, Yuanyuan; Liu, Zhoulin; Wang, Xiaolong; Sun, Jing; Wang, Tao; Zhang, Xinyan; Pang, Yingping; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Wenlong; Zhang, Yinghe; Wang, Ziliang</div><div class="pub-journal"><span>Powder Technology</span>, 2026, 480.</div></li>
+            <li class="pub-item"><div class="pub-title">Integrated valorization of calcium-rich waste stone powder and industrial waste hydrochloric acid toward purified Ca-rich leachate and vaterite production</div><div class="pub-authors">Zhao, Ruiqiang; Zhang, Jiazheng; Yang, Daokui; Ji, Shanlei; Feng, Keju; Wang, Guangying; Zhou, Xiaoming; Wang, Xujiang; Li, Jingwei; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Journal of Environmental Chemical Engineering</span>, 2026, 14(5).</div></li>
+            <li class="pub-item"><div class="pub-title">Investigation of carbon sequestration through coupled basalt mineralization and CO2 hydrate formation in low-temperature marine settings</div><div class="pub-authors">Zhang, Jiazheng; Yang, Daokui; Wang, Yunfei; Sun, Deqiang; Lu, Jialin; Wang, Xujiang; Li, Jingwei; Zhou, Ping; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Energy</span>, 2026, 354.</div></li>
+            <li class="pub-item"><div class="pub-title">A Review of the Value-Added Conversion of Biomass Catalyzed by High-Entropy Alloys</div><div class="pub-authors">Lv, Jinyi; Wang, Yidong; Zhao, Hongyu; Li, Qingrong; Sun, Jing; Pang, Yingping; Zhang, Xinyan; Wang, Tao; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Safaraliev, Murodbek; Cheng, Xingxing; Wang, Ziliang</div><div class="pub-journal"><span>Catalysts</span>, 2026, 16(6).</div></li>
+            <li class="pub-item"><div class="pub-title">MXene-Based Electrodes for Flexible Supercapacitors: From Material Synthesis to Device Integration</div><div class="pub-authors">Luo, Wenlong; Zhao, Hongyu; Li, Qingrong; Liang, Cai; Sun, Jing; Zhang, Xinyan; Pang, Yingping; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Ziliang</div><div class="pub-journal"><span>Materials</span>, 2026, 19(12).</div></li>
+            <li class="pub-item"><div class="pub-title">Waste engine oil as a swelling agent turns waste tires into treasure BTEX</div><div class="pub-authors">Huang, Hao; Hu, Yuting; Song, Zhanlong; Pang, Yingping; Ren, Fei; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang; Sun, Jing; Wang, Ziliang; Wang, Wenlong</div><div class="pub-journal"><span>Process Safety and Environmental Protection</span>, 2026, 214.</div></li>
+            <li class="pub-item"><div class="pub-title">Microwave enhances swollen waste tire thermocatalysis to value-added limonene production</div><div class="pub-authors">Huang, Hao; Hu, Yuting; Song, Zhanlong; Pang, Yingping; Ren, Fei; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang; Sun, Jing; Wang, Ziliang; Wang, Wenlong</div><div class="pub-journal"><span>Journal of Analytical and Applied Pyrolysis</span>, 2026, 197.</div></li>
+            <li class="pub-item"><div class="pub-title">Carbonation behavior and ecological synergistic effects of steel slag-bentonite materials in seafloor environments</div><div class="pub-authors">Zhang, Jiazheng; Yang, Daokui; Wang, Yunfei; Sun, Deqiang; Lu, Jialin; Zhao, Ruiqiang; Wang, Xujiang; Li, Jingwei; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Chemical Engineering Journal</span>, 2026, 535.</div></li>
+            <li class="pub-item"><div class="pub-title">Microwave plasma torch enhances direct conversion of solid waste gasification tars for high-selectivity hydrogen production</div><div class="pub-authors">Guo, Dexun; Zhang, Miaomiao; Zhang, Baoxu; Tan, Long; Wang, Aihua; Song, Zhanlong; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Process Safety and Environmental Protection</span>, 2026, 207.</div></li>
+            <li class="pub-item"><div class="pub-title">Alkaline hydrothermal valorization of gold tailings into hydrophobic silica aerogels and FAU zeolite</div><div class="pub-authors">Yang, Daokui; Wei, Guangshuo; Zhang, Jiazheng; Zhao, Ruiqiang; Wang, Yunfei; Li, Jingwei; Wang, Xujiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Waste Management</span>, 2026, 213.</div></li>
+            <li class="pub-item"><div class="pub-title">Synergistic modification of g-C3N4-based photocatalysts with MnCo2O4 and carbon dots for optimizing multiple processes in photocatalytic H2 production</div><div class="pub-authors">Lu, Jialin; Zhang, Jiazheng; Yang, Daokui; Song, Zhanlong; Wang, Wenlong; Gao, Yibo; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Applied Surface Science</span>, 2026, 729.</div></li>
+            <li class="pub-item"><div class="pub-title">Plasma-chemical mechanism and multi-objective optimization of microwave discharge plasma-driven methane pyrolysis enabling scalable carbon-negative hydrogen and high-quality graphene co-production</div><div class="pub-authors">Wang, Wenshuo; Liu, Zhoulin; Zhang, Baoxu; Lin, Yuanyuan; Wang, Xiaolong; Wang, Liang; Sun, Jing; Wang, Tao; Zhang, Xinyan; Pang, Yingping; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Wenlong; Zhang, Yinghe; Wang, Ziliang</div><div class="pub-journal"><span>Journal of Analytical and Applied Pyrolysis</span>, 2026, 193.</div></li>
+            <li class="pub-item"><div class="pub-title">Interaction Effects and Engineering Applications of Multi-Source Organic Liquid Waste Co-Incineration in Cement Kilns</div><div class="pub-authors">Song, Zhanlong; Yang, Zhongyuan; Wei, Xinxin; Zhang, Fusen; Pang, Yingping; Wang, Xujiang; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div><div class="pub-journal"><span>Energies</span>, 2026, 19(3).</div></li>
         </ul>
 
-        <!-- ================= 2025 ================= -->
         <h2>2025</h2>
         <ul class="pub-list">
-            <li class="pub-item">
-                <div class="pub-title">Modulating eg Occupancy by A-Site Vacancy to Boost Photocatalytic CO2 Reduction on Perovskite Oxides</div>
-                <div class="pub-authors">Gao, Yibo; Zhang, Miaomiao; Fan, Zutao; Jin, Yang; Song, Zhanlong; Wang, Wenlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Advanced Functional Materials</span>, 2025, 35(17). (IF: 19.0)</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">In-situ generation of S-scheme heterojunction via A-Site defects reconstruction perovskite oxide for efficient CO2 photoreduction</div>
-                <div class="pub-authors">Gao, Yibo; Zhang, Miaomiao; Fan, Zutao; Yang, Daokui; Xu, Mengxia; Zhao, Xiqiang; Song, Zhanlong; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Nano Energy</span>, 2025, 141. (IF: 17.1)</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Green synthesis of NaP1 zeolite from MSWI fly ash and silica-rich solid waste with superior Cu(II) removal efficiency</div>
-                <div class="pub-authors">Yang, Daokui; Kow, Kien-Woh; Meredith, Will; Peng, Yaqi; Wang, Lei; Li, Xiang; Zhang, Guanlin; Zhang, Jiazheng; Chen, Guifang; Li, Jingwei; Wang, Xujiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Xu, Mengxia</div>
-                <div class="pub-journal"><span>Chemical Engineering Journal</span>, 2025, 522. (IF: 13.2)</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">External electric field effects on H2S thermocatalysis for highly efficient H2 production</div>
-                <div class="pub-authors">Zhang, Baoxu; Zhang, Jianheng; Song, Zhanlong; Pang, Yingping; Yang, Zhongyuan; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Ziliang; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Chemical Engineering Journal</span>, 2025, 512.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Sn-modified Cu nanosheets catalyze CO2 reduction to C2H4 efficiently by stabilizing CO intermediates and promoting CC coupling</div>
-                <div class="pub-authors">Wang, Hongfei; Zhang, Fusen; Li, Yang; Pang, Yingping; Zhao, Xiqiang; Song, Zhanlong; Wang, Wenlong; Sun, Jing; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Journal of Colloid and Interface Science</span>, 2025, 678: 506-514.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Synergistic preparation of iron-rich biochar via pyrolysis of iron-rich sludge and glucosamine sludge in a kiln exhaust gas pyrolysis furnace for the degradation of sulfamethoxazole</div>
-                <div class="pub-authors">Pang, Dongjie; Jin, Yang; Gao, Yibo; Zhang, Miaomiao; Zhang, Jiazheng; Wei, Guangshuo; Song, Tinglu; Wang, Ziliang; Wang, Xujiang; Li, Jingwei; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Sustainable Materials and Technologies</span>, 2025.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Effect of promoters on the syngas production in the microwave-enhanced methane dry reforming over Ni-x/AC (x = Mg, Ca, La, Ce) catalysts</div>
-                <div class="pub-authors">Zhang, Miaomiao; Gao, Yibo; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Journal of CO2 Utilization</span>, 2025, 95.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">New insights into microwave-mediated dry reforming of methane over Al2O3-stabilized activated carbon-based catalysts: Experimental and DFT study</div>
-                <div class="pub-authors">Zhang, Miaomiao; Gao, Yibo; Jin, Yang; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>International Journal of Hydrogen Energy</span>, 2025, 109: 344-357.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Performance comparison of solid waste-derived sulfoaluminate cement and Portland cement under air curing and CO2 curing</div>
-                <div class="pub-authors">Song, Jialin; Wang, Xujiang; Chen, Yanghao; Mi, Renjie; Zhang, Dongyu; Li, Jingwei; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Construction and Building Materials</span>, 2025, 482.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Investigation of sludge-based iron-biochar material derived for cement: composites performance, hydration mechanism, and sustainability</div>
-                <div class="pub-authors">Zhang, Jiazheng; Wei, Guangshuo; Yang, Daokui; Yang, Shizhao; Wang, Xujiang; Li, Jingwei; Yang, Jiajun; Song, Minghui; Liu, Zhihao; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Construction and Building Materials</span>, 2025, 474.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Influence of antifreeze, accelerator, and pre-curing on properties and hydration of iron-rich calcium sulfoaluminate cement under cold temperatures</div>
-                <div class="pub-authors">Sun, Deqiang; Wang, Xujiang; Wang, Haohao; Mi, Renjie; Liu, Jiwen; Li, Jingwei; Wang, Jianyong; <strong>Mao, Yanpeng</strong>; Hu, Zhijuan; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Construction and Building Materials</span>, 2025, 471.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">A sustainable strategy for upcycling spent NCM into Li1.2Ni0.13Co0.13Mn0.54O2 cathode material for advanced lithium-ion batteries</div>
-                <div class="pub-authors">Sun, Jing; Chen, Wenxin; Lu, Shuo; Song, Zhanlong; Wang, Wenlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Resources Environment and Sustainability</span>, 2025, 22.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Mechanistic insights and predictive modeling of silicate dissolution in gold tailings via alkaline hydrothermal treatment</div>
-                <div class="pub-authors">Wei, Guangshuo; Zhang, Jiazheng; Yang, Daokui; Jin, Yang; Wang, Xujiang; Li, Jingwei; Pang, Dongjie; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Process Safety and Environmental Protection</span>, 2025, 194: 716-729.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Mechanism of microwave-enhanced catalytic of plastic cracking for hydrogen production over iron catalysts: A reactive molecular dynamics study</div>
-                <div class="pub-authors">Yao, Liansheng; Li, Hongwei; Song, Zhanlong; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Fuel</span>, 2025, 389.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Data-Driven Analysis of Strength-Influencing Factors in Solid-Waste-Based Calcium Sulfoaluminate Cement</div>
-                <div class="pub-authors">Li, Jiahao; Wang, Xujiang; Lin, Xiang; Xu, Xinshun; Sun, Deqiang; Yao, Yonggang; Li, Jingwei; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div>
-                <div class="pub-journal"><span>ACS Sustainable Chemistry & Engineering</span>, 2025, 13(41): 17182-17196.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Hydration characteristics and heavy metal leaching risk of sewage sludge-based sulphoaluminate cement</div>
-                <div class="pub-authors">Wang, Haohao; Wang, Xujiang; Sun, Deqiang; Zhang, Ziliang; Yang, Shizhao; Liu, Jiwen; Li, Jingwei; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Song, Zhanlong</div>
-                <div class="pub-journal"><span>Journal of Environmental Chemical Engineering</span>, 2025, 13(3).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Molybdenum borides boosted Fenton-like oxidation for sustainable water decontamination: Contributions of multifold reactive oxygen species</div>
-                <div class="pub-authors">Jin, Yang; <strong>Mao, Yanpeng</strong>; Chen, Shouyan; Zhou, Peng</div>
-                <div class="pub-journal"><span>Journal of Environmental Chemical Engineering</span>, 2025, 13(1).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Enhancing the photocatalytic efficiency by the molecular modification effect derived from pollutant adsorption on highly crystalline BiOBr</div>
-                <div class="pub-authors">Jin, Yang; Liu, Tongyin; <strong>Mao, Yanpeng</strong>; Li, Fan; Hu, Chun</div>
-                <div class="pub-journal"><span>Journal of Environmental Sciences</span>, 2025, 148: 263-273.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Eu3+/Tb3+co-doped CaWO4 for multi-color luminescence, electromagnetic immunity and dual-mode self-calibration optical thermometry</div>
-                <div class="pub-authors">Zhang, Miaomiao; Zhou, Meng; Gao, Yibo; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Ceramics International</span>, 2025, 51(16): 22075-22085.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Thermoconversion of organic solid waste in a spouted bed reactor: A review</div>
-                <div class="pub-authors">Wang, Chenlong; Wang, Tao; Wan, Kai; Lv, Jinyi; Sun, Jing; Zhang, Xinyan; Pang, Yingping; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Ziliang; Yun, Huimin; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Particuology</span>, 2025, 100: 140-156.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Microwave-coupled wet oxidation technique enhanced the efficient degradation of methyl orange organic wastewater by graphene-supported nano zero-valent iron (nZVI/GN)</div>
-                <div class="pub-authors">Guo, Dexun; Zhang, Miaomiao; Gao, Yibo; Wang, Aihua; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Environment Development and Sustainability</span>, 2025.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Electrocatalytic Oxidation for Efficient Toluene Removal with a Catalytic Cu-MnOx/GF Electrode in a Solid-State Electrocatalytic Device</div>
-                <div class="pub-authors">Liu, Haozhen; Liu, Mingxin; Zhao, Xiqiang; Zhou, Ping; Song, Zhanlong; Wang, Wenlong; Sun, Jing; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Catalysts</span>, 2025, 15(8).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">A Promising Monolithic Catalyst for Advanced VOCs Oxidation by Graphene-Doped α-MnO2 Loaded on Cordierite Honeycomb</div>
-                <div class="pub-authors">Dong, Yilin; Zhao, Yiyang; Sun, Jing; Shen, Yafang; Zhao, Xiqiang; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Catalysts</span>, 2025, 15(4).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Development and performance evaluation of a novel ultra-high performance concrete based on low-carbon calcium sulfoaluminate cement</div>
-                <div class="pub-authors">Ma, Zhiyao; Wang, Xujiang; Yao, Yonggang; Pan, Zeyang; Mi, Renjie; Li, Jingwei; Liu, Jiwen; Wang, Jianyong; <strong>Mao, Yanpeng</strong>; Hu, Zhijuan; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Materials and Structures</span>, 2025, 58(9).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Advanced NiCr/NiSi Thin-Film Thermocouples for Precise Temperature Sensing in Lithium-Ion Battery Systems</div>
-                <div class="pub-authors">Liu, Xiyao; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Sensors</span>, 2025, 25(11).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Study of Properties of Composite Cementitious Materials with Sulfoaluminate Cement and Solid Waste Based on Compaction Forming Process</div>
-                <div class="pub-authors">Ma, Zhiyao; Wang, Xujiang; Yu, Mushen; Chen, Shouyan; Liu, Jiwen; Li, Jingwei; Wang, Jianyong; Sun, Hao; <strong>Mao, Yanpeng</strong>; Hu, Zhijuan; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Materials</span>, 2025, 18(9).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Microwave demulsification characteristics and product analysis of oily sludge</div>
-                <div class="pub-authors">Song, Zhanlong; Pan, Wei; Wang, Siyu; Lv, Xu; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Xujiang; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Energy Sources Part A-Recovery Utilization and Environmental Effects</span>, 2025, 47(1): 9720-9739.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Study on the evolution of internal and external water of lignite during microwave drying and the moisture reabsorption characteristics of dried lignite</div>
-                <div class="pub-authors">Yao, Liansheng; Song, Zhanlong; Sun, Chenggong; Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Sun, Jing; Wang, Tao</div>
-                <div class="pub-journal"><span>Energy Sources Part A-Recovery Utilization and Environmental Effects</span>, 2025, 47(1): 3284-3301.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Defect engineering of α-MnO2 catalyst for boosting the low-temperature toluene oxidation</div>
-                <div class="pub-authors">Cheng, Lijun; Lei, Juan; Ren, Xiaoli; Chang, Hong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Reaction Kinetics Mechanisms and Catalysis</span>, 2025, 138(5): 2921-2937.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">A mini review on AI-driven thermal treatment of solid Waste: Emission control and process optimization</div>
-                <div class="pub-authors">Pang, Dongjie; Moliner, Cristina; Wang, Tao; Sun, Jin; Zhang, Xinyan; Pang, Yingping; Zhao, Xiqiang; Song, Zhanlong; Wang, Ziliang; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Green Energy and Resources</span>, 2025, 3(2).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Parametric study of the decomposition of methane for COx-free H2 and high valued carbon using Ni-based catalyst via machine-learning simulation</div>
-                <div class="pub-authors">Xue, Dinghao; Zhang, Pingyang; Lin, Yuanyuan; Wang, Wenshuo; Shi, Jiachang; Hu, Qiang; Lopez, Gartzen; Moliner, Cristina; Sun, Jin; Wang, Tao; Zhang, Xinyan; Pang, Yingping; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Ziliang; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Green Energy and Resources</span>, 2025, 3(1).</div>
-            </li>
+            <li class="pub-item"><div class="pub-title">Modulating eg Occupancy by A-Site Vacancy to Boost Photocatalytic CO2 Reduction on Perovskite Oxides</div><div class="pub-authors">Gao, Yibo; Zhang, Miaomiao; Fan, Zutao; Jin, Yang; Song, Zhanlong; Wang, Wenlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Advanced Functional Materials</span>, 2025, 35(17).</div></li>
+            <li class="pub-item"><div class="pub-title">In-situ generation of S-scheme heterojunction via A-Site defects reconstruction perovskite oxide for efficient CO2 photoreduction</div><div class="pub-authors">Gao, Yibo; Zhang, Miaomiao; Fan, Zutao; Yang, Daokui; Xu, Mengxia; Zhao, Xiqiang; Song, Zhanlong; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Nano Energy</span>, 2025, 141.</div></li>
+            <li class="pub-item"><div class="pub-title">Green synthesis of NaP1 zeolite from MSWI fly ash and silica-rich solid waste with superior Cu(II) removal efficiency</div><div class="pub-authors">Yang, Daokui; Kow, Kien-Woh; Meredith, Will; Peng, Yaqi; Wang, Lei; Li, Xiang; Zhang, Guanlin; Zhang, Jiazheng; Chen, Guifang; Li, Jingwei; Wang, Xujiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Xu, Mengxia</div><div class="pub-journal"><span>Chemical Engineering Journal</span>, 2025, 522.</div></li>
+            <li class="pub-item"><div class="pub-title">External electric field effects on H2S thermocatalysis for highly efficient H2 production</div><div class="pub-authors">Zhang, Baoxu; Zhang, Jianheng; Song, Zhanlong; Pang, Yingping; Yang, Zhongyuan; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Ziliang; Wang, Wenlong</div><div class="pub-journal"><span>Chemical Engineering Journal</span>, 2025, 512.</div></li>
+            <li class="pub-item"><div class="pub-title">Sn-modified Cu nanosheets catalyze CO2 reduction to C2H4 efficiently by stabilizing CO intermediates and promoting CC coupling</div><div class="pub-authors">Wang, Hongfei; Zhang, Fusen; Li, Yang; Pang, Yingping; Zhao, Xiqiang; Song, Zhanlong; Wang, Wenlong; Sun, Jing; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Journal of Colloid and Interface Science</span>, 2025, 678: 506-514.</div></li>
+            <li class="pub-item"><div class="pub-title">Synergistic preparation of iron-rich biochar via pyrolysis of iron-rich sludge and glucosamine sludge in a kiln exhaust gas pyrolysis furnace for the degradation of sulfamethoxazole</div><div class="pub-authors">Pang, Dongjie; Jin, Yang; Gao, Yibo; Zhang, Miaomiao; Zhang, Jiazheng; Wei, Guangshuo; Song, Tinglu; Wang, Ziliang; Wang, Xujiang; Li, Jingwei; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Sustainable Materials and Technologies</span>, 2025.</div></li>
+            <li class="pub-item"><div class="pub-title">Effect of promoters on the syngas production in the microwave-enhanced methane dry reforming over Ni-x/AC (x = Mg, Ca, La, Ce) catalysts</div><div class="pub-authors">Zhang, Miaomiao; Gao, Yibo; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Journal of CO2 Utilization</span>, 2025, 95.</div></li>
+            <li class="pub-item"><div class="pub-title">New insights into microwave-mediated dry reforming of methane over Al2O3-stabilized activated carbon-based catalysts: Experimental and DFT study</div><div class="pub-authors">Zhang, Miaomiao; Gao, Yibo; Jin, Yang; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>International Journal of Hydrogen Energy</span>, 2025, 109: 344-357.</div></li>
+            <li class="pub-item"><div class="pub-title">Performance comparison of solid waste-derived sulfoaluminate cement and Portland cement under air curing and CO2 curing</div><div class="pub-authors">Song, Jialin; Wang, Xujiang; Chen, Yanghao; Mi, Renjie; Zhang, Dongyu; Li, Jingwei; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div><div class="pub-journal"><span>Construction and Building Materials</span>, 2025, 482.</div></li>
+            <li class="pub-item"><div class="pub-title">Investigation of sludge-based iron-biochar material derived for cement: composites performance, hydration mechanism, and sustainability</div><div class="pub-authors">Zhang, Jiazheng; Wei, Guangshuo; Yang, Daokui; Yang, Shizhao; Wang, Xujiang; Li, Jingwei; Yang, Jiajun; Song, Minghui; Liu, Zhihao; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Construction and Building Materials</span>, 2025, 474.</div></li>
+            <li class="pub-item"><div class="pub-title">Influence of antifreeze, accelerator, and pre-curing on properties and hydration of iron-rich calcium sulfoaluminate cement under cold temperatures</div><div class="pub-authors">Sun, Deqiang; Wang, Xujiang; Wang, Haohao; Mi, Renjie; Liu, Jiwen; Li, Jingwei; Wang, Jianyong; <strong>Mao, Yanpeng</strong>; Hu, Zhijuan; Wang, Wenlong</div><div class="pub-journal"><span>Construction and Building Materials</span>, 2025, 471.</div></li>
+            <li class="pub-item"><div class="pub-title">A sustainable strategy for upcycling spent NCM into Li1.2Ni0.13Co0.13Mn0.54O2 cathode material for advanced lithium-ion batteries</div><div class="pub-authors">Sun, Jing; Chen, Wenxin; Lu, Shuo; Song, Zhanlong; Wang, Wenlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Resources Environment and Sustainability</span>, 2025, 22.</div></li>
+            <li class="pub-item"><div class="pub-title">Mechanistic insights and predictive modeling of silicate dissolution in gold tailings via alkaline hydrothermal treatment</div><div class="pub-authors">Wei, Guangshuo; Zhang, Jiazheng; Yang, Daokui; Jin, Yang; Wang, Xujiang; Li, Jingwei; Pang, Dongjie; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Process Safety and Environmental Protection</span>, 2025, 194: 716-729.</div></li>
+            <li class="pub-item"><div class="pub-title">Mechanism of microwave-enhanced catalytic of plastic cracking for hydrogen production over iron catalysts: A reactive molecular dynamics study</div><div class="pub-authors">Yao, Liansheng; Li, Hongwei; Song, Zhanlong; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Fuel</span>, 2025, 389.</div></li>
+            <li class="pub-item"><div class="pub-title">Data-Driven Analysis of Strength-Influencing Factors in Solid-Waste-Based Calcium Sulfoaluminate Cement</div><div class="pub-authors">Li, Jiahao; Wang, Xujiang; Lin, Xiang; Xu, Xinshun; Sun, Deqiang; Yao, Yonggang; Li, Jingwei; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div><div class="pub-journal"><span>ACS Sustainable Chemistry & Engineering</span>, 2025, 13(41): 17182-17196.</div></li>
+            <li class="pub-item"><div class="pub-title">Hydration characteristics and heavy metal leaching risk of sewage sludge-based sulphoaluminate cement</div><div class="pub-authors">Wang, Haohao; Wang, Xujiang; Sun, Deqiang; Zhang, Ziliang; Yang, Shizhao; Liu, Jiwen; Li, Jingwei; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Song, Zhanlong</div><div class="pub-journal"><span>Journal of Environmental Chemical Engineering</span>, 2025, 13(3).</div></li>
+            <li class="pub-item"><div class="pub-title">Molybdenum borides boosted Fenton-like oxidation for sustainable water decontamination: Contributions of multifold reactive oxygen species</div><div class="pub-authors">Jin, Yang; <strong>Mao, Yanpeng</strong>; Chen, Shouyan; Zhou, Peng</div><div class="pub-journal"><span>Journal of Environmental Chemical Engineering</span>, 2025, 13(1).</div></li>
+            <li class="pub-item"><div class="pub-title">Enhancing the photocatalytic efficiency by the molecular modification effect derived from pollutant adsorption on highly crystalline BiOBr</div><div class="pub-authors">Jin, Yang; Liu, Tongyin; <strong>Mao, Yanpeng</strong>; Li, Fan; Hu, Chun</div><div class="pub-journal"><span>Journal of Environmental Sciences</span>, 2025, 148: 263-273.</div></li>
+            <li class="pub-item"><div class="pub-title">Eu3+/Tb3+co-doped CaWO4 for multi-color luminescence, electromagnetic immunity and dual-mode self-calibration optical thermometry</div><div class="pub-authors">Zhang, Miaomiao; Zhou, Meng; Gao, Yibo; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Ceramics International</span>, 2025, 51(16): 22075-22085.</div></li>
+            <li class="pub-item"><div class="pub-title">Thermoconversion of organic solid waste in a spouted bed reactor: A review</div><div class="pub-authors">Wang, Chenlong; Wang, Tao; Wan, Kai; Lv, Jinyi; Sun, Jing; Zhang, Xinyan; Pang, Yingping; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Ziliang; Yun, Huimin; Wang, Wenlong</div><div class="pub-journal"><span>Particuology</span>, 2025, 100: 140-156.</div></li>
+            <li class="pub-item"><div class="pub-title">Microwave-coupled wet oxidation technique enhanced the efficient degradation of methyl orange organic wastewater by graphene-supported nano zero-valent iron (nZVI/GN)</div><div class="pub-authors">Guo, Dexun; Zhang, Miaomiao; Gao, Yibo; Wang, Aihua; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Environment Development and Sustainability</span>, 2025.</div></li>
+            <li class="pub-item"><div class="pub-title">Electrocatalytic Oxidation for Efficient Toluene Removal with a Catalytic Cu-MnOx/GF Electrode in a Solid-State Electrocatalytic Device</div><div class="pub-authors">Liu, Haozhen; Liu, Mingxin; Zhao, Xiqiang; Zhou, Ping; Song, Zhanlong; Wang, Wenlong; Sun, Jing; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Catalysts</span>, 2025, 15(8).</div></li>
+            <li class="pub-item"><div class="pub-title">A Promising Monolithic Catalyst for Advanced VOCs Oxidation by Graphene-Doped α-MnO2 Loaded on Cordierite Honeycomb</div><div class="pub-authors">Dong, Yilin; Zhao, Yiyang; Sun, Jing; Shen, Yafang; Zhao, Xiqiang; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Catalysts</span>, 2025, 15(4).</div></li>
+            <li class="pub-item"><div class="pub-title">Development and performance evaluation of a novel ultra-high performance concrete based on low-carbon calcium sulfoaluminate cement</div><div class="pub-authors">Ma, Zhiyao; Wang, Xujiang; Yao, Yonggang; Pan, Zeyang; Mi, Renjie; Li, Jingwei; Liu, Jiwen; Wang, Jianyong; <strong>Mao, Yanpeng</strong>; Hu, Zhijuan; Wang, Wenlong</div><div class="pub-journal"><span>Materials and Structures</span>, 2025, 58(9).</div></li>
+            <li class="pub-item"><div class="pub-title">Advanced NiCr/NiSi Thin-Film Thermocouples for Precise Temperature Sensing in Lithium-Ion Battery Systems</div><div class="pub-authors">Liu, Xiyao; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Sensors</span>, 2025, 25(11).</div></li>
+            <li class="pub-item"><div class="pub-title">Study of Properties of Composite Cementitious Materials with Sulfoaluminate Cement and Solid Waste Based on Compaction Forming Process</div><div class="pub-authors">Ma, Zhiyao; Wang, Xujiang; Yu, Mushen; Chen, Shouyan; Liu, Jiwen; Li, Jingwei; Wang, Jianyong; Sun, Hao; <strong>Mao, Yanpeng</strong>; Hu, Zhijuan; Wang, Wenlong</div><div class="pub-journal"><span>Materials</span>, 2025, 18(9).</div></li>
+            <li class="pub-item"><div class="pub-title">Microwave demulsification characteristics and product analysis of oily sludge</div><div class="pub-authors">Song, Zhanlong; Pan, Wei; Wang, Siyu; Lv, Xu; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Xujiang; Wang, Wenlong</div><div class="pub-journal"><span>Energy Sources Part A-Recovery Utilization and Environmental Effects</span>, 2025, 47(1): 9720-9739.</div></li>
+            <li class="pub-item"><div class="pub-title">Study on the evolution of internal and external water of lignite during microwave drying and the moisture reabsorption characteristics of dried lignite</div><div class="pub-authors">Yao, Liansheng; Song, Zhanlong; Sun, Chenggong; Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Sun, Jing; Wang, Tao</div><div class="pub-journal"><span>Energy Sources Part A-Recovery Utilization and Environmental Effects</span>, 2025, 47(1): 3284-3301.</div></li>
+            <li class="pub-item"><div class="pub-title">Defect engineering of α-MnO2 catalyst for boosting the low-temperature toluene oxidation</div><div class="pub-authors">Cheng, Lijun; Lei, Juan; Ren, Xiaoli; Chang, Hong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Reaction Kinetics Mechanisms and Catalysis</span>, 2025, 138(5): 2921-2937.</div></li>
+            <li class="pub-item"><div class="pub-title">A mini review on AI-driven thermal treatment of solid Waste: Emission control and process optimization</div><div class="pub-authors">Pang, Dongjie; Moliner, Cristina; Wang, Tao; Sun, Jin; Zhang, Xinyan; Pang, Yingping; Zhao, Xiqiang; Song, Zhanlong; Wang, Ziliang; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div><div class="pub-journal"><span>Green Energy and Resources</span>, 2025, 3(2).</div></li>
+            <li class="pub-item"><div class="pub-title">Parametric study of the decomposition of methane for COx-free H2 and high valued carbon using Ni-based catalyst via machine-learning simulation</div><div class="pub-authors">Xue, Dinghao; Zhang, Pingyang; Lin, Yuanyuan; Wang, Wenshuo; Shi, Jiachang; Hu, Qiang; Lopez, Gartzen; Moliner, Cristina; Sun, Jin; Wang, Tao; Zhang, Xinyan; Pang, Yingping; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Wang, Ziliang; Wang, Wenlong</div><div class="pub-journal"><span>Green Energy and Resources</span>, 2025, 3(1).</div></li>
         </ul>
 
-        <!-- ================= 2024 ================= -->
         <h2>2024</h2>
         <ul class="pub-list">
-            <li class="pub-item">
-                <div class="pub-title">Low-coordination transition metal sites on oxygen vacancy enriched strontium titanate-based perovskites enable highly selective photocatalytic CO2 reduction to CH4</div>
-                <div class="pub-authors">Gao, Yibo; Zhang, Miaomiao; Jin, Yang; Zhou, Meng; <strong>Mao, Yanpeng</strong>; Sun, Jian; Wang, Wenlong; Song, Zhanlong</div>
-                <div class="pub-journal"><span>Applied Catalysis B-Environment and Energy</span>, 2024, 341. (IF: 21.1)</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Construction of Dual Active Sites in Perovskite Oxide for Targeted Photocatalytic CO2 Reduction to CH4</div>
-                <div class="pub-authors">Gao, Yibo; Zhang, Miaomiao; Jin, Yang; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Song, Zhanlong</div>
-                <div class="pub-journal"><span>ACS Catalysis</span>, 2024, 14(14): 10746-10759. (IF: 13.1)</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Co-treatment of municipal solid waste incineration fly ash and alumina-/ silica-containing waste: A critical review</div>
-                <div class="pub-authors">Yang, Daokui; Kow, Kien-Woh; Wang, Wenlong; Meredith, Will; Zhang, Guanlin; <strong>Mao, Yanpeng</strong>; Xu, Mengxia</div>
-                <div class="pub-journal"><span>Journal of Hazardous Materials</span>, 2024, 479. (IF: 11.3)</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Tungsten-needle intensifies microwave-sustained plasma accelerating direct H2S conversion to H2</div>
-                <div class="pub-authors">Zhang, Baoxu; Song, Zhanlong; Pang, Yingping; Zhang, Xiaorong; Zhang, Jianheng; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang; Sun, Jing; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Journal of Hazardous Materials</span>, 2024, 478.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">High conversion of H2S to H2 and S via a robust microwave-induced discharge plasma</div>
-                <div class="pub-authors">Zhang, Baoxu; Song, Zhanlong; Pang, Yingping; Zhang, Jianheng; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Sun, Jing; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Journal of Cleaner Production</span>, 2024, 435. (IF: 10)</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Highly efficient carbonation and dechlorination using flue gas micro-nano bubble for municipal solid waste incineration fly ash pretreatment and its applicability to sulfoaluminate cementitious materials</div>
-                <div class="pub-authors">Zhang, Jiazheng; <strong>Mao, Yanpeng</strong>; Jin, Yang; Wang, Xujiang; Li, Jingwei; Yang, Shizhao; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Journal of Environmental Management</span>, 2024, 353.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Effect of phosphorus impurities on sulfoaluminate cement-modified gypsum-based self-leveling mortar and improvement method</div>
-                <div class="pub-authors">Xiao, Xin; Li, Jingwei; Yang, Shizhao; Hou, Xiangshan; Liu, Yanhui; Li, Yuzhong; Wang, Xujiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Construction and Building Materials</span>, 2024, 442.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Effect of pyroligneous acid as a novel bio-additive on the hydration mechanism of calcium sulfoaluminate cement and ordinary Portland cement</div>
-                <div class="pub-authors">Wei, Guangshuo; Zhang, Jiazheng; <strong>Mao, Yanpeng</strong>; Wang, Xujiang; Li, Jingwei; Pang, Dongjie; Jin, Yang; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Construction and Building Materials</span>, 2024, 439.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Improving the performance of iron-rich calcium sulfoaluminate cement from municipal solid waste incineration fly ash through diverse pretreatment approaches</div>
-                <div class="pub-authors">Zhang, Jiazheng; <strong>Mao, Yanpeng</strong>; Wei, Guangshuo; Jin, Yang; Wang, Xujiang; Li, Jingwei; Pang, Dongjie; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Construction and Building Materials</span>, 2024, 438.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Properties and hydration characteristics of cementitious blends with two kinds of solid waste-based sulfoaluminate cement</div>
-                <div class="pub-authors">Sun, Deqiang; Wang, Xujiang; Wang, Jianyong; Li, Jingwei; <strong>Mao, Yanpeng</strong>; Hu, Zhijuan; Li, Yuzhong; Song, Zhanlong; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Construction and Building Materials</span>, 2024, 411.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Reuse of by-product gypsum with solid wastes-derived sulfoaluminate cement modification for the preparation of self-leveling mortar and influence mechanism of H3PO4</div>
-                <div class="pub-authors">Xiao, Xin; Li, Jingwei; Meng, Qingke; Hou, Xiangshan; Liu, Yanhui; Wang, Xujiang; Wang, Wenlong; Lu, Shengtao; Li, Yuzhong; <strong>Mao, Yanpeng</strong>; Li, Tong</div>
-                <div class="pub-journal"><span>Construction and Building Materials</span>, 2024, 411.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Coordinated disposal of FGD gypsum and power plant concentrated brine via preparation of α-hemihydrate gypsum</div>
-                <div class="pub-authors">Pang, Dongjie; <strong>Mao, Yanpeng</strong>; Huang, Yanmin; Wang, Wenlong; Wang, Xujiang; Li, Jingwei</div>
-                <div class="pub-journal"><span>Materials Today Sustainability</span>, 2024, 25.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">A feasible recycling route for spent graphite: Microwave-assisted puffing with Fe2O3 loading to construct high-performance anode for lithium-ion batteries</div>
-                <div class="pub-authors">Jia, Pingshan; Sun, Jing; Li, Su; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Materials Today Sustainability</span>, 2024, 25.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Fe3C-modified carbon composites for boosted peroxymonosulfate activation and organic pollutant decontamination: Contributions of dual radical and nonradical pathways</div>
-                <div class="pub-authors">Jin, Yang; Gao, Yibo; Pang, Dongjie; Li, Jingwei; Wang, Xujiang; Chen, Guifang; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Surfaces and Interfaces</span>, 2024, 46.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Impact of fiber structure on the heat and mass transfer characteristics of medium density fiberboard from fractal-based microstructure reconstruction</div>
-                <div class="pub-authors">Zhou, Xing; Chen, Weier; Li, Zongqiang; Zhou, Ping; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Sun, Jing; Song, Zhanlong; Zhao, Xiqiang</div>
-                <div class="pub-journal"><span>Thermal Science and Engineering Progress</span>, 2024, 52.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">A Strategy for Anode Recovery and Upgrading by In Situ Growth of Iron-Based Oxides on Microwave-Puffed Graphite</div>
-                <div class="pub-authors">Chen, Wenxin; Sun, Jing; Jia, Pingshan; Wang, Wenlong; Song, Zhanlong; Wang, Ziliang; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Molecules</span>, 2024, 29(13).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Factors influencing demulsification of refinery oily sludge via ultrasonic treatment</div>
-                <div class="pub-authors">Song, Zhanlong; Ren, Fei; Wang, Siyu; Pang, Yingping; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Yu, Jun; Su, Ying</div>
-                <div class="pub-journal"><span>Chemical Engineering and Processing-Process Intensification</span>, 2024, 204.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Swelling effect on the microwave pyrolysis of waste car tires</div>
-                <div class="pub-authors">Song, Zhanlong; Tao, Shuanghua; Han, Yuankai; Hu, Yuting; Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Sun, Jing</div>
-                <div class="pub-journal"><span>Journal of Applied Polymer Science</span>, 2024, 141(8).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Pyrolysis characteristics and product distribution of oil sludge based on radiant heating</div>
-                <div class="pub-authors">Song, Zhanlong; Tang, Tao; Xu, Baolin; Yu, Jun; Su, Ying; Pang, Yingping; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Environmental Science and Pollution Research</span>, 2024.</div>
-            </li>
+            <li class="pub-item"><div class="pub-title">Low-coordination transition metal sites on oxygen vacancy enriched strontium titanate-based perovskites enable highly selective photocatalytic CO2 reduction to CH4</div><div class="pub-authors">Gao, Yibo; Zhang, Miaomiao; Jin, Yang; Zhou, Meng; <strong>Mao, Yanpeng</strong>; Sun, Jian; Wang, Wenlong; Song, Zhanlong</div><div class="pub-journal"><span>Applied Catalysis B-Environment and Energy</span>, 2024, 341.</div></li>
+            <li class="pub-item"><div class="pub-title">Construction of Dual Active Sites in Perovskite Oxide for Targeted Photocatalytic CO2 Reduction to CH4</div><div class="pub-authors">Gao, Yibo; Zhang, Miaomiao; Jin, Yang; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Song, Zhanlong</div><div class="pub-journal"><span>ACS Catalysis</span>, 2024, 14(14): 10746-10759.</div></li>
+            <li class="pub-item"><div class="pub-title">Co-treatment of municipal solid waste incineration fly ash and alumina-/ silica-containing waste: A critical review</div><div class="pub-authors">Yang, Daokui; Kow, Kien-Woh; Wang, Wenlong; Meredith, Will; Zhang, Guanlin; <strong>Mao, Yanpeng</strong>; Xu, Mengxia</div><div class="pub-journal"><span>Journal of Hazardous Materials</span>, 2024, 479.</div></li>
+            <li class="pub-item"><div class="pub-title">Tungsten-needle intensifies microwave-sustained plasma accelerating direct H2S conversion to H2</div><div class="pub-authors">Zhang, Baoxu; Song, Zhanlong; Pang, Yingping; Zhang, Xiaorong; Zhang, Jianheng; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang; Sun, Jing; Wang, Wenlong</div><div class="pub-journal"><span>Journal of Hazardous Materials</span>, 2024, 478.</div></li>
+            <li class="pub-item"><div class="pub-title">High conversion of H2S to H2 and S via a robust microwave-induced discharge plasma</div><div class="pub-authors">Zhang, Baoxu; Song, Zhanlong; Pang, Yingping; Zhang, Jianheng; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Sun, Jing; Wang, Wenlong</div><div class="pub-journal"><span>Journal of Cleaner Production</span>, 2024, 435.</div></li>
+            <li class="pub-item"><div class="pub-title">Highly efficient carbonation and dechlorination using flue gas micro-nano bubble for municipal solid waste incineration fly ash pretreatment and its applicability to sulfoaluminate cementitious materials</div><div class="pub-authors">Zhang, Jiazheng; <strong>Mao, Yanpeng</strong>; Jin, Yang; Wang, Xujiang; Li, Jingwei; Yang, Shizhao; Wang, Wenlong</div><div class="pub-journal"><span>Journal of Environmental Management</span>, 2024, 353.</div></li>
+            <li class="pub-item"><div class="pub-title">Effect of phosphorus impurities on sulfoaluminate cement-modified gypsum-based self-leveling mortar and improvement method</div><div class="pub-authors">Xiao, Xin; Li, Jingwei; Yang, Shizhao; Hou, Xiangshan; Liu, Yanhui; Li, Yuzhong; Wang, Xujiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Construction and Building Materials</span>, 2024, 442.</div></li>
+            <li class="pub-item"><div class="pub-title">Effect of pyroligneous acid as a novel bio-additive on the hydration mechanism of calcium sulfoaluminate cement and ordinary Portland cement</div><div class="pub-authors">Wei, Guangshuo; Zhang, Jiazheng; <strong>Mao, Yanpeng</strong>; Wang, Xujiang; Li, Jingwei; Pang, Dongjie; Jin, Yang; Wang, Wenlong</div><div class="pub-journal"><span>Construction and Building Materials</span>, 2024, 439.</div></li>
+            <li class="pub-item"><div class="pub-title">Improving the performance of iron-rich calcium sulfoaluminate cement from municipal solid waste incineration fly ash through diverse pretreatment approaches</div><div class="pub-authors">Zhang, Jiazheng; <strong>Mao, Yanpeng</strong>; Wei, Guangshuo; Jin, Yang; Wang, Xujiang; Li, Jingwei; Pang, Dongjie; Wang, Wenlong</div><div class="pub-journal"><span>Construction and Building Materials</span>, 2024, 438.</div></li>
+            <li class="pub-item"><div class="pub-title">Properties and hydration characteristics of cementitious blends with two kinds of solid waste-based sulfoaluminate cement</div><div class="pub-authors">Sun, Deqiang; Wang, Xujiang; Wang, Jianyong; Li, Jingwei; <strong>Mao, Yanpeng</strong>; Hu, Zhijuan; Li, Yuzhong; Song, Zhanlong; Wang, Wenlong</div><div class="pub-journal"><span>Construction and Building Materials</span>, 2024, 411.</div></li>
+            <li class="pub-item"><div class="pub-title">Reuse of by-product gypsum with solid wastes-derived sulfoaluminate cement modification for the preparation of self-leveling mortar and influence mechanism of H3PO4</div><div class="pub-authors">Xiao, Xin; Li, Jingwei; Meng, Qingke; Hou, Xiangshan; Liu, Yanhui; Wang, Xujiang; Wang, Wenlong; Lu, Shengtao; Li, Yuzhong; <strong>Mao, Yanpeng</strong>; Li, Tong</div><div class="pub-journal"><span>Construction and Building Materials</span>, 2024, 411.</div></li>
+            <li class="pub-item"><div class="pub-title">Coordinated disposal of FGD gypsum and power plant concentrated brine via preparation of α-hemihydrate gypsum</div><div class="pub-authors">Pang, Dongjie; <strong>Mao, Yanpeng</strong>; Huang, Yanmin; Wang, Wenlong; Wang, Xujiang; Li, Jingwei</div><div class="pub-journal"><span>Materials Today Sustainability</span>, 2024, 25.</div></li>
+            <li class="pub-item"><div class="pub-title">A feasible recycling route for spent graphite: Microwave-assisted puffing with Fe2O3 loading to construct high-performance anode for lithium-ion batteries</div><div class="pub-authors">Jia, Pingshan; Sun, Jing; Li, Su; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Materials Today Sustainability</span>, 2024, 25.</div></li>
+            <li class="pub-item"><div class="pub-title">Fe3C-modified carbon composites for boosted peroxymonosulfate activation and organic pollutant decontamination: Contributions of dual radical and nonradical pathways</div><div class="pub-authors">Jin, Yang; Gao, Yibo; Pang, Dongjie; Li, Jingwei; Wang, Xujiang; Chen, Guifang; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Surfaces and Interfaces</span>, 2024, 46.</div></li>
+            <li class="pub-item"><div class="pub-title">Impact of fiber structure on the heat and mass transfer characteristics of medium density fiberboard from fractal-based microstructure reconstruction</div><div class="pub-authors">Zhou, Xing; Chen, Weier; Li, Zongqiang; Zhou, Ping; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Sun, Jing; Song, Zhanlong; Zhao, Xiqiang</div><div class="pub-journal"><span>Thermal Science and Engineering Progress</span>, 2024, 52.</div></li>
+            <li class="pub-item"><div class="pub-title">A Strategy for Anode Recovery and Upgrading by In Situ Growth of Iron-Based Oxides on Microwave-Puffed Graphite</div><div class="pub-authors">Chen, Wenxin; Sun, Jing; Jia, Pingshan; Wang, Wenlong; Song, Zhanlong; Wang, Ziliang; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Molecules</span>, 2024, 29(13).</div></li>
+            <li class="pub-item"><div class="pub-title">Factors influencing demulsification of refinery oily sludge via ultrasonic treatment</div><div class="pub-authors">Song, Zhanlong; Ren, Fei; Wang, Siyu; Pang, Yingping; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Yu, Jun; Su, Ying</div><div class="pub-journal"><span>Chemical Engineering and Processing-Process Intensification</span>, 2024, 204.</div></li>
+            <li class="pub-item"><div class="pub-title">Swelling effect on the microwave pyrolysis of waste car tires</div><div class="pub-authors">Song, Zhanlong; Tao, Shuanghua; Han, Yuankai; Hu, Yuting; Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Sun, Jing</div><div class="pub-journal"><span>Journal of Applied Polymer Science</span>, 2024, 141(8).</div></li>
+            <li class="pub-item"><div class="pub-title">Pyrolysis characteristics and product distribution of oil sludge based on radiant heating</div><div class="pub-authors">Song, Zhanlong; Tang, Tao; Xu, Baolin; Yu, Jun; Su, Ying; Pang, Yingping; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div><div class="pub-journal"><span>Environmental Science and Pollution Research</span>, 2024.</div></li>
         </ul>
 
-        <!-- ================= 2023 & Before ================= -->
-        <h2>2023 & Before</h2>
+        <h2>2023</h2>
         <ul class="pub-list">
-            <li class="pub-item">
-                <div class="pub-title">Dynamic confinement catalysis in Fe-based CO2 hydrogenation to light olefins</div>
-                <div class="pub-authors">Wang, Linkai; Han, Yu; Wei, Jian; Ge, Qingjie; Lu, Shijian; <strong>Mao, Yanpeng</strong>; Sun, Jian</div>
-                <div class="pub-journal"><span>Applied Catalysis B-Environment and Energy</span>, 2023, 328.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">3D snowflake graphene modified a-MnO2 Catalyst: Enhancing the Low-Temperature catalytic activity for VOCs degradation</div>
-                <div class="pub-authors">Dong, Yilin; Sun, Jing; Shen, Yafang; Wang, Ziliang; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Chemical Engineering Journal</span>, 2023, 473.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Enhanced dry reforming of methane by microwave-mediated confined catalysis over Ni-La/AC catalyst</div>
-                <div class="pub-authors">Zhang, Miaomiao; Gao, Yibo; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Sun, Jian; Song, Zhanlong; Sun, Jing; Zhao, Xiqiang</div>
-                <div class="pub-journal"><span>Chemical Engineering Journal</span>, 2023, 451.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Properties and hydration characteristics of an iron-rich sulfoaluminate cementitious material under cold temperatures</div>
-                <div class="pub-authors">Wang, Xujiang; Sun, Deqiang; Li, Jingwei; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Song, Zhanlong</div>
-                <div class="pub-journal"><span>Cement and Concrete Research</span>, 2023, 168.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Ratiometric fluorescence probe molecularly imprinted polymer encapsulating N, S, B doped carbon nanodots from waste Clematis Chinensis Osbeck for sensing furazolidone</div>
-                <div class="pub-authors">Zhang, Shujuan; <strong>Mao, Yanpeng</strong>; Song, Tinglu; Zhao, Xiqiang; Song, Zhanlong; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Carbon</span>, 2023, 213.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">ZIF-8 based dual scale superhydrophobic membrane for membrane distillation</div>
-                <div class="pub-authors">Cao, Han; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Jin, Yang; Gao, Yibo; Zhang, Miaomiao; Zhao, Xiqiang; Sun, Jing; Song, Zhanlong</div>
-                <div class="pub-journal"><span>Desalination</span>, 2023, 550.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Hierarchical core-shell Ni@C-NCNTs nanocomposites tailored for microwave-induced dry reforming of methane process</div>
-                <div class="pub-authors">Zhang, Miaomiao; Gao, Yibo; <strong>Mao, Yanpeng</strong>; Jin, Yang; Wang, Wenlong; Sun, Jian; Song, Zhanlong; Sun, Jing; Zhao, Xiqiang</div>
-                <div class="pub-journal"><span>Journal of Materials Chemistry A</span>, 2023, 11(40): 21908-21926.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Thermal co-treatment of aluminum dross and municipal solid waste incineration fly ash: Mineral transformation, crusting prevention, detoxification, and low-carbon cementitious material preparation</div>
-                <div class="pub-authors">Li, Jingwei; Jia, Aiguang; Hou, Xiangshan; Wang, Xujiang; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Journal of Environmental Management</span>, 2023, 329.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Review on the use of sludge in cement kilns: Mechanism, technical, and environmental evaluation</div>
-                <div class="pub-authors">Pang, Dongjie; <strong>Mao, Yanpeng</strong>; Jin, Yang; Song, Zhanlong; Wang, Xujiang; Li, Jingwei; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Process Safety and Environmental Protection</span>, 2023, 172: 1072-1086.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Preparation of architectural 3D printing material with a solid waste-derived sulfoaluminate matrix: A high-value conversion of solid waste</div>
-                <div class="pub-authors"><strong>Mao, Yanpeng</strong>; Zhang, Jiazheng; Wu, Han; Huang, Yanmin; Wang, Xujiang; Li, Jingwei; Sun, Jing; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Case Studies in Construction Materials</span>, 2023, 18.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Characterization and mechanism of p-nitrophenol removal based on modified nanoscale zero-valent iron electrocoagulation</div>
-                <div class="pub-authors">Zhang, Jian; Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Sun, Jing; Song, Zhanlong; Zhou, Ping</div>
-                <div class="pub-journal"><span>Colloids and Surfaces A: Physicochemical and Engineering Aspects</span>, 2023, 678.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Bidirectional Catalysis Disintegration and Mineral Polymerization via Endogenous Iron(III) from Iron-Rich Sludge in Synergy with Waste Incineration Fly Ash</div>
-                <div class="pub-authors">Pang, Dongjie; <strong>Mao, Yanpeng</strong>; Jin, Yang; Zhang, Jiazheng; Dong, Jingyi; Wang, Xujiang; Li, Jingwei; Wang, Wenlong</div>
-                <div class="pub-journal"><span>ACS Omega</span>, 2023, 8(38): 34663-34677.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Insights into the underpinning effect of graphene in Cu1Mn10 on enhancing the low-temperature catalytic activity for CO oxidation</div>
-                <div class="pub-authors">Shen, Yafang; Sun, Jing; Li, Jingwei; Dong, Yilin; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Environmental Research</span>, 2023, 237.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Calcination of sewage sludge-based sulphoaluminate cement clinker: Mineral formation mechanism and heavy metal transition behaviors</div>
-                <div class="pub-authors">Wang, Xujiang; Wang, Haohao; Zhang, Ziliang; Li, Jingwei; Zhang, Hongzhi; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Song, Zhanlong</div>
-                <div class="pub-journal"><span>Environmental Research</span>, 2023, 237.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Effect of swelling pretreatment by coal tar on the microwave pyrolysis of waste tires</div>
-                <div class="pub-authors">Song, Zhanlong; Hu, Yuting; Han, Yuankai; Chen, Shouyan; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Xujiang; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Journal of Environmental Chemical Engineering</span>, 2023, 11(5).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Full-value preparation of biochar and 2D N-doped CDs@ZIF-L from fermentation residues for sensitive sensing tetracyclines in food samples</div>
-                <div class="pub-authors">Zhang, Shujuan; <strong>Mao, Yanpeng</strong>; Wei, Lai; Song, Zhanlong; Zhao, Xiqiang; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Colloids and Surfaces A: Physicochemical and Engineering Aspects</span>, 2023, 676.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Progress on the Microwave-Assisted Recycling of Spent Lithium Battery Graphite</div>
-                <div class="pub-authors">Sun, Jing; Chen, Wenxin; Jia, Kexin; Li, Su; Jia, Pingshan; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Chen, Shouyan</div>
-                <div class="pub-journal"><span>Processes</span>, 2023, 11(5).</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">One-pot solvothermal preparation of triple-emission N, Cl doped carbon quantum dots from waste traditional Chinese medicines as a fluorescent sensor for sensing water and Cr (VI)</div>
-                <div class="pub-authors">Zhang, Shujuan; <strong>Mao, Yanpeng</strong>; Sun, Jian; Song, Tinglu; Song, Zhanlong; Zhao, Xiqiang; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Colloids and Surfaces A: Physicochemical and Engineering Aspects</span>, 2023, 669.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Enhancement of the degradation efficiency of dimethyl phthalate by microwave-induced wet oxidation with lower energy consumption</div>
-                <div class="pub-authors">Pang, Dongjie; <strong>Mao, Yanpeng</strong>; Xue, Chao; Jin, Yang; Zhang, Shujuan; Zhang, Xinyan; Song, Zhanlong; Zhao, Xiqiang; Sun, Jing; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Journal of Water Process Engineering</span>, 2023, 53.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Alkaline etched hydrochar-based magnetic adsorbents produced from pharmaceutical industry waste for organic dye removal</div>
-                <div class="pub-authors">Liu, Shanshan; Zhang, Xinyan; Wang, Wenlong; Wang, Ziliang; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Sun, Jing; Song, Zhanlong</div>
-                <div class="pub-journal"><span>Environmental Science and Pollution Research</span>, 2023, 30(24): 65631-65645.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Co3O4-CeO2 for enhanced syngas by low-temperature methane conversion with CO2 utilization via a catalytic chemical looping process</div>
-                <div class="pub-authors">Zhang, Xiaorong; Wang, Jie; Song, Zhanlong; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Fuel Processing Technology</span>, 2023, 245.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">ReaxFF MD simulation of microwave catalytic pyrolysis of polypropylene over Fe catalyst for hydrogen</div>
-                <div class="pub-authors">Yao, Liansheng; Zhang, Fusen; Song, Zhanlong; Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Sun, Jing</div>
-                <div class="pub-journal"><span>Fuel</span>, 2023, 340.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">A sustainable revival process for defective LiFePO4 cathodes through the synergy of defect-targeted healing and in-situ construction of 3D-interconnected porous carbon networks</div>
-                <div class="pub-authors">Sun, Jing; Jiang, Zhenyu; Jia, Pingshan; Li, Su; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang; Zhou, Bingqian</div>
-                <div class="pub-journal"><span>Waste Management</span>, 2023, 158: 125-135.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Study on the underpinning mechanisms of microwave-induced synthesis of carbon-coated metal nanoparticles</div>
-                <div class="pub-authors">Jia, Pingshan; Sun, Jing; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div>
-                <div class="pub-journal"><span>Frontiers in Energy Research</span>, 2023, 10.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Removal of p-nitrophenol by double-modified nanoscale zero-valent iron with biochar and sulfide: Key factors and mechanisms</div>
-                <div class="pub-authors">Zhang, Jian; Zhao, Xiqiang; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong>; Sun, Jing; Chen, Shouyan</div>
-                <div class="pub-journal"><span>Journal of Water Process Engineering</span>, 2023, 51.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Microwave-triggered low temperature thermal reduction of Zr-modified high entropy oxides with extraordinary thermochemical H2 production performance</div>
-                <div class="pub-authors">Gao, Yibo; Zhang, Miaomiao; <strong>Mao, Yanpeng</strong>; Cao, Han; Zhang, Shujuan; Wang, Wenlong; Sun, Chenggong; Song, Zhanlong; Sun, Jing; Zhao, Xiqiang</div>
-                <div class="pub-journal"><span>Energy Conversion and Management</span>, 2022, 252.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Quantification of CO2 emission from the preparation and utilization of solid waste-based sulphoaluminate cementitious materials</div>
-                <div class="pub-authors">Wang, Xujiang; Zhang, Ziliang; Li, Jingwei; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Song, Zhanlong</div>
-                <div class="pub-journal"><span>Journal of Cleaner Production</span>, 2022, 376.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Thermal-exergy efficiency trade-off optimization of pressure retarded membrane distillation based on TOPSIS model</div>
-                <div class="pub-authors">Cao, Han; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Gao, Yibo; Zhang, Miaomiao; Zhao, Xiqiang; Sun, Jing; Song, Zhanlong</div>
-                <div class="pub-journal"><span>Desalination</span>, 2022, 523.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">A new co-processing mode of organic anaerobic fermentation liquid and municipal solid waste incineration fly ash</div>
-                <div class="pub-authors">Zhang, Jiazheng; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Wang, Xujiang; Li, Jingwei; Jin, Yang; Pang, Dongjie</div>
-                <div class="pub-journal"><span>Waste Management</span>, 2022, 151: 70-80.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Research on CH4-CO2 reforming over Ni-Fe catalyst enhanced by electric field</div>
-                <div class="pub-authors">Song, Zhanlong; Zhang, Jianheng; Chen, Kezhen; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Xujiang; Wang, Wenlong; Chen, Shouyan</div>
-                <div class="pub-journal"><span>Journal of CO2 Utilization</span>, 2022, 65.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Encapsulation of cesium with a solid waste-derived sulfoaluminate matrix: A circular economy approach of treating nuclear wastes with solid wastes</div>
-                <div class="pub-authors">Li, Jingwei; Xu, Dong; Wang, Xujiang; Liu, Kang; <strong>Mao, Yanpeng</strong>; Wang, Mengmeng; Bai, Yun; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Journal of Hazardous Materials</span>, 2021, 416.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Pretreatment of municipal solid waste incineration fly ash and preparation of solid waste source sulphoaluminate cementitious material</div>
-                <div class="pub-authors"><strong>Mao, Yanpeng</strong>; Wu, Han; Wang, Wenlong; Jia, Muhai; Che, Xinchun</div>
-                <div class="pub-journal"><span>Journal of Hazardous Materials</span>, 2020, 385.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Efficient generation of hydrogen by two-step thermochemical cycles: Successive thermal reduction and water splitting reactions using equal-power microwave irradiation and a high entropy material</div>
-                <div class="pub-authors">Gao, Yibo; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Zhao, Xiqiang; Sun, Jing; Wang, Wenlong; Chen, Guifang; Chen, Shouyan</div>
-                <div class="pub-journal"><span>Applied Energy</span>, 2020, 279.</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">Hydrogen production via a two-step water splitting thermochemical cycle based on metal oxide - A review</div>
-                <div class="pub-authors"><strong>Mao, Yanpeng</strong>; Gao, Yibo; Dong, Wei; Wu, Han; Song, Zhanlong; Zhao, Xiqiang; Sun, Jing; Wang, Wenlong</div>
-                <div class="pub-journal"><span>Applied Energy</span>, 2020, 267.</div>
-            </li>
+            <li class="pub-item"><div class="pub-title">Dynamic confinement catalysis in Fe-based CO2 hydrogenation to light olefins</div><div class="pub-authors">Wang, Linkai; Han, Yu; Wei, Jian; Ge, Qingjie; Lu, Shijian; <strong>Mao, Yanpeng</strong>; Sun, Jian</div><div class="pub-journal"><span>Applied Catalysis B-Environment and Energy</span>, 2023, 328.</div></li>
+            <li class="pub-item"><div class="pub-title">3D snowflake graphene modified a-MnO2 Catalyst: Enhancing the Low-Temperature catalytic activity for VOCs degradation</div><div class="pub-authors">Dong, Yilin; Sun, Jing; Shen, Yafang; Wang, Ziliang; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Chemical Engineering Journal</span>, 2023, 473.</div></li>
+            <li class="pub-item"><div class="pub-title">Enhanced dry reforming of methane by microwave-mediated confined catalysis over Ni-La/AC catalyst</div><div class="pub-authors">Zhang, Miaomiao; Gao, Yibo; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Sun, Jian; Song, Zhanlong; Sun, Jing; Zhao, Xiqiang</div><div class="pub-journal"><span>Chemical Engineering Journal</span>, 2023, 451.</div></li>
+            <li class="pub-item"><div class="pub-title">Properties and hydration characteristics of an iron-rich sulfoaluminate cementitious material under cold temperatures</div><div class="pub-authors">Wang, Xujiang; Sun, Deqiang; Li, Jingwei; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Song, Zhanlong</div><div class="pub-journal"><span>Cement and Concrete Research</span>, 2023, 168.</div></li>
+            <li class="pub-item"><div class="pub-title">Ratiometric fluorescence probe molecularly imprinted polymer encapsulating N, S, B doped carbon nanodots from waste Clematis Chinensis Osbeck for sensing furazolidone</div><div class="pub-authors">Zhang, Shujuan; <strong>Mao, Yanpeng</strong>; Song, Tinglu; Zhao, Xiqiang; Song, Zhanlong; Wang, Wenlong</div><div class="pub-journal"><span>Carbon</span>, 2023, 213.</div></li>
+            <li class="pub-item"><div class="pub-title">ZIF-8 based dual scale superhydrophobic membrane for membrane distillation</div><div class="pub-authors">Cao, Han; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Jin, Yang; Gao, Yibo; Zhang, Miaomiao; Zhao, Xiqiang; Sun, Jing; Song, Zhanlong</div><div class="pub-journal"><span>Desalination</span>, 2023, 550.</div></li>
+            <li class="pub-item"><div class="pub-title">Hierarchical core-shell Ni@C-NCNTs nanocomposites tailored for microwave-induced dry reforming of methane process</div><div class="pub-authors">Zhang, Miaomiao; Gao, Yibo; <strong>Mao, Yanpeng</strong>; Jin, Yang; Wang, Wenlong; Sun, Jian; Song, Zhanlong; Sun, Jing; Zhao, Xiqiang</div><div class="pub-journal"><span>Journal of Materials Chemistry A</span>, 2023, 11(40): 21908-21926.</div></li>
+            <li class="pub-item"><div class="pub-title">Thermal co-treatment of aluminum dross and municipal solid waste incineration fly ash: Mineral transformation, crusting prevention, detoxification, and low-carbon cementitious material preparation</div><div class="pub-authors">Li, Jingwei; Jia, Aiguang; Hou, Xiangshan; Wang, Xujiang; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div><div class="pub-journal"><span>Journal of Environmental Management</span>, 2023, 329.</div></li>
+            <li class="pub-item"><div class="pub-title">Review on the use of sludge in cement kilns: Mechanism, technical, and environmental evaluation</div><div class="pub-authors">Pang, Dongjie; <strong>Mao, Yanpeng</strong>; Jin, Yang; Song, Zhanlong; Wang, Xujiang; Li, Jingwei; Wang, Wenlong</div><div class="pub-journal"><span>Process Safety and Environmental Protection</span>, 2023, 172: 1072-1086.</div></li>
+            <li class="pub-item"><div class="pub-title">Preparation of architectural 3D printing material with a solid waste-derived sulfoaluminate matrix: A high-value conversion of solid waste</div><div class="pub-authors"><strong>Mao, Yanpeng</strong>; Zhang, Jiazheng; Wu, Han; Huang, Yanmin; Wang, Xujiang; Li, Jingwei; Sun, Jing; Wang, Wenlong</div><div class="pub-journal"><span>Case Studies in Construction Materials</span>, 2023, 18.</div></li>
+            <li class="pub-item"><div class="pub-title">Characterization and mechanism of p-nitrophenol removal based on modified nanoscale zero-valent iron electrocoagulation</div><div class="pub-authors">Zhang, Jian; Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Sun, Jing; Song, Zhanlong; Zhou, Ping</div><div class="pub-journal"><span>Colloids and Surfaces A: Physicochemical and Engineering Aspects</span>, 2023, 678.</div></li>
+            <li class="pub-item"><div class="pub-title">Bidirectional Catalysis Disintegration and Mineral Polymerization via Endogenous Iron(III) from Iron-Rich Sludge in Synergy with Waste Incineration Fly Ash</div><div class="pub-authors">Pang, Dongjie; <strong>Mao, Yanpeng</strong>; Jin, Yang; Zhang, Jiazheng; Dong, Jingyi; Wang, Xujiang; Li, Jingwei; Wang, Wenlong</div><div class="pub-journal"><span>ACS Omega</span>, 2023, 8(38): 34663-34677.</div></li>
+            <li class="pub-item"><div class="pub-title">Insights into the underpinning effect of graphene in Cu1Mn10 on enhancing the low-temperature catalytic activity for CO oxidation</div><div class="pub-authors">Shen, Yafang; Sun, Jing; Li, Jingwei; Dong, Yilin; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Environmental Research</span>, 2023, 237.</div></li>
+            <li class="pub-item"><div class="pub-title">Calcination of sewage sludge-based sulphoaluminate cement clinker: Mineral formation mechanism and heavy metal transition behaviors</div><div class="pub-authors">Wang, Xujiang; Wang, Haohao; Zhang, Ziliang; Li, Jingwei; Zhang, Hongzhi; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Song, Zhanlong</div><div class="pub-journal"><span>Environmental Research</span>, 2023, 237.</div></li>
+            <li class="pub-item"><div class="pub-title">Effect of swelling pretreatment by coal tar on the microwave pyrolysis of waste tires</div><div class="pub-authors">Song, Zhanlong; Hu, Yuting; Han, Yuankai; Chen, Shouyan; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Xujiang; Wang, Wenlong</div><div class="pub-journal"><span>Journal of Environmental Chemical Engineering</span>, 2023, 11(5).</div></li>
+            <li class="pub-item"><div class="pub-title">Full-value preparation of biochar and 2D N-doped CDs@ZIF-L from fermentation residues for sensitive sensing tetracyclines in food samples</div><div class="pub-authors">Zhang, Shujuan; <strong>Mao, Yanpeng</strong>; Wei, Lai; Song, Zhanlong; Zhao, Xiqiang; Wang, Wenlong</div><div class="pub-journal"><span>Colloids and Surfaces A: Physicochemical and Engineering Aspects</span>, 2023, 676.</div></li>
+            <li class="pub-item"><div class="pub-title">Progress on the Microwave-Assisted Recycling of Spent Lithium Battery Graphite</div><div class="pub-authors">Sun, Jing; Chen, Wenxin; Jia, Kexin; Li, Su; Jia, Pingshan; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Chen, Shouyan</div><div class="pub-journal"><span>Processes</span>, 2023, 11(5).</div></li>
+            <li class="pub-item"><div class="pub-title">One-pot solvothermal preparation of triple-emission N, Cl doped carbon quantum dots from waste traditional Chinese medicines as a fluorescent sensor for sensing water and Cr (VI)</div><div class="pub-authors">Zhang, Shujuan; <strong>Mao, Yanpeng</strong>; Sun, Jian; Song, Tinglu; Song, Zhanlong; Zhao, Xiqiang; Wang, Wenlong</div><div class="pub-journal"><span>Colloids and Surfaces A: Physicochemical and Engineering Aspects</span>, 2023, 669.</div></li>
+            <li class="pub-item"><div class="pub-title">Enhancement of the degradation efficiency of dimethyl phthalate by microwave-induced wet oxidation with lower energy consumption</div><div class="pub-authors">Pang, Dongjie; <strong>Mao, Yanpeng</strong>; Xue, Chao; Jin, Yang; Zhang, Shujuan; Zhang, Xinyan; Song, Zhanlong; Zhao, Xiqiang; Sun, Jing; Wang, Wenlong</div><div class="pub-journal"><span>Journal of Water Process Engineering</span>, 2023, 53.</div></li>
+            <li class="pub-item"><div class="pub-title">Alkaline etched hydrochar-based magnetic adsorbents produced from pharmaceutical industry waste for organic dye removal</div><div class="pub-authors">Liu, Shanshan; Zhang, Xinyan; Wang, Wenlong; Wang, Ziliang; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Sun, Jing; Song, Zhanlong</div><div class="pub-journal"><span>Environmental Science and Pollution Research</span>, 2023, 30(24): 65631-65645.</div></li>
+            <li class="pub-item"><div class="pub-title">Co3O4-CeO2 for enhanced syngas by low-temperature methane conversion with CO2 utilization via a catalytic chemical looping process</div><div class="pub-authors">Zhang, Xiaorong; Wang, Jie; Song, Zhanlong; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div><div class="pub-journal"><span>Fuel Processing Technology</span>, 2023, 245.</div></li>
+            <li class="pub-item"><div class="pub-title">ReaxFF MD simulation of microwave catalytic pyrolysis of polypropylene over Fe catalyst for hydrogen</div><div class="pub-authors">Yao, Liansheng; Zhang, Fusen; Song, Zhanlong; Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Sun, Jing</div><div class="pub-journal"><span>Fuel</span>, 2023, 340.</div></li>
+            <li class="pub-item"><div class="pub-title">Promotion of microwave discharge over carbon catalysts for CO2 reforming of CH4 to syngas</div><div class="pub-authors">Zhang, Fusen; Zhang, Xiaorong; Song, Zhanlong; Li, Xiao; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Xujiang; Wang, Wenlong</div><div class="pub-journal"><span>Fuel</span>, 2023, 331.</div></li>
+            <li class="pub-item"><div class="pub-title">A sustainable revival process for defective LiFePO4 cathodes through the synergy of defect-targeted healing and in-situ construction of 3D-interconnected porous carbon networks</div><div class="pub-authors">Sun, Jing; Jiang, Zhenyu; Jia, Pingshan; Li, Su; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang; Zhou, Bingqian</div><div class="pub-journal"><span>Waste Management</span>, 2023, 158: 125-135.</div></li>
+            <li class="pub-item"><div class="pub-title">Study on the underpinning mechanisms of microwave-induced synthesis of carbon-coated metal nanoparticles</div><div class="pub-authors">Jia, Pingshan; Sun, Jing; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Frontiers in Energy Research</span>, 2023, 10.</div></li>
+            <li class="pub-item"><div class="pub-title">Removal of p-nitrophenol by double-modified nanoscale zero-valent iron with biochar and sulfide: Key factors and mechanisms</div><div class="pub-authors">Zhang, Jian; Zhao, Xiqiang; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong>; Sun, Jing; Chen, Shouyan</div><div class="pub-journal"><span>Journal of Water Process Engineering</span>, 2023, 51.</div></li>
+        </ul>
+
+        <h2>2022</h2>
+        <ul class="pub-list">
+            <li class="pub-item"><div class="pub-title">Microwave-triggered low temperature thermal reduction of Zr-modified high entropy oxides with extraordinary thermochemical H2 production performance</div><div class="pub-authors">Gao, Yibo; Zhang, Miaomiao; <strong>Mao, Yanpeng</strong>; Cao, Han; Zhang, Shujuan; Wang, Wenlong; Sun, Chenggong; Song, Zhanlong; Sun, Jing; Zhao, Xiqiang</div><div class="pub-journal"><span>Energy Conversion and Management</span>, 2022, 252.</div></li>
+            <li class="pub-item"><div class="pub-title">Quantification of CO2 emission from the preparation and utilization of solid waste-based sulphoaluminate cementitious materials</div><div class="pub-authors">Wang, Xujiang; Zhang, Ziliang; Li, Jingwei; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Song, Zhanlong</div><div class="pub-journal"><span>Journal of Cleaner Production</span>, 2022, 376.</div></li>
+            <li class="pub-item"><div class="pub-title">Thermal-exergy efficiency trade-off optimization of pressure retarded membrane distillation based on TOPSIS model</div><div class="pub-authors">Cao, Han; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Gao, Yibo; Zhang, Miaomiao; Zhao, Xiqiang; Sun, Jing; Song, Zhanlong</div><div class="pub-journal"><span>Desalination</span>, 2022, 523.</div></li>
+            <li class="pub-item"><div class="pub-title">Research on CH4-CO2 reforming over Ni-Fe catalyst enhanced by electric field</div><div class="pub-authors">Song, Zhanlong; Zhang, Jianheng; Chen, Kezhen; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Xujiang; Wang, Wenlong; Chen, Shouyan</div><div class="pub-journal"><span>Journal of CO2 Utilization</span>, 2022, 65.</div></li>
+            <li class="pub-item"><div class="pub-title">Fe/HZSM-5 synergizes with biomass pyrolysis carbon to reform CH4-CO2 to syngas in microwave field</div><div class="pub-authors">Zhang, Fusen; Zhang, Xiaorong; Song, Zhanlong; Chen, Haoran; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Xujiang; Wang, Wenlong</div><div class="pub-journal"><span>International Journal of Hydrogen Energy</span>, 2022, 47(21): 11153-11163.</div></li>
+            <li class="pub-item"><div class="pub-title">Study on the synergy effect of MnOx and support on catalytic ozonation of toluene</div><div class="pub-authors">Dong, Yilin; Sun, Jing; Ma, Xiaoling; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Li, Wenxiang</div><div class="pub-journal"><span>Chemosphere</span>, 2022, 303.</div></li>
+            <li class="pub-item"><div class="pub-title">Discovering the key role of MnO2 and CeO2 particles in the Fe2O3 catalysts for enhancing the catalytic oxidation of VOC: Synergistic effect of the lattice oxygen species and surface-adsorbed oxygen</div><div class="pub-authors">Ben Soltan, Wissem; Sun, Jing; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Zhang, Zhichao</div><div class="pub-journal"><span>Science of the Total Environment</span>, 2022, 819.</div></li>
+            <li class="pub-item"><div class="pub-title">Review of chemical looping process for carbonaceous feedstock Conversion: Rational design of oxygen carriers</div><div class="pub-authors">Zhang, Xiaorong; Zhang, Fusen; Song, Zhanlong; Lin, Leteng; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div><div class="pub-journal"><span>Fuel</span>, 2022, 325.</div></li>
+            <li class="pub-item"><div class="pub-title">A stepwise microwave synergistic pyrolysis approach to produce sludge-based biochars: Optimizing and mechanism of heavy metals immobilization</div><div class="pub-authors">Wang, Chaoqian; Zhang, Xinyan; Wang, Wenlong; Sun, Jing; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang; Song, Zhanlong</div><div class="pub-journal"><span>Fuel</span>, 2022, 314.</div></li>
+            <li class="pub-item"><div class="pub-title">A new co-processing mode of organic anaerobic fermentation liquid and municipal solid waste incineration fly ash</div><div class="pub-authors">Zhang, Jiazheng; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Wang, Xujiang; Li, Jingwei; Jin, Yang; Pang, Dongjie</div><div class="pub-journal"><span>Waste Management</span>, 2022, 151: 70-80.</div></li>
+            <li class="pub-item"><div class="pub-title">Microwave-assisted decomposition of waste plastic over Fe/FeAl2O4 to produce hydrogen and carbon nanotubes</div><div class="pub-authors">Yao, Liansheng; Yi, Baokui; Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Sun, Jing; Song, Zhanlong</div><div class="pub-journal"><span>Journal of Analytical and Applied Pyrolysis</span>, 2022, 165.</div></li>
+            <li class="pub-item"><div class="pub-title">Microwave-induced high-energy sites and targeted energy transition promising for efficient energy deployment</div><div class="pub-authors">Sun, Jing; Yu, Guanqun; An, Kui; Wang, Wenlong; Wang, Biao; Jiang, Zhenyu; Sun, Chenggong; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang; Song, Zhanlong</div><div class="pub-journal"><span>Frontiers in Energy</span>, 2022, 16(6): 931-942.</div></li>
+            <li class="pub-item"><div class="pub-title">Construction of N-doped porous carbon-coated Fe3O4 with efficient ion transfer performance for enhanced-performance lithium storage</div><div class="pub-authors">Jia, Pingshan; Sun, Jing; Jiang, Zhenyu; Wang, Wenlong; Song, Zhanlong; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang</div><div class="pub-journal"><span>Electrochimica Acta</span>, 2022, 428.</div></li>
+            <li class="pub-item"><div class="pub-title">A sustainable strategy for spent Li-ion battery regeneration: microwave-hydrothermal relithiation complemented with anode-revived graphene to construct a LiFePO4/MWrGO cathode material</div><div class="pub-authors">Jiang, Zhenyu; Sun, Jing; Jia, Pingshan; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Sustainable Energy & Fuels</span>, 2022, 6(9): 2207-2222.</div></li>
+            <li class="pub-item"><div class="pub-title">Study on the microwave extraction process and product distribution of essential oils from citrus peel</div><div class="pub-authors">Song, Zhanlong; Wei, Xinxin; Xie, Mengmei; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Xujiang; Wang, Wenlong</div><div class="pub-journal"><span>Chemical Engineering and Processing-Process Intensification</span>, 2022, 171.</div></li>
+            <li class="pub-item"><div class="pub-title">Biochar-embedding iron-alginate microspheres derived from bagasse by one-step microwave pyrolysis/activation for enhanced Cr(VI) removal</div><div class="pub-authors">Wang, Hongfei; Zhao, Xiqiang; Yang, Xinfei; Sun, Shuang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Song, Zhanlong</div><div class="pub-journal"><span>Frontiers in Energy Research</span>, 2022, 10.</div></li>
+        </ul>
+
+        <h2>2021</h2>
+        <ul class="pub-list">
+            <li class="pub-item"><div class="pub-title">Encapsulation of cesium with a solid waste-derived sulfoaluminate matrix: A circular economy approach of treating nuclear wastes with solid wastes</div><div class="pub-authors">Li, Jingwei; Xu, Dong; Wang, Xujiang; Liu, Kang; <strong>Mao, Yanpeng</strong>; Wang, Mengmeng; Bai, Yun; Wang, Wenlong</div><div class="pub-journal"><span>Journal of Hazardous Materials</span>, 2021, 416.</div></li>
+            <li class="pub-item"><div class="pub-title">Heavy metals migration during the preparation and hydration of an eco-friendly steel slag-based cementitious material</div><div class="pub-authors">Wang, Xujiang; Wang, Kun; Li, Jingwei; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Wu, Shuang; Yang, Shizhao</div><div class="pub-journal"><span>Journal of Cleaner Production</span>, 2021, 329.</div></li>
+            <li class="pub-item"><div class="pub-title">Applicability of municipal solid waste incineration (MSWI) system integrated with pre-drying or torrefaction for flue gas waste heat recovery</div><div class="pub-authors">Zhou, Xing; Zhou, Ping; Zhao, Xiqiang; Song, Zhanlong; Wang, Wenlong; Sun, Jing; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Energy</span>, 2021, 224.</div></li>
+            <li class="pub-item"><div class="pub-title">Investigation on removal effects and condensation characteristics of condensable particulate matter: Field test and experimental study</div><div class="pub-authors">Li, Jingwei; Li, Xiaodong; Wang, Wenlong; Wang, Xujiang; Lu, Shengyong; Sun, Jing; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Science of the Total Environment</span>, 2021, 783.</div></li>
+            <li class="pub-item"><div class="pub-title">Numerical study on the role of microwave-metal discharge in microwave pyrolysis of WPCBs</div><div class="pub-authors">Jiang, Zhenyu; Sun, Jing; Wang, Wenlong; Zhu, Huacheng; Li, Jingwei; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Chen, Shouyan</div><div class="pub-journal"><span>Waste Disposal & Sustainable Energy</span>, 2021, 3(3): 185-200.</div></li>
+            <li class="pub-item"><div class="pub-title">Effect of additives on the distribution of three-phase products of oily sludge subjected to microwave pyrolysis</div><div class="pub-authors">Song, Zhanlong; Xu, Baolin; Xu, Chang; Yu, Jun; Su, Ying; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div><div class="pub-journal"><span>Journal of Environmental Science and Health Part A</span>, 2021, 56(13): 1445-1455.</div></li>
+            <li class="pub-item"><div class="pub-title">Microwave steam gasification of semi-coke derived from co-pyrolysis of fungus chaff and lignite</div><div class="pub-authors">Zhao, Xiqiang; Tian, Yeshun; Guo, Bingwen; Sun, Chenggong; Zhou, Ping; Chen, Guifang; Wang, Wenlong; Sun, Jing; Wang, Peng; <strong>Mao, Yanpeng</strong>; Song, Zhanlong</div><div class="pub-journal"><span>International Journal of Coal Preparation and Utilization</span>, 2021, 41(11): 830-843.</div></li>
+            <li class="pub-item"><div class="pub-title">Study on the exothermic characteristics of Fe2+/H2O2 homogeneous Fenton degradation of o-phenylenediamine wastewater</div><div class="pub-authors">Yan, Yuntao; Zhang, Ke; <strong>Mao, Yanpeng</strong>; Dong, Yong</div><div class="pub-journal"><span>Desalination and Water Treatment</span>, 2021, 228: 335-342.</div></li>
+            <li class="pub-item"><div class="pub-title">Desorption of CO2, SO2, and NH3 in the vacuum evaporation of desulfurization wastewater</div><div class="pub-authors">Chen, Guifang; Sun, Xiaofei; Feng, Yunqi; Song, Zhanlong; Cui, Lin; <strong>Mao, Yanpeng</strong>; Ma, Chunyuan; Chen, Shouyan</div><div class="pub-journal"><span>Environmental Science and Pollution Research</span>, 2021, 28(6): 6664-6674.</div></li>
+        </ul>
+
+        <h2>2020</h2>
+        <ul class="pub-list">
+            <li class="pub-item"><div class="pub-title">Pretreatment of municipal solid waste incineration fly ash and preparation of solid waste source sulphoaluminate cementitious material</div><div class="pub-authors"><strong>Mao, Yanpeng</strong>; Wu, Han; Wang, Wenlong; Jia, Muhai; Che, Xinchun</div><div class="pub-journal"><span>Journal of Hazardous Materials</span>, 2020, 385.</div></li>
+            <li class="pub-item"><div class="pub-title">Efficient generation of hydrogen by two-step thermochemical cycles: Successive thermal reduction and water splitting reactions using equal-power microwave irradiation and a high entropy material</div><div class="pub-authors">Gao, Yibo; <strong>Mao, Yanpeng</strong>; Song, Zhanlong; Zhao, Xiqiang; Sun, Jing; Wang, Wenlong; Chen, Guifang; Chen, Shouyan</div><div class="pub-journal"><span>Applied Energy</span>, 2020, 279.</div></li>
+            <li class="pub-item"><div class="pub-title">Hydrogen production via a two-step water splitting thermochemical cycle based on metal oxide - A review</div><div class="pub-authors"><strong>Mao, Yanpeng</strong>; Gao, Yibo; Dong, Wei; Wu, Han; Song, Zhanlong; Zhao, Xiqiang; Sun, Jing; Wang, Wenlong</div><div class="pub-journal"><span>Applied Energy</span>, 2020, 267.</div></li>
+            <li class="pub-item"><div class="pub-title">Coordinated adjustment and optimization of setting time, flowability, and mechanical strength for construction 3D printing material derived from solid waste</div><div class="pub-authors">Shahzad, Qamar; Wang, Xujiang; Wang, Wenlong; Wan, Yi; Li, Guolin; Ren, Changzai; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Construction and Building Materials</span>, 2020, 259.</div></li>
+            <li class="pub-item"><div class="pub-title">Study on the demulsification of refinery oily sludge enhanced by microwave irradiation</div><div class="pub-authors">Lv, Xu; Song, Zhanlong; Yu, Jun; Su, Ying; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div><div class="pub-journal"><span>Fuel</span>, 2020, 279.</div></li>
+            <li class="pub-item"><div class="pub-title">A stepwise microwave synergistic pyrolysis approach to produce sludge-based biochars: Feasibility study simulated by laboratory experiments</div><div class="pub-authors">Wang, Chaoqian; Wang, Wenlong; Lin, Leteng; Zhang, Fusen; Zhang, Runing; Sun, Jing; Song, Zhanlong; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang</div><div class="pub-journal"><span>Fuel</span>, 2020, 272.</div></li>
+            <li class="pub-item"><div class="pub-title">Hydrophobic design of adsorbent for VOC removal in humid environment and quick regeneration by microwave</div><div class="pub-authors">Lv, Yuting; Sun, Jing; Yu, Guanqun; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Microporous and Mesoporous Materials</span>, 2020, 294.</div></li>
+            <li class="pub-item"><div class="pub-title">Preparation of sulfoaluminate cementitious material using harmful titanium gypsum: material properties and heavy metal immobilization characteristics</div><div class="pub-authors">Li, Jingwei; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Waste Disposal & Sustainable Energy</span>, 2020, 2(2): 127-137.</div></li>
+            <li class="pub-item"><div class="pub-title">Review on Selection and Experiment Method of Commonly Studied Simulated Radionuclides in Researches of Nuclear Waste Solidification</div><div class="pub-authors">Li, Jingwei; Xu, Dong; Wang, Wenlong; Wang, Xujiang; <strong>Mao, Yanpeng</strong>; Zhang, Chao; Jiang, Wen; Wu, Changliang</div><div class="pub-journal"><span>Science and Technology of Nuclear Installations</span>, 2020, 2020.</div></li>
+        </ul>
+
+        <h2>2019</h2>
+        <ul class="pub-list">
+            <li class="pub-item"><div class="pub-title">Current status of applying microwave-associated catalysis for the degradation of organics in aqueous phase - A review</div><div class="pub-authors">Xue, Chao; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; Sun, Jing; Wang, Yanxiang</div><div class="pub-journal"><span>Journal of Environmental Sciences</span>, 2019, 81: 119-135.</div></li>
+            <li class="pub-item"><div class="pub-title">Achieving enhanced dielectric property via growing Co-Ni-P nano-alloys on SiC nanowires with 3D conductive network</div><div class="pub-authors">Niu, Fangxu; Wang, Yanxiang; Ma, Lianru; Xie, Ziyi; Wang, Yaoyao; Wang, Chengguo; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Journal of Alloys and Compounds</span>, 2019, 778: 933-941.</div></li>
+            <li class="pub-item"><div class="pub-title">Experimental Study on Microwave-SIC-Assisted Catalytic Hydrogenation of Phenol</div><div class="pub-authors">Sun, Jing; Jiang, Zhenyu; Wang, Ke; Li, Faqi; Song, Zhanlong; Wang, Wenlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Energy & Fuels</span>, 2019, 33(11): 11092-11100.</div></li>
+            <li class="pub-item"><div class="pub-title">Exothermic laws applicable to the degradation of o-phenylenediamine in wastewater via a Fe3+/H2O2 homogeneous quasi-Fenton system</div><div class="pub-authors">Yan, Yuntao; <strong>Mao, Yanpeng</strong>; Dong, Yong; Zhang, Ke; Sun, Xiaofei; Ma, Chunyuan</div><div class="pub-journal"><span>RSC Advances</span>, 2019, 9(45): 26283-26290.</div></li>
+            <li class="pub-item"><div class="pub-title">A hierarchical architecture of PANI/APTES/SiC nano-composites with tunable dielectric for lightweight and strong microwave absorption</div><div class="pub-authors">Niu, Fangxu; Wang, Yanxiang; Zhang, Yating; Xie, Shengkun; Ma, Lianru; Wang, Chengguo; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Journal of Materials Science</span>, 2019, 54(3): 2181-2192.</div></li>
+            <li class="pub-item"><div class="pub-title">Experimental Study on In-Situ Decomposition of VOCs Using Microwave-Induced Metal Discharge</div><div class="pub-authors">Feng, Yukun; Wang, Wenlong; Wang, Yican; Sun, Jing; Zhang, Chao; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang; Song, Zhanlong</div><div class="pub-journal"><span>Waste and Biomass Valorization</span>, 2019, 10(12): 3921-3929.</div></li>
+            <li class="pub-item"><div class="pub-title">Preparation and characterization of t-BN coatings on the surface of carbon fibers</div><div class="pub-authors">Fu, Shanlong; Wang, Yanxiang; Niu, Fangxu; Qu, Ce; <strong>Mao, Yanpeng</strong>; Zhuang, Guangshan</div><div class="pub-journal"><span>Composite Interfaces</span>, 2019, 26(6): 479-492.</div></li>
+            <li class="pub-item"><div class="pub-title">Investigation into the Exothermic Laws of Degradation for o-Phenylenediamine-Containing Wastewater by the Fenton Reaction</div><div class="pub-authors">Yan, Yuntao; <strong>Mao, Yanpeng</strong>; Ma, Chunyuan; Zhang, Ke; Sun, Xiaofei</div><div class="pub-journal"><span>Journal of Environmental Engineering</span>, 2019, 145(10).</div></li>
+        </ul>
+
+        <h2>2018</h2>
+        <ul class="pub-list">
+            <li class="pub-item"><div class="pub-title">Experimental study of destruction of acetone in exhaust gas using microwave-induced metal discharge</div><div class="pub-authors">Feng, Yukun; Wang, Wenlong; Wang, Yican; Sun, Jing; Zhang, Chao; Shahzad, Qamar; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang; Song, Zhanlong</div><div class="pub-journal"><span>Science of the Total Environment</span>, 2018, 645: 788-795.</div></li>
+            <li class="pub-item"><div class="pub-title">Process of CH4-CO2 reforming over Fe/SiC catalyst under microwave irradiation</div><div class="pub-authors">Zhang, Fusen; Song, Zhanlong; Zhu, Junzhi; Liu, Li; Sun, Jing; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div><div class="pub-journal"><span>Science of the Total Environment</span>, 2018, 639: 1148-1155.</div></li>
+            <li class="pub-item"><div class="pub-title">Rapid degradation of malachite green by CoFe2O4-SiC foam under microwave radiation</div><div class="pub-authors"><strong>Mao, Yanpeng</strong>; Yang, Shanxiu; Xue, Chao; Zhang, Miaomiao; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; Sun, Jing</div><div class="pub-journal"><span>Royal Society Open Science</span>, 2018, 5(6).</div></li>
+            <li class="pub-item"><div class="pub-title">Factors influencing CH4-CO2 reforming reaction over Fe catalyst supported on foam ceramics under microwave irradiation</div><div class="pub-authors">Zhang, Fusen; Song, Zhanlong; Zhu, Junzhi; Sun, Jing; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Liu, Li; Wang, Wenlong</div><div class="pub-journal"><span>International Journal of Hydrogen Energy</span>, 2018, 43(20): 9495-9502.</div></li>
+            <li class="pub-item"><div class="pub-title">Fate and distribution of phosphorus in laboratory-scale membrane bioreactors</div><div class="pub-authors"><strong>Mao, Yanpeng</strong>; Xue, Chao; Yue, Qinyan; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; Ma, Chunyuan</div><div class="pub-journal"><span>Chemical Engineering Research & Design</span>, 2018, 133: 204-209.</div></li>
+            <li class="pub-item"><div class="pub-title">Performance of Fe/SiC catalysts for cracking of toluene under microwave irradiation</div><div class="pub-authors">Zhang, Yuchuan; Song, Zhanlong; Yan, Yecheng; Zhao, Xiqiang; Sun, Jing; <strong>Mao, Yanpeng</strong>; Wang, Wenlong</div><div class="pub-journal"><span>International Journal of Hydrogen Energy</span>, 2018, 43(15): 7227-7236.</div></li>
+            <li class="pub-item"><div class="pub-title">Study of microwave-induced metal discharge under high pressure based under spectrum analysis</div><div class="pub-authors">Xue, Chao; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; Sun, Jing; Ma, Chunyuan</div><div class="pub-journal"><span>Journal of Electromagnetic Waves and Applications</span>, 2018, 32(18): 2442-2457.</div></li>
+            <li class="pub-item"><div class="pub-title">Characteristics of limonene formation during microwave pyrolysis of scrap tires and quantitative analysis</div><div class="pub-authors">Song, Zhanlong; Liu, Li; Yang, Yaqing; Sun, Jing; Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Yuan, Xueliang; Wang, Qingsong</div><div class="pub-journal"><span>Energy</span>, 2018, 142: 953-961.</div></li>
+        </ul>
+
+        <h2>2017</h2>
+        <ul class="pub-list">
+            <li class="pub-item"><div class="pub-title">A novel flue gas pre-treatment system of post-combustion CO2 capture in coal-fired power plant</div><div class="pub-authors">Yan, Min; Li, Yuzhong; Chen, Guifang; Zhang, Liqiang; <strong>Mao, Yanpeng</strong>; Ma, Chunyuan</div><div class="pub-journal"><span>Chemical Engineering Research & Design</span>, 2017, 128: 331-341.</div></li>
+            <li class="pub-item"><div class="pub-title">Comparative life cycle assessment of sulfoaluminate clinker production derived from industrial solid wastes and conventional raw materials</div><div class="pub-authors">Ren, Changzai; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Yuan, Xueliang; Song, Zhanlong; Sun, Jing; Zhao, Xiqiang</div><div class="pub-journal"><span>Journal of Cleaner Production</span>, 2017, 167: 1314-1324.</div></li>
+            <li class="pub-item"><div class="pub-title">Novel treatment of a biomass tar model compound via microwave-metal discharges</div><div class="pub-authors">Sun, Jing; Wang, Qing; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Ma, Chunyuan</div><div class="pub-journal"><span>Fuel</span>, 2017, 207: 121-125.</div></li>
+            <li class="pub-item"><div class="pub-title">Direct calorimetry study of metal discharge heating effects induced by microwave irradiation</div><div class="pub-authors">Zhou, Yuli; Wang, Wenlong; Sun, Jing; Ma, Xiaoling; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Applied Thermal Engineering</span>, 2017, 125: 386-393.</div></li>
+            <li class="pub-item"><div class="pub-title">Oriented microwave energy conversion based on metal-triggered discharges and its application in VOCs/Tar destruction</div><div class="pub-authors">Sun, Jing; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Abstracts of Papers of the American Chemical Society</span>, 2017, 254.</div></li>
+            <li class="pub-item"><div class="pub-title">Experimental Study of Microwave-Induced Discharge and Mechanism Analysis Based on Spectrum Acquisition</div><div class="pub-authors">Wang, Wenlong; Fu, Lunjing; Sun, Jing; Grimes, Sue; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang; Song, Zhanlong</div><div class="pub-journal"><span>IEEE Transactions on Plasma Science</span>, 2017, 45(8): 2235-2242.</div></li>
+            <li class="pub-item"><div class="pub-title">Decomposition of methylbenzene over Fe0/ZSM-5 under microwave irradiation</div><div class="pub-authors">Zhou, Yuli; Wang, Wenlong; Sun, Jing; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Catalysis Communications</span>, 2017, 96: 63-68.</div></li>
+            <li class="pub-item"><div class="pub-title">Effect of power level on the microwave pyrolysis of tire powder</div><div class="pub-authors">Song, Zhanlong; Yang, Yaqing; Sun, Jing; Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Ma, Chunyuan</div><div class="pub-journal"><span>Energy</span>, 2017, 127: 571-580.</div></li>
+            <li class="pub-item"><div class="pub-title">Microwave-induced electrical discharge of metal strips for the degradation of biomass tar</div><div class="pub-authors">Zhou, Yuli; Wang, Wenlong; Sun, Jing; Fu, Lunjing; Song, Zhanlong; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Energy</span>, 2017, 126: 42-52.</div></li>
+            <li class="pub-item"><div class="pub-title">Experimental study on microwave pyrolysis of three Chinese lignite</div><div class="pub-authors">Zhao, Xiqiang; Guo, Bingwen; Wang, Wenlong; Chen, Guifang; <strong>Mao, Yanpeng</strong>; Sun, Jing; Song, Zhanlong</div><div class="pub-journal"><span>Journal of Analytical and Applied Pyrolysis</span>, 2017, 124: 303-309.</div></li>
+            <li class="pub-item"><div class="pub-title">Pyrolysis of tyre powder using microwave thermogravimetric analysis: Effect of microwave power</div><div class="pub-authors">Song, Zhanlong; Yang, Yaqing; Zhou, Long; Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Ma, Chunyuan</div><div class="pub-journal"><span>Waste Management & Research</span>, 2017, 35(2): 181-189.</div></li>
+            <li class="pub-item"><div class="pub-title">Coal slime hot air/microwave combined drying characteristics and energy analysis</div><div class="pub-authors">Song, Zhanlong; Jing, Chuanming; Yao, Liansheng; Zhao, Xiqiang; Sun, Jing; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Ma, Chunyuan</div><div class="pub-journal"><span>Fuel Processing Technology</span>, 2017, 156: 491-499.</div></li>
+            <li class="pub-item"><div class="pub-title">Microwave pyrolysis of tire powders: Evolution of yields and composition of products</div><div class="pub-authors">Song, Zhanlong; Yang, Yaqing; Zhao, Xiqiang; Sun, Jing; Wang, Wenlong; <strong>Mao, Yanpeng</strong></div><div class="pub-journal"><span>Journal of Analytical and Applied Pyrolysis</span>, 2017, 123: 152-159.</div></li>
+        </ul>
+
+        <h2>2016</h2>
+        <ul class="pub-list">
+            <li class="pub-item"><div class="pub-title">Theoretical and experimental study of the mechanisms of phosphate removal in the system containing Fe(III)-ions</div><div class="pub-authors"><strong>Mao, Yanpeng</strong>; Yang, Shanxiu; Yue, Qinyan; Wang, Wenlong</div><div class="pub-journal"><span>Environmental Science and Pollution Research</span>, 2016, 23(23): 24265-24276.</div></li>
+            <li class="pub-item"><div class="pub-title">A continuous microwave/nZVI treatment system for malachite green removal: system setup and parameter optimization</div><div class="pub-authors"><strong>Mao, Yanpeng</strong>; Xu, Jin; Ma, Chunyuan</div><div class="pub-journal"><span>Desalination and Water Treatment</span>, 2016, 57(1): 24395-24405.</div></li>
+            <li class="pub-item"><div class="pub-title">Study on the effects of soluble microbial product on phosphate adsorption onto fresh hydrous ferric oxides by surface complexation models</div><div class="pub-authors"><strong>Mao, Yanpeng</strong>; Wang, Wenlong; Ma, Chunyuan</div><div class="pub-journal"><span>Water Science and Technology</span>, 2016, 74(10): 2446-2453.</div></li>
+            <li class="pub-item"><div class="pub-title">Kinetic Modeling of Phosphate Adsorption by Preformed and In situ formed Hydrous Ferric Oxides at Circumneutral pH</div><div class="pub-authors"><strong>Mao, Yanpeng</strong>; Yue, Qinyan</div><div class="pub-journal"><span>Scientific Reports</span>, 2016, 6.</div></li>
+            <li class="pub-item"><div class="pub-title">Experimental Study on the Characteristics of Ignition during Microwave Drying of Lignite</div><div class="pub-authors">Song, Zhanlong; Yao, Liansheng; Jing, Chuanming; Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Ma, Chunyuan</div><div class="pub-journal"><span>Energy Technology</span>, 2016, 4(9): 1077-1083.</div></li>
+            <li class="pub-item"><div class="pub-title">Elucidation of the Pumping Effect during Microwave Drying of Lignite</div><div class="pub-authors">Song, Zhanlong; Yao, Liansheng; Jing, Chuanming; Zhao, Xiqiang; Wang, Wenlong; Sun, Jing; <strong>Mao, Yanpeng</strong>; Ma, Chunyuan</div><div class="pub-journal"><span>Industrial & Engineering Chemistry Research</span>, 2016, 55(11): 3167-3176.</div></li>
+            <li class="pub-item"><div class="pub-title">Microwave drying performance of single-particle coal slime and energy consumption analyses</div><div class="pub-authors">Song, Zhanlong; Jing, Chuanming; Yao, Liansheng; Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Ma, Chunyuan</div><div class="pub-journal"><span>Fuel Processing Technology</span>, 2016, 143: 69-78.</div></li>
+            <li class="pub-item"><div class="pub-title">Coal fly ash/CoFe2O4 composites: a magnetic adsorbent for the removal of malachite green from aqueous solution</div><div class="pub-authors">Zhang, Miaomiao; <strong>Mao, Yanpeng</strong>; Wang, Wenlong; Yang, Shanxiu; Song, Zhanlong; Zhao, Xiqiang</div><div class="pub-journal"><span>RSC Advances</span>, 2016, 6(96): 93564-93574.</div></li>
+            <li class="pub-item"><div class="pub-title">Self-Heat Recuperative Microwave and Hot-Air-Combined Drying of Lignite</div><div class="pub-authors">Zhao, Xiqiang; Wang, Wenlong; <strong>Mao, Yanpeng</strong>; Chen, Guifang; Jin, Chuanming; Yao, Liansheng; Song, Zhanlong</div><div class="pub-journal"><span>International Journal of Coal Preparation and Utilization</span>, 2016, 36(6): 306-317.</div></li>
+            <li class="pub-item"><div class="pub-title">Improving the properties of an anion exchanger based on sugarcane bagasse by applying pretreatment methods</div><div class="pub-authors"><strong>Mao, Yanpeng</strong>; Zhang, Miaomiao; Yu, Dingyi; Wang, Wenlong; Song, Zhanlong; Zhao, Xiqiang; Yue, Qinyan</div><div class="pub-journal"><span>Desalination and Water Treatment</span>, 2016, 57(38): 17944-17954.</div></li>
+            <li class="pub-item"><div class="pub-title">Numerical simulation of hot-spot effects in microwave heating due to the existence of strong microwave-absorbing media</div><div class="pub-authors">Wang, Wenlong; Wang, Biao; Sun, Jing; <strong>Mao, Yanpeng</strong>; Zhao, Xiqiang; Song, Zhanlong</div><div class="pub-journal"><span>RSC Advances</span>, 2016, 6(58): 52974-52981.</div></li>
+        </ul>
+
+        <h2>2015</h2>
+        <ul class="pub-list">
+            <li class="pub-item"><div class="pub-title">Limitation of ferrozine method for Fe(II) detection: reduction kinetics of micromolar concentration of Fe(III) by ferrozine in the dark</div><div class="pub-authors"><strong>Mao, Yanpeng</strong>; Zhang, Miaomiao; Xu, Jin</div><div class="pub-journal"><span>International Journal of Environmental Analytical Chemistry</span>, 2015, 95(15): 1424-1434.</div></li>
+            <li class="pub-item"><div class="pub-title">Quantitative measurement of energy utilization efficiency and study of influence factors in typical microwave heating process</div><div class="pub-authors">Wang, Wenlong; Zhao, Chao; Sun, Jing; Wang, Xiaolin; Zhao, Xiqiang; <strong>Mao, Yanpeng</strong>; Li, Xinning; Song, Zhanlong</div><div class="pub-journal"><span>Energy</span>, 2015, 87: 678-685.</div></li>
+            <li class="pub-item"><div class="pub-title">Kinetics of Solvent Blue and Reactive Yellow removal using microwave radiation in combination with nanoscale zero-valent iron</div><div class="pub-authors"><strong>Mao, Yanpeng</strong>; Xi, Zhenqian; Wang, Wenlong; Ma, Chunyuan; Yue, Qinyan</div><div class="pub-journal"><span>Journal of Environmental Sciences</span>, 2015, 30: 164-172.</div></li>
+        </ul>
+
+        <h2>2014</h2>
+        <ul class="pub-list">
+            <li class="pub-item"><div class="pub-title">Temperature rise and weight loss characteristics of wheat straw under microwave heating</div><div class="pub-authors">Zhao, Xiqiang; Wang, Wenlong; Liu, Hongzhen; <strong>Mao, Yanpeng</strong>; Ma, Chunyuan; Song, Zhanlong</div><div class="pub-journal"><span>Journal of Analytical and Applied Pyrolysis</span>, 2014, 107: 59-66.</div></li>
+            <li class="pub-item"><div class="pub-title">Enhanced adsorption of chromium onto activated carbon by microwave-assisted H3PO4 mixed with Fe/Al/Mn activation</div><div class="pub-authors">Sun, Yuanyuan; Yue, Qinyan; <strong>Mao, Yanpeng</strong>; Gao, Baoyu; Gao, Yuan; Huang, Lihui</div><div class="pub-journal"><span>Journal of Hazardous Materials</span>, 2014, 265: 191-200.</div></li>
+        </ul>
+
+        <h2>2012</h2>
+        <ul class="pub-list">
+            <li class="pub-item"><div class="pub-title">Syn-gas-based mono ethylene glycol synthesis in Pujing Chemical</div><div class="pub-authors">Luo, Nianjun; Ji, Yang; <strong>Mao, Yanpeng</strong>; Zhang, Bo</div><div class="pub-journal"><span>Applied Petrochemical Research</span>, 2012, 2(1-2): 23-26.</div></li>
+            <li class="pub-item"><div class="pub-title">Effects of pH, floc age and organic compounds on the removal of phosphate by pre-polymerized hydrous ferric oxides</div><div class="pub-authors"><strong>Mao, Yanpeng</strong>; Pham, A. Ninh; Xin, Yongjia; Waite, T. David</div><div class="pub-journal"><span>Separation and Purification Technology</span>, 2012, 91: 38-45.</div></li>
+        </ul>
+
+        <h2>2011</h2>
+        <ul class="pub-list">
+            <li class="pub-item"><div class="pub-title">Influence of phosphate on the oxidation kinetics of nanomolar Fe(II) in aqueous solution at circumneutral pH</div><div class="pub-authors"><strong>Mao, Yanpeng</strong>; Pham, A. Ninh; Rose, Andrew L.; Waite, T. David</div><div class="pub-journal"><span>Geochimica et Cosmochimica Acta</span>, 2011, 75(16): 4601-4610.</div></li>
+        </ul>
+
+        <h2>2007</h2>
+        <ul class="pub-list">
+            <li class="pub-item"><div class="pub-title">Absorption of NO in aqueous solution of Co(II)-en: Determination of the equilibrium constant</div><div class="pub-authors">Liu, Bintao; Chen, Hua; <strong>Mao, Yanpeng</strong>; Xiao, Wende</div><div class="pub-journal"><span>Journal of Chemical and Engineering Data</span>, 2007, 52(3): 762-765.</div></li>
         </ul>
     </div>
-
 </body>
 </html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yanpeng Mao - Homepage</title>
+    <title>毛岩鹏 - 个人主页</title>
     <style>
-        body { display: flex; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: #333; }
+        body { display: flex; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif; color: #333; }
         
         /* 左侧导航栏 */
         .nav-bar { list-style-type: none; padding: 0; margin: 0; width: 220px; background-color: #f8f9fa; position: fixed; height: 100vh; overflow: auto; border-right: 1px solid #eaeaea; }
@@ -15,18 +15,21 @@
         /* 右侧内容区 */
         .main-content { margin-left: 220px; padding: 40px; font-size: 16px; flex-grow: 1; max-width: 900px; }
         h1 { color: #222; margin-bottom: 20px; }
-        p { line-height: 1.8; color: #444; text-align: justify; }
+        p { line-height: 1.8; color: #444; text-align: justify; margin: 0 0 12px 0; }
         
-        /* 👇 照片样式：已改成 3:4 的长方形 👇 */
+        /* 照片样式：3:4 长方形 */
         .profile-img { 
-            width: 180px;           /* 宽度 */
-            height: 240px;          /* 高度（比宽度大，形成竖向长方形） */
-            object-fit: cover;      /* 保证照片填满长方形，不变形 */
-            float: right;           /* 靠右悬浮 */
-            margin: 0 0 20px 30px;  /* 文字环绕间距 */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* 一点点阴影增加立体感 */
-            border-radius: 4px;     /* 加一点点微小的圆角让边缘不那么锋利，想要纯直角可以删掉这行 */
+            width: 180px;
+            height: 240px;
+            object-fit: cover;
+            float: right;
+            margin: 0 0 20px 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            border-radius: 4px;
         }
+        
+        /* 中英文段落之间的间距（不要太大） */
+        .lang-en { margin-top: 18px; }
         
         .link-btn { display: inline-block; margin-right: 15px; color: #0366d6; text-decoration: none; font-weight: bold; }
         .link-btn:hover { text-decoration: underline; }
@@ -34,42 +37,40 @@
 </head>
 <body>
 
-    <!-- 左侧导航栏 -->
+    <!-- 左侧导航栏（已删除 Projects 和 Services） -->
     <ul class="nav-bar">
         <li><a href="./index.html" class="active">Home</a></li>
         <li><a href="./publications.html">Publications</a></li>
         <li><a href="./teaching.html">Teaching</a></li>
-        <li><a href="./projects.html">Projects</a></li>
         <li><a href="./patents.html">Patents</a></li>
-        <li><a href="./services.html">Services</a></li>
         <li><a href="./awards.html">Awards</a></li>
         <li><a href="./contact.html">Contact</a></li>
     </ul>
 
     <!-- 右侧主内容区 -->
     <div class="main-content">
-        <h1>Yanpeng Mao</h1>
+        <h1>毛岩鹏</h1>
         
-        <img src="mao.jpg" alt="Yanpeng Mao" class="profile-img">
+        <img src="mao.jpg" alt="毛岩鹏" class="profile-img">
         
+        <!-- 中文 -->
+        <div class="lang-zh">
+            <p>
+                毛岩鹏，山东大学核科学与能源动力学院教授/博士生导师，入选全球前2%顶尖科学家榜单，山东省重点紧缺人才，加拿大英属哥伦比亚大学访问学者，澳大利亚新南威尔士大学联合培养博士，现任山东大学能源环境与辐射防护中心主任，环境热工教育部工程研究中心副主任，曾任山东烟台黄渤海新区副主任、山东济南平阴县科技副县长。主要从事热化学技术开发研究，主持国家级课题7项、省部级课题12项，完成政府、企业各类咨询报告、技术方案、工程设计等100余项，发表高水平论文125篇，授权国家发明专利55项，其中PCT国际专利5项、完成技术转化3项，获得山东省自然科学奖二等奖、中国循环经济协会一等奖、山东省科技副职突出贡献奖、山东省教学创新大赛三等奖等省部级奖励5项，培养博士后、博士生、硕士生、留学生近50人。
+            </p>
+        </div>
+        
+        <!-- 英文 -->
+        <div class="lang-en">
+            <p>
+                Professor and Ph.D. Supervisor at the School of Nuclear Science and Energy Power Engineering, Shandong University. Listed among the world's top 2% scientists, a key talent in short supply in Shandong Province, a visiting scholar at the University of British Columbia, Canada, and a jointly trained Ph.D. at the University of New South Wales, Australia. Currently Director of the Energy, Environment and Radiation Protection Center of Shandong University and Deputy Director of the Engineering Research Center of Environmental Thermal Engineering, Ministry of Education. Previously served as Deputy Director of the Yantai Huang-Bohai New Area and Deputy County Mayor of Pingyin County, Jinan, Shandong, in charge of science and technology. His research focuses on the development of thermochemical technology. He has led 7 national-level projects and 12 provincial/ministerial-level projects, completed more than 100 consulting reports, technical proposals, and engineering designs for governments and enterprises, published 125 high-quality papers, and been granted 55 national invention patents, including 5 PCT international patents, with 3 technologies successfully commercialized. He has received 5 provincial/ministerial awards, including the Second Prize of the Shandong Provincial Natural Science Award, the First Prize of the China Association of Circular Economy, the Outstanding Contribution Award for Science and Technology Deputy Positions in Shandong Province, and the Third Prize of the Shandong Teaching Innovation Competition. He has supervised nearly 50 postdoctoral fellows, doctoral students, master's students, and international students.
+            </p>
+        </div>
+        
+        <h3>Academic Links (学术联系)</h3>
         <p>
-            Professor and Ph.D. Supervisor at the School of Nuclear Science and Energy Power Engineering, Shandong University. 
-            I am a key industry talent in Jinan and currently serve as the Vice Dean of the Xintai Institute of Industrial Research, Shandong University.
-        </p>
-        
-        <p>
-            My research primarily focuses on the intersection of <strong>Energy, Environment, and Materials</strong>, specifically in two main directions: <strong>Microwave Energy Applications</strong> and <strong>Low-Zero Carbon Technologies</strong>. 
-            In microwave energy applications, my work covers the interaction mechanisms between microwaves and matter, microwave multiphase catalysis, and new energy technologies such as microwave photothermal hydrogen production and organic solid waste decoupled hydrogen production.
-        </p>
-        
-        <p>
-            I have led and participated in 19 national projects, including the National Natural Science Foundation of China, the National Key R&D Program, and the National 863 Program. I have published over 100 SCI/EI papers, applied for/granted 56 national patents, and received the Second Prize of the Shandong Provincial Natural Science Award.
-        </p>
-        
-        <h3>Academic Links</h3>
-        <p>
-            <a href="https://scholar.google.com/" target="_blank" class="link-btn">Google Scholar</a>
-            <a href="https://www.scopus.com/" target="_blank" class="link-btn">Scopus</a>
+            <a href="https://www.scopus.com/authid/detail.uri?authorId=55459022800" target="_blank" class="link-btn">Scopus</a>
+            <a href="https://orcid.org/0000-0003-1306-6845" target="_blank" class="link-btn">ORCID</a>
         </p>
     </div>
 
